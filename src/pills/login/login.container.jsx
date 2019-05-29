@@ -1,44 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginView from "./login.view.jsx";
 import { updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
+import { isUserInDatabase } from "../../API/functions.js";
+import { Redirect } from "react-router-dom";
 
 const Login = ({ dispatch }) => {
-  const users = [
-    {
-      name: "Jojo",
-      password: "1234"
-    },
-    {
-      name: "Laura",
-      password: "1234"
-    }
-  ];
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const handleSubmit = e => {
-    dispatch(updateUser(e.target.username.value));
-    let isUserInDatabase = false;
+    let username = e.target.username.value;
+    let password = e.target.password.value;
 
-    users.forEach(user => {
-      if (
-        e.target.username.value === user.name &&
-        e.target.password.value === user.password
-      ) {
-        isUserInDatabase = true;
-      }
-    });
-
-    isUserInDatabase
-      ? alert("Vous pouvez passer.")
-      : alert("Vouuuuss ne passerez paaaaas !");
+    if (isUserInDatabase(username, password)) {
+      dispatch(updateUser(username));
+      setShouldRedirect(true);
+    } else {
+      alert("Vouuuuss ne passerez paaaaas !");
+    }
 
     e.preventDefault();
   };
+
   return (
-    <LoginView
-      onSubmit={handleSubmit}
-      logo="https://www.logogenie.fr/download/preview/medium/4165102"
-    />
+    <div>
+      {shouldRedirect && <Redirect to="/events" />}
+      <LoginView
+        onSubmit={handleSubmit}
+        logo="https://www.logogenie.fr/download/preview/medium/4165102"
+      />
+    </div>
   );
 };
 
