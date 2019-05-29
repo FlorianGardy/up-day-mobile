@@ -15,11 +15,11 @@ function AppRouter() {
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/events" exact component={Events} />
-          <Route path="/defecation" exact component={Defecation} />
-          <Route path="/drink" exact component={Drink} />
-          <Route path="/about" exact component={About} />
+          <Route path="/events/defecation" exact component={Defecation} />
+          <Route path="/events/drink" exact component={Drink} />
+          <Route path="/events/urination" exact component={Urination} />
           <Route path="/history" exact component={History} />
-          <Route path="/urination" exact component={Urination} />
+          <Route path="/about" exact component={About} />
         </Switch>
       </div>
     </Router>
