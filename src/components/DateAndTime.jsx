@@ -12,10 +12,12 @@ const DateAndTime = ({ date, handleChange }) => {
         selected={date}
         onChange={handleChange}
         showTimeSelect
+        className="center-text-datepicker"
         locale="fr"
         timeFormat="HH:mm"
         dateFormat="dd MMMM yyyy à HH:mm"
         withPortal
+        tetherConstraints={[]}
       />
     </div>
   );
