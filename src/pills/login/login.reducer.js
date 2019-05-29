@@ -1,9 +1,9 @@
-export default function counter(state = { total: 0, score: 100 }, action) {
+const initialState = { user: "" };
+
+export default function login(state = initialState, action) {
   switch (action.type) {
-    case "INCREMENT":
-      return { ...state, total: state.total + 1 };
-    case "DECREMENT":
-      return { ...state, total: state.total - 1 };
+    case "@login/UPDATE_USER":
+      return { ...state, user: action.username };
     default:
       return state;
   }
