@@ -37,7 +37,27 @@ export const events = [
     nature: "mitigé",
     volume: "++",
     context: "",
-    comment: "gros",
+    comment: "",
+    user_id: "1"
+  },
+  {
+    id: 4,
+    date: "28/06/20",
+    type: "caca",
+    nature: "difficulté",
+    volume: "+",
+    context: "",
+    comment: "C'était long...",
+    user_id: "1"
+  },
+  {
+    id: 5,
+    date: "29/06/20",
+    type: "Boisson",
+    nature: "Thé",
+    volume: "+++",
+    context: "",
+    comment: "Avec du miel, miam !",
     user_id: "1"
   }
 ];

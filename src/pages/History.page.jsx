@@ -7,12 +7,19 @@ const History = () => {
   //carousselle date + selection date
   const [selectedDate, setSelectedDate] = useState(new Date());
   /* state date selectioné */
+
+  const getUniqueDates = events => {
+    return [...new Set(events.map(event => event.date))];
+  };
+
   return (
     <div>
-      {/* replace with topbar */}
+      {/* To be replaced by "TopBar" component */}
       <h1>Top Bar</h1>
-      {/* replace with component date */}
-      <h2>-- 31/06/20 --</h2>
+      <hr />
+      {/* To be replaced by "DateSelector" component */}
+      <h2>-- {getUniqueDates(events)[0]} --</h2>
+      <hr />
       {events
         // .filter(event => event.date === selectedDate)
         .map(event => (
