@@ -1,0 +1,26 @@
+.TopBar {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.TopBar h1 {
+  grid-column: 2/3;
+}
+.TopBar > button {
+  height: 40px;
+  width: 50px;
+  align-self: center;
+  margin: 0 20px;
+  border-radius: 5px;
+}
+.TopBar > button:nth-child(1) {
+  grid-column: 1/2;
+  justify-self: start;
+}
+.TopBar > button:nth-child(3) {
+  grid-column: 3/4;
+  justify-self: end;
+}
