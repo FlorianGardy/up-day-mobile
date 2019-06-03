@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SelectorThreeChoice = ({
+const OptionSelector = ({
   options,
-  clickHandler,
-  activeChoice,
+  onClick,
+  activeOption,
   style,
   styleWhenSelected
 }) => {
@@ -12,14 +12,14 @@ const SelectorThreeChoice = ({
     <div>
       {options.map((option, i) => {
         let styleButton = { ...style };
-        if (activeChoice === option.value) {
-          styleButton = { ...styleWhenSelected };
+        if (activeOption === option.value) {
+          styleButton = { ...style, ...styleWhenSelected };
         }
         return (
           <button
             style={styleButton}
             key={i}
-            onClick={() => clickHandler(option.value)}
+            onClick={() => onClick(option.value)}
           >
             {option.label}
           </button>
@@ -29,10 +29,10 @@ const SelectorThreeChoice = ({
   );
 };
 
-SelectorThreeChoice.propTypes = {
+OptionSelector.propTypes = {
   options: PropTypes.array.isRequired,
-  activeChoice: PropTypes.string.isRequired,
-  clickHandler: PropTypes.func.isRequired
+  activeOption: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
-export default SelectorThreeChoice;
+export default OptionSelector;
