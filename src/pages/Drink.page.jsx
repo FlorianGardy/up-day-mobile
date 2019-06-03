@@ -8,14 +8,18 @@ const Drink = () => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
 
   const [date, setDate] = useState(new Date());
-  let options = {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric"
+
+  const dateToString = date => {
+    // Passage de la date en String
+    let options = {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric"
+    };
+    return date.toLocaleDateString("fr-FR", options);
   };
-  let dateAsString = date.toLocaleDateString("fr-FR", options); // Passage de la date en String
 
   /* Related to drinks */
   const [drink, setDrink] = useState("eau"); //déclaration du state
@@ -88,7 +92,7 @@ const Drink = () => {
           }}
         >
           <div style={summary}>
-            <Summary label="date" value={dateAsString} />
+            <Summary label="date" value={dateToString(date)} />
           </div>
           <div style={summary}>
             <Summary label="Type" value={drink} />
