@@ -3,10 +3,14 @@ import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
 import Summary from "../components/Summary";
+import { volumes, drinks } from "../data";
 
 const Drink = () => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
 
+  const [drink, setDrink] = useState("eau"); //déclaration du state
+  const [volume, setVolume] = useState("medium");
+  const [comment, setComment] = useState("");
   const [date, setDate] = useState(new Date());
 
   const dateToString = date => {
@@ -20,46 +24,6 @@ const Drink = () => {
     };
     return date.toLocaleDateString("fr-FR", options);
   };
-
-  /* Related to drinks */
-  const [drink, setDrink] = useState("eau"); //déclaration du state
-  const drinks = [
-    {
-      label: "eau",
-      value: "eau"
-    },
-    {
-      label: "the",
-      value: "the"
-    },
-    {
-      label: "alcohol",
-      value: "alcohol"
-    }
-  ];
-  /* End related to drinks */
-
-  /* Related to volumes */
-  const [volume, setVolume] = useState("medium");
-  const volumes = [
-    {
-      label: "+",
-      value: "low"
-    },
-    {
-      label: "++",
-      value: "medium"
-    },
-    {
-      label: "+++",
-      value: "High"
-    }
-  ];
-  /* End related to volumes */
-
-  /* Related to comment */
-  const [comment, setComment] = useState("");
-  /* End related to comment */
 
   /* Style du bouton de base */
   const buttonStyle = {
