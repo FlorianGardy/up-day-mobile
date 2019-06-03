@@ -3,29 +3,38 @@ nav {
   position: absolute;
   bottom: 0;
   width: 100%;
-}
-ul {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+  grid-template-rows: 1fr;
   height: 10vh;
-  padding: 0 20px;
-  margin: 0;
 }
-li {
-  align-self: center; /* Center text on Y baseline */
-  list-style: none;
-}
+
 a {
   text-decoration: none;
   color: white;
 }
+
 /* Center text on X baseline */
 .history {
+  align-self: center;
   justify-self: start;
+  grid-column: 2/3;
 }
 .events {
   justify-self: center;
+  grid-column: 3/4;
+  align-self: center;
 }
 .about {
   justify-self: end;
+  align-self: center;
+  grid-column: 4/5;
+}
+.hiddenEventButtonGroup {
+  display: none;
+}
+.shownEventButtonGroup {
+  display: block;
+  position: absolute;
+  top: -50px;
 }
