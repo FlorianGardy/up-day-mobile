@@ -4,6 +4,7 @@ import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
 import SummaryItem from "../components/SummaryItem";
 import { volumes, drinks } from "../data";
+import Navbar from "../components/Navbar";
 
 const Drink = () => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
@@ -42,6 +43,7 @@ const Drink = () => {
           <SummaryItem label="Volume" value={volume} />
           <SummaryItem label="Commentaire" value={comment} />
         </div>
+        <Navbar />
       </div>
     );
   }
@@ -71,6 +73,8 @@ const Drink = () => {
         commentText={comment}
         onChange={e => setComment(e.target.value)}
       />
+
+      <Navbar />
     </div>
   );
 };
