@@ -25,18 +25,6 @@ const Drink = () => {
     return date.toLocaleDateString("fr-FR", options);
   };
 
-  /* Style du bouton de base */
-  const buttonStyle = {
-    color: "blue",
-    margin: "2px",
-    width: "80px"
-  };
-
-  /* Style du bouton sélectioné */
-  const selectedButtonStyle = {
-    color: "red"
-  };
-
   if (isReadyToRecap) {
     return (
       <div>
@@ -69,8 +57,6 @@ const Drink = () => {
         options={drinks} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
         activeOption={drink} //la donnée selectioné dans le state
         onClick={drink => setDrink(drink)} //la fonction qui enregistre l'etat au click du bouton
-        style={buttonStyle} //le style de base des boutons
-        styleWhenSelected={selectedButtonStyle} //le style que doit avoir le button qui est selectionné, appliquer les differences uniquement
       />
 
       <h2>Volume</h2>
@@ -78,8 +64,6 @@ const Drink = () => {
         options={volumes}
         activeOption={volume}
         onClick={volume => setVolume(volume)}
-        style={buttonStyle}
-        styleWhenSelected={selectedButtonStyle}
       />
 
       <h2>Commentaire</h2>

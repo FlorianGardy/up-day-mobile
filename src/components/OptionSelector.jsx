@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styles from "./OptionSelector.module.css";
 
 const OptionSelector = ({
   options,
@@ -11,13 +12,13 @@ const OptionSelector = ({
   return (
     <div>
       {options.map((option, i) => {
-        let styleButton = { ...style };
+        let styleButton = styles.button;
         if (activeOption === option.value) {
-          styleButton = { ...style, ...styleWhenSelected };
+          styleButton = styles.selectedButton;
         }
         return (
           <button
-            style={styleButton}
+            className={styleButton}
             key={i}
             onClick={() => onClick(option.value)}
           >
