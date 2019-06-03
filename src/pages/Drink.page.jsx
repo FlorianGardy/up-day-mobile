@@ -61,9 +61,8 @@ const Drink = () => {
   return (
     <div>
       <button onClick={() => setIsReadyToRecap(true)}>recap</button>
-      <div style={{ background: "pink", width: "100%" }}>
-        <DateAndTime date={date} handleChange={date => setDate(date)} />
-      </div>
+
+      <DateAndTime date={date} handleChange={date => setDate(date)} />
 
       <h2>Type de boissons</h2>
       <OptionSelector

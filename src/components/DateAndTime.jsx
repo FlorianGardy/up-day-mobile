@@ -7,7 +7,7 @@ registerLocale("fr", fr); // register it with the name you want
 
 const DateAndTime = ({ date, handleChange }) => {
   return (
-    <div>
+    <div style={{ background: "pink", width: "100%" }}>
       <DatePicker
         selected={date}
         onChange={handleChange}
