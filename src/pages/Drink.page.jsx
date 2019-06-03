@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import DateAndTime from "../components/DateAndTime";
-// import TypeOfDrink from '../components/TypeOfDrink';
-// import VolumeOfDrink from '../components/VolumeOfDrink';
 import OptionSelector from "../components/OptionSelector";
-import Style from "./Drink.module.css";
+import Comment from "../components/Comment";
+import Summary from "../components/Summary";
 
 const Drink = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const handleChangeDate = date => {
-    setStartDate(date);
-  };
-  /* Related to drinks */
-  const [drink, setDrink] = useState("eau");
-  const setDrinkValue = drink => {
-    setDrink(drink);
-  };
+  const [isReadyToRecap, setIsReadyToRecap] = useState(false);
 
+  const [date, setDate] = useState(new Date());
+  let options = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric"
+  };
+  let dateAsString = date.toLocaleDateString("fr-FR", options); // Passage de la date en String
+
+  /* Related to drinks */
+  const [drink, setDrink] = useState("eau"); //déclaration du state
   const drinks = [
     {
       label: "eau",
@@ -34,10 +37,6 @@ const Drink = () => {
 
   /* Related to volumes */
   const [volume, setVolume] = useState("medium");
-  const setVolumeValue = volume => {
-    setVolume(volume);
-  };
-
   const volumes = [
     {
       label: "+",
@@ -54,37 +53,89 @@ const Drink = () => {
   ];
   /* End related to volumes */
 
+  /* Related to comment */
+  const [comment, setComment] = useState("");
+  /* End related to comment */
+
+  /* Style du bouton de base */
   const buttonStyle = {
-    color: "blue"
+    color: "blue",
+    margin: "2px",
+    width: "80px"
   };
 
+  /* Style du bouton sélectioné */
   const selectedButtonStyle = {
     color: "red"
   };
 
+  /* Style des containers de recap */
+  const summary = {
+    width: "48%",
+    border: "1px pink solid"
+  };
+
+  if (isReadyToRecap) {
+    return (
+      <div>
+        <button onClick={() => setIsReadyToRecap(false)}>drinks</button>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            border: "1px black solid",
+            justifyContent: "space-around"
+          }}
+        >
+          <div style={summary}>
+            <Summary label="date" value={dateAsString} />
+          </div>
+          <div style={summary}>
+            <Summary label="Type" value={drink} />
+          </div>
+          <div style={summary}>
+            <Summary label="Contexte" value="Aucun" />
+          </div>
+          <div style={summary}>
+            <Summary label="Volume" value={volume} />
+          </div>
+          <div style={{ ...summary, width: "98%" }}>
+            <Summary label="Commentaire" value={comment} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      <div className={Style.dateSection}>
-        <DateAndTime date={startDate} handleChange={handleChangeDate} />
+      <button onClick={() => setIsReadyToRecap(true)}>recap</button>
+      <div style={{ background: "pink", width: "100%" }}>
+        <DateAndTime date={date} handleChange={date => setDate(date)} />
       </div>
-      {/* <h2>Types de boissons</h2>
-      <TypeOfDrink onClick={setDrinkValue} />
-      <h2>Volume</h2>
-      <VolumeOfDrink onClick={setVolumeValue} /> */}
+
+      <h2>Type de boissons</h2>
       <OptionSelector
-        options={drinks} //les données
-        activeChoice={drink} //la donnée dans le state
-        clickHandler={setDrinkValue} //la focntion qui set la donnée
-        styleWhenSelected={selectedButtonStyle} //le style que doit avoir le button quand il est selectionné
-        style={buttonStyle} //le style de base
+        options={drinks} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
+        activeOption={drink} //la donnée selectioné dans le state
+        onClick={drink => setDrink(drink)} //la fonction qui enregistre l'etat au click du bouton
+        style={buttonStyle} //le style de base des boutons
+        styleWhenSelected={selectedButtonStyle} //le style que doit avoir le button qui est selectionné, appliquer les differences uniquement
       />
 
+      <h2>Volume</h2>
       <OptionSelector
         options={volumes}
-        activeChoice={volume}
-        clickHandler={setVolumeValue}
-        styleWhenSelected={selectedButtonStyle}
+        activeOption={volume}
+        onClick={volume => setVolume(volume)}
         style={buttonStyle}
+        styleWhenSelected={selectedButtonStyle}
+      />
+
+      <h2>Commentaire</h2>
+      <Comment
+        commentText={comment}
+        onChange={e => setComment(e.target.value)}
       />
     </div>
   );
