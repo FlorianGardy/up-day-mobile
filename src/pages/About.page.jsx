@@ -10,9 +10,7 @@ function About() {
     ulist: {
       textAlign: "left"
     },
-    titleComment: {
-      // marginTop: "3em"
-    }
+    titleComment: {}
   };
 
   return (
@@ -20,7 +18,7 @@ function About() {
       <div style={style.main}>
         <div id="firstBlock">
           <h2>Pourquoi ?</h2>
-          <p>Cette éaluation vous aide à:</p>
+          <p>Cette évaluation vous aide à:</p>
           <ul style={style.ulist}>
             <li>
               analyser avec votre thérapeuthe et à comprendre vos habitude
