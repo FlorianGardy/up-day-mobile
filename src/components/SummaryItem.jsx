@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Summary = ({ label, value }) => {
+const SummaryItem = ({ label, value }) => {
   /* Style des containers de recap */
   const style = {
     width: "45%",
@@ -16,9 +16,9 @@ const Summary = ({ label, value }) => {
   );
 };
 
-Summary.propTypes = {
+SummaryItem.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
 };
 
-export default Summary;
+export default SummaryItem;
