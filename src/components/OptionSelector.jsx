@@ -2,13 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./OptionSelector.module.css";
 
-const OptionSelector = ({
-  options,
-  onClick,
-  activeOption,
-  style,
-  styleWhenSelected
-}) => {
+const OptionSelector = ({ options, onClick, activeOption }) => {
   return (
     <div>
       {options.map((option, i) => {
