@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import Summary from "../components/Summary";
+import SummaryItem from "../components/SummaryItem";
 import { volumes, drinks } from "../data";
 
 const Drink = () => {
@@ -37,12 +37,6 @@ const Drink = () => {
     color: "red"
   };
 
-  /* Style des containers de recap */
-  const summary = {
-    width: "48%",
-    border: "1px pink solid"
-  };
-
   if (isReadyToRecap) {
     return (
       <div>
@@ -51,25 +45,14 @@ const Drink = () => {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            border: "1px black solid",
             justifyContent: "space-around"
           }}
         >
-          <div style={summary}>
-            <Summary label="date" value={dateToString(date)} />
-          </div>
-          <div style={summary}>
-            <Summary label="Type" value={drink} />
-          </div>
-          <div style={summary}>
-            <Summary label="Contexte" value="Aucun" />
-          </div>
-          <div style={summary}>
-            <Summary label="Volume" value={volume} />
-          </div>
-          <div style={{ ...summary, width: "98%" }}>
-            <Summary label="Commentaire" value={comment} />
-          </div>
+          <SummaryItem label="date" value={dateToString(date)} />
+          <SummaryItem label="Type" value={drink} />
+          <SummaryItem label="Contexte" value="Aucun" />
+          <SummaryItem label="Volume" value={volume} />
+          <SummaryItem label="Commentaire" value={comment} />
         </div>
       </div>
     );
