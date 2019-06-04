@@ -5,24 +5,27 @@ import { events } from "../data";
 import EventRow from "../components/EventRow.jsx";
 import Navbar from "../components/Navbar";
 import HistoryDateSelection from "../components/HistoryDateSelection";
+import TopBar from "../components/TopBar";
 
 const History = () => {
-  moment.suppressDeprecationWarnings = true; // supress moment warning due to date format
-
   const [dateIndex, setDateIndex] = useState(0);
-  const [uniqueDates, setUniqueDates] = useState(moment().format("MM-DD-YYYY"));
+  const [uniqueDates, setUniqueDates] = useState(moment().format("YYYY-MM-DD"));
 
   useEffect(() => {
     setUniqueDates(
       [
-        ...new Set(events.map(event => moment(event.date).format("MM-DD-YYYY")))
+        ...new Set(events.map(event => moment(event.date).format("YYYY-MM-DD")))
       ].sort((a, b) => a - b)
     );
   }, []);
 
   return (
     <div>
-      <h1>Top Bar</h1> {/* To be replaced by "TopBar" component */}
+      <TopBar
+        title="Historique"
+        leftButtonInfo={{ isVisible: false }}
+        rightButtonInfo={{ isVisible: false }}
+      />
       <HistoryDateSelection
         date={uniqueDates[dateIndex]}
         rightButtonOnClick={() =>
@@ -33,7 +36,7 @@ const History = () => {
       {events
         .filter(
           event =>
-            moment(event.date).format("MM-DD-YYYY") === uniqueDates[dateIndex]
+            moment(event.date).format("YYYY-MM-DD") === uniqueDates[dateIndex]
         )
         .map(event => (
           <EventRow
