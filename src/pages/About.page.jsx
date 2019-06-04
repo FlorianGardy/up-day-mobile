@@ -5,9 +5,6 @@ import TopBar from "../components/TopBar";
 function About() {
   // Component style
   const style = {
-    main: {
-      height: "90vh"
-    },
     ulist: {
       textAlign: "left"
     },
