@@ -16,7 +16,7 @@ const EventRow = ({ date, type, nature, volume, context, comment }) => {
 };
 
 EventRow.propTypes = {
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.object.isRequired,
   type: PropTypes.string.isRequired,
   nature: PropTypes.string.isRequired,
   volume: PropTypes.string.isRequired,
