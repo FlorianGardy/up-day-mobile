@@ -8,15 +8,13 @@ import HistoryDateSelection from "../components/HistoryDateSelection";
 import TopBar from "../components/TopBar";
 
 const History = () => {
-  moment.suppressDeprecationWarnings = true; // supress moment warning due to date format
-
   const [dateIndex, setDateIndex] = useState(0);
-  const [uniqueDates, setUniqueDates] = useState(moment().format("MM-DD-YYYY"));
+  const [uniqueDates, setUniqueDates] = useState(moment().format("YYYY-MM-DD"));
 
   useEffect(() => {
     setUniqueDates(
       [
-        ...new Set(events.map(event => moment(event.date).format("MM-DD-YYYY")))
+        ...new Set(events.map(event => moment(event.date).format("YYYY-MM-DD")))
       ].sort((a, b) => a - b)
     );
   }, []);
@@ -38,7 +36,7 @@ const History = () => {
       {events
         .filter(
           event =>
-            moment(event.date).format("MM-DD-YYYY") === uniqueDates[dateIndex]
+            moment(event.date).format("YYYY-MM-DD") === uniqueDates[dateIndex]
         )
         .map(event => (
           <EventRow
