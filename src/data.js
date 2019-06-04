@@ -12,7 +12,7 @@ export const users = [
 export const events = [
   {
     id: 1,
-    date: "Mon Jun 03 2019 16:22:31 GMT+0200",
+    date: "2019-06-04T12:59:00",
     type: "pipi",
     nature: "normale",
     volume: "+++",
@@ -22,7 +22,7 @@ export const events = [
   },
   {
     id: 2,
-    date: "Mon Jun 03 2019 16:22:31 GMT+0200",
+    date: "2019-06-05T13:59:00",
     type: "pipi",
     nature: "mitigé",
     volume: "+",
@@ -32,7 +32,7 @@ export const events = [
   },
   {
     id: 3,
-    date: "Mon Jun 02 2019 16:22:31 GMT+0200",
+    date: "2019-06-05T14:59:00",
     type: "pipi",
     nature: "mitigé",
     volume: "++",
@@ -42,7 +42,7 @@ export const events = [
   },
   {
     id: 4,
-    date: "Mon Jun 02 2019 16:22:31 GMT+0200",
+    date: "2019-06-05T14:59:00",
     type: "caca",
     nature: "difficulté",
     volume: "+",
@@ -52,7 +52,7 @@ export const events = [
   },
   {
     id: 5,
-    date: "Mon Jun 01 2019 16:22:31 GMT+0200",
+    date: "2019-06-07T11:59:00",
     type: "Boisson",
     nature: "Thé",
     volume: "+++",

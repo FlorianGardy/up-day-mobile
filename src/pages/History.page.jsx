@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Moment from "react-moment";
 import moment from "moment";
 import { events } from "../data";
 import EventRow from "../components/EventRow.jsx";
@@ -9,7 +8,9 @@ import TopBar from "../components/TopBar";
 
 const History = () => {
   const [dateIndex, setDateIndex] = useState(0);
-  const [uniqueDates, setUniqueDates] = useState(moment().format("YYYY-MM-DD"));
+  const [uniqueDates, setUniqueDates] = useState([
+    moment().format("YYYY-MM-DD")
+  ]);
 
   useEffect(() => {
     setUniqueDates(
@@ -28,10 +29,10 @@ const History = () => {
       />
       <HistoryDateSelection
         date={uniqueDates[dateIndex]}
-        rightButtonOnClick={() =>
+        rightButtonOnClick={() => dateIndex > 0 && setDateIndex(dateIndex - 1)}
+        leftButtonOnClick={() =>
           dateIndex < uniqueDates.length - 1 && setDateIndex(dateIndex + 1)
         }
-        leftButtonOnClick={() => dateIndex > 0 && setDateIndex(dateIndex - 1)}
       />
       {events
         .filter(
@@ -41,7 +42,7 @@ const History = () => {
         .map(event => (
           <EventRow
             key={event.id}
-            date={<Moment format="HH:mm" date={event.date} />}
+            date={moment(event.date).format("HH:mm")}
             type={event.type}
             nature={event.nature}
             volume={event.volume}
