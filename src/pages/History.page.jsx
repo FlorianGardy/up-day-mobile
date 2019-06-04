@@ -7,6 +7,8 @@ import HistoryDateSelection from "../components/HistoryDateSelection";
 import TopBar from "../components/TopBar";
 
 const History = () => {
+  moment.suppressDeprecationWarnings = true; // supress moment warning due to date format
+
   const [dateIndex, setDateIndex] = useState(0);
   const [uniqueDates, setUniqueDates] = useState([
     moment().format("YYYY-MM-DD")
