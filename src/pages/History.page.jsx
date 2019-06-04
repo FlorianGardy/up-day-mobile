@@ -5,6 +5,7 @@ import { events } from "../data";
 import EventRow from "../components/EventRow.jsx";
 import Navbar from "../components/Navbar";
 import HistoryDateSelection from "../components/HistoryDateSelection";
+import TopBar from "../components/TopBar";
 
 const History = () => {
   moment.suppressDeprecationWarnings = true; // supress moment warning due to date format
@@ -22,7 +23,11 @@ const History = () => {
 
   return (
     <div>
-      <h1>Top Bar</h1> {/* To be replaced by "TopBar" component */}
+      <TopBar
+        title="History"
+        leftButtonInfo={{ isVisible: false }}
+        rightButtonInfo={{ isVisible: false }}
+      />
       <HistoryDateSelection
         date={uniqueDates[dateIndex]}
         rightButtonOnClick={() =>
