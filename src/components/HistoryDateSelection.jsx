@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Moment from "react-moment";
 import "moment/locale/fr";
 
 const HistoryDateSelection = ({
@@ -17,7 +16,7 @@ const HistoryDateSelection = ({
         onClick={leftButtonOnClick}
         value="&larr;"
       />
-      <Moment format="dddd DD MMMM" date={date} />
+      {date}
       <input
         style={style}
         type="button"
