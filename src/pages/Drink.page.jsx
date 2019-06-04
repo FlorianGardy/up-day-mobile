@@ -67,7 +67,7 @@ const Drink = ({ history }) => {
         title="Boisson"
         leftButtonInfo={{
           text: "Annuler",
-          onClick: () => history.push("/events"),
+          onClick: () => history.push("/history"),
           isVisible: true
         }}
         rightButtonInfo={{
