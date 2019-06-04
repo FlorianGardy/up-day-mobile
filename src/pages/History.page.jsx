@@ -28,7 +28,7 @@ const History = () => {
         rightButtonInfo={{ isVisible: false }}
       />
       <HistoryDateSelection
-        date={uniqueDates[dateIndex]}
+        date={moment(uniqueDates[dateIndex]).format("dddd DD MMMM")}
         rightButtonOnClick={() => dateIndex > 0 && setDateIndex(dateIndex - 1)}
         leftButtonOnClick={() =>
           dateIndex < uniqueDates.length - 1 && setDateIndex(dateIndex + 1)
