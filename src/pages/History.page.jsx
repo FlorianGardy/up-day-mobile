@@ -1,31 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Moment from "react-moment";
+import moment from "moment";
 import { events } from "../data";
 import EventRow from "../components/EventRow.jsx";
 import Navbar from "../components/Navbar";
+import HistoryDateSelection from "../components/HistoryDateSelection";
 
 const History = () => {
-  //carousselle date + selection date
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  /* state date selectioné */
+  moment.suppressDeprecationWarnings = true; // supress moment warning due to date format
 
-  const getUniqueDates = events => {
-    return [...new Set(events.map(event => event.date))];
-  };
+  const [dateIndex, setDateIndex] = useState(0);
+  const [uniqueDates, setUniqueDates] = useState(moment().format("MM-DD-YYYY"));
+
+  useEffect(() => {
+    setUniqueDates(
+      [
+        ...new Set(events.map(event => moment(event.date).format("MM-DD-YYYY")))
+      ].sort((a, b) => a - b)
+    );
+  }, []);
 
   return (
     <div>
-      {/* To be replaced by "TopBar" component */}
-      <h1>Top Bar</h1>
-      <hr />
-      {/* To be replaced by "DateSelector" component */}
-      <h2>-- {getUniqueDates(events)[0]} --</h2>
-      <hr />
+      <h1>Top Bar</h1> {/* To be replaced by "TopBar" component */}
+      <HistoryDateSelection
+        date={uniqueDates[dateIndex]}
+        rightButtonOnClick={() =>
+          dateIndex < uniqueDates.length - 1 && setDateIndex(dateIndex + 1)
+        }
+        leftButtonOnClick={() => dateIndex > 0 && setDateIndex(dateIndex - 1)}
+      />
       {events
-        // .filter(event => event.date === selectedDate)
+        .filter(
+          event =>
+            moment(event.date).format("MM-DD-YYYY") === uniqueDates[dateIndex]
+        )
         .map(event => (
           <EventRow
             key={event.id}
-            date={event.date}
+            date={<Moment format="HH:mm" date={event.date} />}
             type={event.type}
             nature={event.nature}
             volume={event.volume}
