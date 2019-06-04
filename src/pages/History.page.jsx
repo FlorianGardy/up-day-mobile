@@ -24,7 +24,7 @@ const History = () => {
   return (
     <div>
       <TopBar
-        title="History"
+        title="Historique"
         leftButtonInfo={{ isVisible: false }}
         rightButtonInfo={{ isVisible: false }}
       />
