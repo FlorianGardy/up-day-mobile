@@ -39,7 +39,10 @@ const Drink = ({ history }) => {
           }}
           rightButtonInfo={{
             text: "Terminer",
-            onClick: () => console.log("send to database"), // Function to send data to api
+            onClick: () => {
+              console.log("send to database");
+              history.push("/history");
+            }, // Function to send data to api
             isVisible: true
           }}
         />

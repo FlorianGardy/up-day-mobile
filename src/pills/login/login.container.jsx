@@ -24,7 +24,7 @@ const Login = ({ dispatch }) => {
 
   return (
     <div>
-      {shouldRedirect && <Redirect to="/events" />}
+      {shouldRedirect && <Redirect to="/history" />}
       <LoginView
         onSubmit={handleSubmit}
         logo="https://www.logogenie.fr/download/preview/medium/4165102"
