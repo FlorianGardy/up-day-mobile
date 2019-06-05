@@ -6,6 +6,7 @@ import SummaryItem from "../components/SummaryItem";
 import { volumes, drinks } from "../data";
 import Navbar from "../components/Navbar";
 import TopBar from "../components/TopBar";
+import { tsOptionalType } from "@babel/types";
 
 const Drink = ({ history }) => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
@@ -39,7 +40,10 @@ const Drink = ({ history }) => {
           }}
           rightButtonInfo={{
             text: "Terminer",
-            onClick: () => console.log("send to database"), // Function to send data to api
+            onClick: () => {
+              console.log("send to database");
+              history.push("/history");
+            }, // Function to send data to api
             isVisible: true
           }}
         />
