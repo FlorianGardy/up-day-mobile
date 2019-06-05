@@ -6,7 +6,6 @@ import SummaryItem from "../components/SummaryItem";
 import { volumes, drinks } from "../data";
 import Navbar from "../components/Navbar";
 import TopBar from "../components/TopBar";
-import { tsOptionalType } from "@babel/types";
 
 const Drink = ({ history }) => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
