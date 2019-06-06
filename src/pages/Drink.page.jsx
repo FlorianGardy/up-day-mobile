@@ -5,8 +5,9 @@ import Comment from "../components/Comment";
 import SummaryItem from "../components/SummaryItem";
 import { volumes, drinks } from "../data";
 import Navbar from "../components/Navbar";
+import TopBar from "../components/TopBar";
 
-const Drink = () => {
+const Drink = ({ history }) => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
 
   const [drink, setDrink] = useState("eau"); //déclaration du state
@@ -29,7 +30,22 @@ const Drink = () => {
   if (isReadyToRecap) {
     return (
       <div>
-        <button onClick={() => setIsReadyToRecap(false)}>drinks</button>
+        <TopBar
+          title="Boisson"
+          leftButtonInfo={{
+            text: "Retour",
+            onClick: () => setIsReadyToRecap(false),
+            isVisible: true
+          }}
+          rightButtonInfo={{
+            text: "Terminer",
+            onClick: () => {
+              console.log("send to database");
+              history.push("/history");
+            }, // Function to send data to api
+            isVisible: true
+          }}
+        />
         <div
           style={{
             display: "flex",
@@ -50,7 +66,19 @@ const Drink = () => {
 
   return (
     <div>
-      <button onClick={() => setIsReadyToRecap(true)}>recap</button>
+      <TopBar
+        title="Boisson"
+        leftButtonInfo={{
+          text: "Annuler",
+          onClick: () => history.push("/history"),
+          isVisible: true
+        }}
+        rightButtonInfo={{
+          text: "Suivant",
+          onClick: () => setIsReadyToRecap(true),
+          isVisible: true
+        }}
+      />
 
       <DateAndTime date={date} handleChange={date => setDate(date)} />
 
