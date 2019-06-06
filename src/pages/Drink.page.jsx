@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
@@ -12,11 +12,14 @@ import {
   updateDate,
   updateKind,
   updateMeasure,
-  updateComment
+  updateComment,
+  resetEvent
 } from "../pills/event/event.action";
 
 const Drink = ({ dispatch, date, kind, measure, context, comment }) => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
+
+  useEffect(() => () => dispatch(resetEvent()), []);
 
   if (isReadyToRecap) {
     return (

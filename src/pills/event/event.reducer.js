@@ -18,6 +18,8 @@ export default function event(state = initialState, action) {
       return { ...state, context: action.context };
     case "@event/UPDATE_COMMENT":
       return { ...state, comment: action.comment };
+    case "@event/RESET_EVENT":
+      return initialState;
     default:
       return state;
   }

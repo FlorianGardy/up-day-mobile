@@ -3,6 +3,7 @@ const UPDATE_KIND = "@event/UPDATE_KIND";
 const UPDATE_MEASURE = "@event/UPDATE_MEASURE";
 const UPDATE_CONTEXT = "@event/UPDATE_CONTEXT";
 const UPDATE_COMMENT = "@event/UPDATE_COMMENT";
+const RESET_EVENT = "@event/RESET_EVENT";
 
 export const updateDate = date => {
   return { type: UPDATE_DATE, date };
@@ -22,4 +23,8 @@ export const updateContext = context => {
 
 export const updateComment = comment => {
   return { type: UPDATE_COMMENT, comment };
+};
+
+export const resetEvent = () => {
+  return { type: RESET_EVENT };
 };
