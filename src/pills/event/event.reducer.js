@@ -2,7 +2,7 @@ const initialState = {
   date: new Date(),
   kind: "",
   measure: "",
-  context: "Aucun",
+  context: [],
   comment: ""
 };
 

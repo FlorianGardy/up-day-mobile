@@ -7,7 +7,7 @@ import { volumes, drinks } from "../data";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import moment from "moment";
-
+import TopBar from "../components/TopBar";
 import {
   updateDate,
   updateKind,
@@ -16,15 +16,36 @@ import {
   resetEvent
 } from "../pills/event/event.action";
 
-const Drink = ({ dispatch, date, kind, measure, context, comment }) => {
+const Drink = ({
+  dispatch,
+  date,
+  kind,
+  measure,
+  context,
+  comment,
+  history
+}) => {
   const [isReadyToRecap, setIsReadyToRecap] = useState(false);
-
-  useEffect(() => () => dispatch(resetEvent()), []);
 
   if (isReadyToRecap) {
     return (
       <div>
-        <button onClick={() => setIsReadyToRecap(false)}>drinks</button>
+        <TopBar
+          title="Boisson"
+          leftButtonInfo={{
+            text: "Retour",
+            onClick: () => setIsReadyToRecap(false),
+            isVisible: true
+          }}
+          rightButtonInfo={{
+            text: "Terminer",
+            onClick: () => {
+              console.log("send to database");
+              history.push("/history");
+            }, // Function to send data to api
+            isVisible: true
+          }}
+        />
         <div
           style={{
             display: "flex",
@@ -48,11 +69,25 @@ const Drink = ({ dispatch, date, kind, measure, context, comment }) => {
 
   return (
     <div>
-      <button onClick={() => setIsReadyToRecap(true)}>recap</button>
+      <TopBar
+        title="Boisson"
+        leftButtonInfo={{
+          text: "Annuler",
+          onClick: () => history.push("/history"),
+          isVisible: true
+        }}
+        rightButtonInfo={{
+          text: "Suivant",
+          onClick: () => setIsReadyToRecap(true),
+          isVisible: true
+        }}
+      />
+
       <DateAndTime
         date={date}
         handleChange={date => dispatch(updateDate(date))}
       />
+
       <h2>Type de boissons</h2>
       <OptionSelector
         options={drinks} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value

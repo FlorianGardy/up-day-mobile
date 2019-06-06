@@ -1,12 +1,10 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import TopBar from "../components/TopBar";
 
 function About() {
   // Component style
   const style = {
-    main: {
-      height: "90vh"
-    },
     ulist: {
       textAlign: "left"
     },
@@ -15,6 +13,11 @@ function About() {
 
   return (
     <div>
+      <TopBar
+        title="Informations"
+        leftButtonInfo={{ isVisible: false }}
+        rightButtonInfo={{ isVisible: false }}
+      />
       <div style={style.main}>
         <div id="firstBlock">
           <h2>Pourquoi ?</h2>

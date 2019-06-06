@@ -1,22 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import styles from "./Navbar.module.css";
+import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
+  const [shouldDrop, setShouldDrop] = useState(false);
+
+  const handleClick = () => {
+    setShouldDrop(!shouldDrop);
+  };
+
+  let eventButtonGroup = shouldDrop
+    ? styles.shownEventButtonGroup
+    : styles.hiddenEventButtonGroup;
+
   return (
-    <nav>
-      <ul>
-        <li className={styles.history}>
-          <NavLink to="/history">Historique</NavLink>
-        </li>
-        <li className={styles.events}>
-          <NavLink to="/events">Nouvel Evenement</NavLink>
-        </li>
-        <li className={styles.about}>
-          <NavLink to="/about">Infos</NavLink>
-        </li>
-      </ul>
+    <nav className={styles.bottomNavBar}>
+      <NavLink to="/history" className={styles.history}>
+        Historique
+      </NavLink>
+      <div onClick={handleClick} className={styles.events}>
+        +
+      </div>
+      <NavLink to="/about" className={styles.about}>
+        Infos
+      </NavLink>
+      <div className={eventButtonGroup}>
+        <NavLink id={styles.buttonPee} to="/events/urination">
+          Miction
+        </NavLink>
+        <NavLink id={styles.buttonDrink} to="/events/drink">
+          Boisson
+        </NavLink>
+        <NavLink id={styles.buttonPoo} to="/events/defecation">
+          Défécation
+        </NavLink>
+      </div>
     </nav>
   );
 };

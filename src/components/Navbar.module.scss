@@ -1,0 +1,95 @@
+@import "../global.scss";
+
+.bottomNavBar {
+  background-color: $secondary-dark;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  grid-template-rows: 1fr;
+  height: 10vh;
+  a {
+    text-decoration: none;
+    color: $text-color-dark;
+  }
+}
+
+.history {
+  align-self: center;
+  justify-self: start;
+  grid-column: 1/2;
+  width: 100%;
+  line-height: 10vh;
+}
+
+.events {
+  justify-self: center;
+  grid-column: 2/3;
+  align-self: center;
+  font-size: 40px;
+  font-weight: 600;
+  color: $text-color-dark;
+  line-height: 10vh;
+  width: 100%;
+  cursor: pointer;
+}
+
+.about {
+  justify-self: end;
+  align-self: center;
+  grid-column: 3/4;
+  line-height: 10vh;
+  width: 100%;
+}
+.history:hover,
+.events:hover,
+.about:hover {
+  background-color: $secondary-light;
+}
+
+.hiddenEventButtonGroup {
+  display: none;
+}
+
+// Buttons depends of these variables
+$buttonGroupWidth: 100%;
+$buttonGroupHeight: 80px;
+
+.shownEventButtonGroup {
+  position: absolute;
+  height: $buttonGroupHeight;
+  width: $buttonGroupWidth;
+  top: -80px;
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  grid-template-rows: 1fr;
+}
+#buttonPee {
+  background-color: $secondary-light;
+  line-height: ($buttonGroupHeight - 1);
+  width: ($buttonGroupWidth - 1);
+  justify-self: left;
+  border: 1px solid $secondary-dark;
+}
+#buttonDrink {
+  background-color: $secondary-light;
+  line-height: ($buttonGroupHeight - 1);
+  width: ($buttonGroupWidth - 1);
+  border: 1px solid $secondary-dark;
+  justify-self: center;
+}
+#buttonPoo {
+  background-color: $secondary-light;
+  line-height: ($buttonGroupHeight - 1);
+  width: ($buttonGroupWidth - 1);
+  border: 1px solid $secondary-dark;
+  justify-self: end;
+}
+#buttonPee:hover,
+#buttonDrink:hover,
+#buttonPoo:hover {
+  background-color: #fff;
+  transition: all 0.3s ease 0s;
+}
