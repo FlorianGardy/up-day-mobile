@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login.page.jsx";
-import Events from "./pages/Events.page.jsx";
 import Defecation from "./pages/Defecation.page.jsx";
 import Drink from "./pages/Drink.page.jsx";
 import About from "./pages/About.page.jsx";
@@ -14,7 +13,6 @@ function AppRouter() {
       <div>
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route path="/events" exact component={Events} />
           <Route path="/events/defecation" exact component={Defecation} />
           <Route path="/events/drink" exact component={Drink} />
           <Route path="/events/urination" exact component={Urination} />
