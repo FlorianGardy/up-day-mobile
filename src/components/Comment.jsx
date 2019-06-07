@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Comment = ({ onChange, commentText }) => {
-  const style = { textAlign: "center" };
+  const style = { textAlign: "center", resize: "none" };
   return (
     <div>
       <textarea
@@ -19,7 +19,7 @@ const Comment = ({ onChange, commentText }) => {
 
 Comment.propTypes = {
   onChange: PropTypes.func.isRequired,
-  commentText: PropTypes.string.isRequired
+  commentText: PropTypes.string
 };
 
 export default Comment;

@@ -91,3 +91,18 @@ export const volumes = [
     value: "High"
   }
 ];
+
+export const urinations = [
+  {
+    label: "Précaution",
+    value: "Précaution"
+  },
+  {
+    label: "Normale",
+    value: "Normale"
+  },
+  {
+    label: "Urgence",
+    value: "Urgence"
+  }
+];

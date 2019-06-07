@@ -1,69 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import SummaryItem from "../components/SummaryItem";
 import { volumes, drinks } from "../data";
 import Navbar from "../components/Navbar";
+import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
+import {
+  updateDate,
+  updateKind,
+  updateMeasure,
+  updateComment
+} from "../pills/event/event.action";
 
-const Drink = ({ history }) => {
-  const [isReadyToRecap, setIsReadyToRecap] = useState(false);
-
-  const [drink, setDrink] = useState("eau"); //déclaration du state
-  const [volume, setVolume] = useState("medium");
-  const [comment, setComment] = useState("");
-  const [date, setDate] = useState(new Date());
-
-  const dateToString = date => {
-    // Passage de la date en String
-    let options = {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric"
-    };
-    return date.toLocaleDateString("fr-FR", options);
-  };
-
-  if (isReadyToRecap) {
-    return (
-      <div>
-        <TopBar
-          title="Boisson"
-          leftButtonInfo={{
-            text: "Retour",
-            onClick: () => setIsReadyToRecap(false),
-            isVisible: true
-          }}
-          rightButtonInfo={{
-            text: "Terminer",
-            onClick: () => {
-              console.log("send to database");
-              history.push("/history");
-            }, // Function to send data to api
-            isVisible: true
-          }}
-        />
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-around"
-          }}
-        >
-          <SummaryItem label="date" value={dateToString(date)} />
-          <SummaryItem label="Type" value={drink} />
-          <SummaryItem label="Contexte" value="Aucun" />
-          <SummaryItem label="Volume" value={volume} />
-          <SummaryItem label="Commentaire" value={comment} />
-        </div>
-        <Navbar />
-      </div>
-    );
-  }
-
+const Drink = ({
+  dispatch,
+  date,
+  kind,
+  measure,
+  context,
+  comment,
+  history
+}) => {
   return (
     <div>
       <TopBar
@@ -75,36 +33,43 @@ const Drink = ({ history }) => {
         }}
         rightButtonInfo={{
           text: "Suivant",
-          onClick: () => setIsReadyToRecap(true),
-          isVisible: true
+          onClick: () => history.push("/events/summary"),
+          isVisible: kind && measure ? true : false
         }}
       />
-
-      <DateAndTime date={date} handleChange={date => setDate(date)} />
-
+      <DateAndTime
+        date={date}
+        handleChange={date => dispatch(updateDate(date))}
+      />
       <h2>Type de boissons</h2>
       <OptionSelector
         options={drinks} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
-        activeOption={drink} //la donnée selectioné dans le state
-        onClick={drink => setDrink(drink)} //la fonction qui enregistre l'etat au click du bouton
+        activeOption={kind} //la donnée selectioné dans le state
+        onClick={drink => dispatch(updateKind(drink))} //la fonction qui enregistre l'etat au click du bouton
       />
-
       <h2>Volume</h2>
       <OptionSelector
         options={volumes}
-        activeOption={volume}
-        onClick={volume => setVolume(volume)}
+        activeOption={measure}
+        onClick={volume => dispatch(updateMeasure(volume))}
       />
-
       <h2>Commentaire</h2>
       <Comment
         commentText={comment}
-        onChange={e => setComment(e.target.value)}
+        onChange={e => dispatch(updateComment(e.target.value))}
       />
-
       <Navbar />
     </div>
   );
 };
 
-export default Drink;
+const mapStateToProps = state => ({
+  // Je fais passer toutes les données dans le reducer de l'event en props de la page.
+  date: state.EventReducer.date,
+  kind: state.EventReducer.kind,
+  measure: state.EventReducer.measure,
+  context: state.EventReducer.context,
+  comment: state.EventReducer.comment
+});
+
+export default connect(mapStateToProps)(Drink);
