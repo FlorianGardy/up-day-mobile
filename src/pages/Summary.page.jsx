@@ -18,7 +18,7 @@ const Drink = ({
   return (
     <div>
       <TopBar
-        title="Boisson"
+        title="Récapitulatif"
         leftButtonInfo={{
           text: "Retour",
           onClick: () => history.goBack(),
