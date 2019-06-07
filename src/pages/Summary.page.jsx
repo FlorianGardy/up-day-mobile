@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SummaryItem from "../components/SummaryItem";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
@@ -18,7 +18,7 @@ const Drink = ({
   return (
     <div>
       <TopBar
-        title="Récapitulatif"
+        title="Récap"
         leftButtonInfo={{
           text: "Retour",
           onClick: () => history.goBack(),

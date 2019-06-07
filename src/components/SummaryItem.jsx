@@ -18,7 +18,7 @@ const SummaryItem = ({ label, value }) => {
 
 SummaryItem.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.array.isRequired
+  value: PropTypes.string.isRequired
 };
 
 export default SummaryItem;
