@@ -63,7 +63,7 @@ const Drink = ({
   );
 };
 
-const mapDispatchToProps = state => ({
+const mapStateToProps = state => ({
   // Je fais passer toutes les données dans le reducer de l'event en props de la page.
   date: state.EventReducer.date,
   kind: state.EventReducer.kind,
@@ -72,4 +72,4 @@ const mapDispatchToProps = state => ({
   comment: state.EventReducer.comment
 });
 
-export default connect(mapDispatchToProps)(Drink);
+export default connect(mapStateToProps)(Drink);
