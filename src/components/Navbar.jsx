@@ -27,15 +27,21 @@ const Navbar = ({ dispatch }) => {
       <NavLink to="/about" className={styles.about}>
         Infos
       </NavLink>
-      <div className={eventButtonGroup}>
+      <div
+        className={eventButtonGroup}
+        onClick={() => {
+          dispatch(resetEvent());
+          setShouldDrop(false);
+        }}
+      >
         <NavLink id={styles.buttonPee} to="/events/urination">
-          <div onClick={() => dispatch(resetEvent())}>Miction</div>
+          Miction
         </NavLink>
         <NavLink id={styles.buttonDrink} to="/events/drink">
-          <div onClick={() => dispatch(resetEvent())}>Boisson</div>
+          Boisson
         </NavLink>
         <NavLink id={styles.buttonPoo} to="/events/defecation">
-          <div onClick={() => dispatch(resetEvent())}>Défécation</div>
+          Défécation
         </NavLink>
       </div>
     </nav>
