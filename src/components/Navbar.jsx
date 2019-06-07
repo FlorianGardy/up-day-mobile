@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { resetEvent } from "../pills/event/event.action";
 
 import styles from "./Navbar.module.scss";
 
-const Navbar = () => {
+const Navbar = ({ dispatch }) => {
   const [shouldDrop, setShouldDrop] = useState(false);
 
   const handleClick = () => {
@@ -27,17 +29,17 @@ const Navbar = () => {
       </NavLink>
       <div className={eventButtonGroup}>
         <NavLink id={styles.buttonPee} to="/events/urination">
-          Miction
+          <div onClick={() => dispatch(resetEvent())}>Miction</div>
         </NavLink>
         <NavLink id={styles.buttonDrink} to="/events/drink">
-          Boisson
+          <div onClick={() => dispatch(resetEvent())}>Boisson</div>
         </NavLink>
         <NavLink id={styles.buttonPoo} to="/events/defecation">
-          Défécation
+          <div onClick={() => dispatch(resetEvent())}>Défécation</div>
         </NavLink>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default connect()(Navbar);
