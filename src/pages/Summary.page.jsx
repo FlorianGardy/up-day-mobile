@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import SummaryItem from "../components/SummaryItem";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
@@ -17,6 +17,9 @@ const Drink = ({
 }) => {
   return (
     <div>
+      {/* redirect of kind and measure are not set */}
+      {!kind && !measure && history.push("/history")}
+
       <TopBar
         title="Récap"
         leftButtonInfo={{
