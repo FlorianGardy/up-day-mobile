@@ -5,8 +5,9 @@ import EventRow from "../components/EventRow.jsx";
 import Navbar from "../components/Navbar";
 import HistoryDateSelection from "../components/HistoryDateSelection";
 import TopBar from "../components/TopBar";
+import { connect } from "react-redux";
 
-const History = () => {
+const History = ({ user }) => {
   const [dateIndex, setDateIndex] = useState(0);
   const [uniqueDates, setUniqueDates] = useState([
     moment().format("YYYY-MM-DD")
@@ -55,4 +56,9 @@ const History = () => {
   );
 };
 
-export default History;
+// Gets the userID from the global state (Redux) and passes it to the component as prop
+const mapStateToProps = state => ({
+  user: state.LoginReducer.user
+});
+
+export default connect(mapStateToProps)(History);
