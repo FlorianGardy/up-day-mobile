@@ -1,5 +1,5 @@
 import { userSelector } from "../login/login.selectors";
-import { getUserHistoryFromAPI } from "../../API/functions.js";
+import { getUserHistoryFromAPI } from "../../API/getUserHistoryFromAPI";
 
 // ACTIONS
 export const ADD_EVENT = "@history/ADD_EVENT";
@@ -44,12 +44,10 @@ export function shiftDate(direction) {
     const store = getState();
     const history = store.HistoryReducer.history;
     const currentDate = store.HistoryReducer.selectedHistoryDate;
-
     // Creates an array containing (unique) sorted dates from history
     const sortedDates = [...new Set(history.map(event => event.date))].sort(
       (a, b) => a - b
     );
-
     if (direction === "left") {
       const filteredSortedDate = sortedDates.filter(date => date < currentDate);
       if (filteredSortedDate.length > 0) {

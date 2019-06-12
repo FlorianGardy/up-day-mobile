@@ -11,22 +11,34 @@ const initialState = {
     {
       id: 1,
       type: "pipi",
-      date: new Date("2019-06-05")
+      date: new Date("2019-06-05"),
+      nature: "Normal",
+      volume: "Petit",
+      comment: "Petit pipi sans prétention"
     },
     {
       id: 2,
       type: "pipi",
-      date: new Date("2019-06-05")
+      date: new Date("2019-06-05"),
+      nature: "Normal",
+      volume: "Petit",
+      comment: "Petit pipi sans prétention"
     },
     {
       id: 3,
       type: "pipi",
-      date: new Date("2019-06-06")
+      date: new Date("2019-06-06"),
+      nature: "Normal",
+      volume: "Petit",
+      comment: "Petit pipi sans prétention"
     },
     {
       id: 4,
       type: "pipi",
-      date: new Date("2019-06-07")
+      date: new Date("2019-06-07"),
+      nature: "Normal",
+      volume: "Petit",
+      comment: "Petit pipi sans prétention"
     }
   ],
   selectedHistoryDate: new Date()
