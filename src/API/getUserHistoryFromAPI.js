@@ -4,10 +4,7 @@ export function getUserHistoryFromAPI(userID) {
   const config = {
     method: "get",
     baseURL: "http://localhost:3001/",
-    url: "/history",
-    params: {
-      userID: userID
-    }
+    url: `/events/${userID}`
   };
 
   return axios
@@ -20,7 +17,7 @@ export function getUserHistoryFromAPI(userID) {
 }
 
 const dataSelection = response => {
-  let selectedData = response.data.history;
+  let selectedData = response.data;
   return selectedData;
 };
 
