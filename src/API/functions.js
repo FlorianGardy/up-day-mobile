@@ -12,26 +12,22 @@ export const isUserInDatabase = (username, password) => {
   return result;
 };
 
-// Get all the events of a given user from the API
-export const getUserEventsFromAPI = userID => {
+// Get the history of a given user from the API
+export function getUserHistoryFromAPI(userID) {
   const config = {
     method: "get",
     baseURL: "http://localhost:3001/",
-    url: "/events",
+    url: "/history",
     params: {
       userID: userID
     }
   };
 
-  Axios.request(config)
+  return Axios.request(config)
     .then(function(response) {
-      // handle success
-      console.log(response);
-      const events = response.data.events;
-      console.log(events);
+      return response.data.history;
     })
     .catch(function(error) {
-      // handle error
       console.log(error);
     });
-};
+}
