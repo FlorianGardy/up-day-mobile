@@ -1,10 +1,11 @@
 import axios from "axios";
+import { APIconfig } from "./axiosConfig";
 
 export function getUserHistoryFromAPI(userID) {
   const config = {
     method: "get",
-    baseURL: "http://localhost:3001/",
-    url: `/events/${userID}`
+    baseURL: APIconfig.baseUrl,
+    url: `/history/${userID}`
   };
 
   return axios
