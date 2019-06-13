@@ -31,7 +31,9 @@ export function getHistory() {
     const store = getState();
     const user = userSelector(store);
     const history = await getUserHistoryFromAPI(user);
-    dispatch(refreshHistory(history));
+    if (typeof history !== "undefined") {
+      dispatch(refreshHistory(history));
+    }
   };
 }
 
