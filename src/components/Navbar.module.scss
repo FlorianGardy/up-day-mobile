@@ -1,5 +1,9 @@
 @import "../global.scss";
 
+$buttonAddEventDiameter: 70px;
+$buttonGroupWidth: 100%;
+$buttonGroupHeight: 80px;
+
 .bottomNavBar {
   background-color: $secondary-dark;
   position: absolute;
@@ -7,11 +11,11 @@
   width: 100%;
   display: grid;
   grid-template-columns: 3fr 3fr 3fr;
-  grid-template-rows: 1fr;
-  height: 10vh;
+  grid-template-rows: 10vh;
   a {
     text-decoration: none;
-    color: $text-color-dark;
+    color: $text-color-light;
+    font-weight: 600;
   }
 }
 
@@ -24,15 +28,25 @@
 }
 
 .events {
+  position: relative;
+  display: flex;
   justify-self: center;
-  grid-column: 2/3;
-  align-self: center;
-  font-size: 40px;
-  font-weight: 600;
-  color: $text-color-dark;
-  line-height: 10vh;
-  width: 100%;
+  bottom: 30px;
+  height: $buttonAddEventDiameter;
+  width: $buttonAddEventDiameter;
+  border: 5px solid white;
+  border-radius: 50%;
   cursor: pointer;
+  z-index: 99;
+  background-color: $primary-dark;
+}
+.cross {
+  margin: auto;
+  fill: $secondary-dark;
+  overflow: hidden;
+}
+.events:hover .cross {
+  fill: white;
 }
 
 .about {
@@ -52,38 +66,41 @@
   display: none;
 }
 
-// Buttons depends of these variables
-$buttonGroupWidth: 100%;
-$buttonGroupHeight: 80px;
-
 .shownEventButtonGroup {
   position: absolute;
   height: $buttonGroupHeight;
   width: $buttonGroupWidth;
-  top: -80px;
+  top: -$buttonGroupHeight;
   align-items: stretch;
   display: grid;
-  grid-template-columns: repeat(3, 3fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
 }
 #buttonPee {
   background-color: $secondary-light;
   line-height: ($buttonGroupHeight - 1);
-  width: ($buttonGroupWidth - 1);
+  width: ($buttonGroupWidth);
   justify-self: left;
   border: 1px solid $secondary-dark;
 }
 #buttonDrink {
   background-color: $secondary-light;
   line-height: ($buttonGroupHeight - 1);
-  width: ($buttonGroupWidth - 1);
+  width: ($buttonGroupWidth);
+  border: 1px solid $secondary-dark;
+  justify-self: center;
+}
+#buttonActivity {
+  background-color: $secondary-light;
+  line-height: ($buttonGroupHeight - 1);
+  width: ($buttonGroupWidth);
   border: 1px solid $secondary-dark;
   justify-self: center;
 }
 #buttonPoo {
   background-color: $secondary-light;
   line-height: ($buttonGroupHeight - 1);
-  width: ($buttonGroupWidth - 1);
+  width: ($buttonGroupWidth);
   border: 1px solid $secondary-dark;
   justify-self: end;
 }
