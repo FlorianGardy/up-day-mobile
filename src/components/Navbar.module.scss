@@ -2,16 +2,30 @@
 
 $buttonAddEventDiameter: 70px;
 $buttonGroupWidth: 100%;
-$buttonGroupHeight: 80px;
+$buttonGroupHeight: 10vh;
 
-.bottomNavBar {
-  background-color: $secondary-dark;
+.navBar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 90vh 10vh;
+  grid-template-areas: "modal" "navbar";
+
+  overflow: hidden;
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+//Style the Menu of the Navbar
+.bottomNavBar {
+  background-color: $secondary-dark;
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr;
-  grid-template-rows: 10vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "history events about";
+  grid-area: navbar;
+
+  z-index: 1;
   a {
     text-decoration: none;
     color: $text-color-light;
@@ -20,18 +34,17 @@ $buttonGroupHeight: 80px;
 }
 
 .history {
+  grid-area: history;
   align-self: center;
   justify-self: start;
-  grid-column: 1/2;
   width: 100%;
-  line-height: 10vh;
 }
-
 .events {
+  grid-area: events;
   position: relative;
+  bottom: 30px;
   display: flex;
   justify-self: center;
-  bottom: 30px;
   height: $buttonAddEventDiameter;
   width: $buttonAddEventDiameter;
   border: 5px solid white;
@@ -42,18 +55,17 @@ $buttonGroupHeight: 80px;
 }
 .cross {
   margin: auto;
-  fill: $secondary-dark;
   overflow: hidden;
+  fill: $secondary-dark;
 }
 .events:hover .cross {
   fill: white;
 }
 
 .about {
+  grid-area: about;
   justify-self: end;
   align-self: center;
-  grid-column: 3/4;
-  line-height: 10vh;
   width: 100%;
 }
 .history:hover,
@@ -62,47 +74,56 @@ $buttonGroupHeight: 80px;
   background-color: $secondary-light;
 }
 
+//Style and Show (or not) the event menu
 .hiddenEventButtonGroup {
-  display: none;
+  visibility: hidden;
+  transform: translateY(100vh);
 }
 
 .shownEventButtonGroup {
-  position: absolute;
-  height: $buttonGroupHeight;
-  width: $buttonGroupWidth;
-  top: -$buttonGroupHeight;
-  align-items: stretch;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "poo pee" "activity drink";
+  grid-area: modal;
+
+  transition: all 0.5s ease;
+  background-color: rgba(220, 237, 200, 0.98);
 }
+
+#buttonPee,
+#buttonDrink,
+#buttonActivity,
+#buttonPoo {
+  line-height: (130px);
+  width: 130px;
+  height: 130px;
+  border: 7px solid white;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  justify-self: center;
+  align-self: center;
+  -webkit-box-shadow: 2px 5px 16px 0px grey,
+    inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 5px 16px 0px grey, inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+}
+
 #buttonPee {
-  background-color: $secondary-light;
-  line-height: ($buttonGroupHeight - 1);
-  width: ($buttonGroupWidth);
-  justify-self: left;
-  border: 1px solid $secondary-dark;
+  background-color: goldenrod;
+  grid-area: pee;
 }
 #buttonDrink {
-  background-color: $secondary-light;
-  line-height: ($buttonGroupHeight - 1);
-  width: ($buttonGroupWidth);
-  border: 1px solid $secondary-dark;
-  justify-self: center;
+  background-color: rgb(83, 139, 190);
+  grid-area: drink;
 }
 #buttonActivity {
-  background-color: $secondary-light;
-  line-height: ($buttonGroupHeight - 1);
-  width: ($buttonGroupWidth);
-  border: 1px solid $secondary-dark;
-  justify-self: center;
+  background-color: rgb(116, 184, 38);
+  grid-area: activity;
 }
 #buttonPoo {
-  background-color: $secondary-light;
-  line-height: ($buttonGroupHeight - 1);
-  width: ($buttonGroupWidth);
-  border: 1px solid $secondary-dark;
-  justify-self: end;
+  background-color: $secondary-dark;
+  grid-area: poo;
 }
 #buttonPee:hover,
 #buttonDrink:hover,
