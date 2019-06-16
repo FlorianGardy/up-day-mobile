@@ -15,9 +15,9 @@ const Navbar = ({ dispatch }) => {
     setShouldDrop(!shouldDrop);
   };
 
-  let eventButtonGroup = shouldDrop
-    ? styles.shownEventButtonGroup
-    : styles.hiddenEventButtonGroup;
+  let eventBtnGroup = shouldDrop
+    ? styles.shownEventBtnGroup
+    : styles.hiddenEventBtnGroup;
 
   return (
     <nav className={styles.navBar}>
@@ -41,23 +41,23 @@ const Navbar = ({ dispatch }) => {
         </NavLink>
       </div>
       <div
-        className={eventButtonGroup}
+        className={eventBtnGroup}
         onClick={() => {
           dispatch(resetEvent());
           setShouldDrop(false);
         }}
       >
-        <NavLink id={styles.buttonPee} to="/events/urination">
-          Miction
+        <NavLink id={styles.btnPee} to="/events/urination">
+          MICTION
         </NavLink>
-        <NavLink id={styles.buttonDrink} to="/events/drink">
-          Boisson
+        <NavLink id={styles.btnDrink} to="/events/drink">
+          BOISSON
         </NavLink>
-        <NavLink id={styles.buttonActivity} to="/events/activity">
-          Activité
+        <NavLink id={styles.btnActivity} to="/events/activity">
+          ACTIVITE
         </NavLink>
-        <NavLink id={styles.buttonPoo} to="/events/defecation">
-          Défécation
+        <NavLink id={styles.btnPoo} to="/events/defecation">
+          DEFECATION
         </NavLink>
       </div>
     </nav>
