@@ -51,7 +51,7 @@ export function shiftDate(direction) {
     const sortedDates = [
       ...new Set(
         history
-          .sort((a, b) => new Date(a) - new Date(b))
+          .sort((a, b) => new Date(a.date) - new Date(b.date))
           .map(event => event.date)
       )
     ];
