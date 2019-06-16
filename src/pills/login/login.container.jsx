@@ -13,7 +13,7 @@ const Login = ({ dispatch }) => {
     let password = e.target.password.value;
 
     if (isUserInDatabase(username, password)) {
-      dispatch(updateUser(username));
+      dispatch(updateUser("1")); // Emulation de l'id de l'utilisateur, en attente du system de login.
       setShouldRedirect(true);
     } else {
       alert("Vouuuuss ne passerez paaaaas !");
