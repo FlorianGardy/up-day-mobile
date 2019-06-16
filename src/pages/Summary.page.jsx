@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 import TopBar from "../components/TopBar";
 import { resetEvent } from "../pills/event/event.action";
+import Axios from "axios";
 
 const Drink = ({
   dispatch,
@@ -29,8 +30,16 @@ const Drink = ({
         }}
         rightButtonInfo={{
           text: "Terminer",
-          onClick: () => {
-            console.log("send to database");
+          onClick: async () => {
+            await Axios.post("http://localhost:3030/events", {
+              date,
+              type: kind,
+              nature: "coco",
+              volume: measure,
+              context,
+              comment,
+              userId: 1
+            });
             dispatch(resetEvent());
             history.push("/history");
           }, // Function to send data to api
