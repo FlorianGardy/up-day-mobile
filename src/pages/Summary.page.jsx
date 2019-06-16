@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import moment from "moment";
 import TopBar from "../components/TopBar";
-import { resetEvent } from "../pills/event/event.action";
 import Axios from "axios";
 
 const Drink = ({
@@ -40,7 +39,6 @@ const Drink = ({
               comment,
               userId: 1
             });
-            dispatch(resetEvent());
             history.push("/history");
           }, // Function to send data to api
           isVisible: true
