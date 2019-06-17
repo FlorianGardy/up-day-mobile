@@ -1,5 +1,6 @@
 import React from "react";
 import SummaryItem from "../components/SummaryItem";
+import SummaryContextItem from "../components/SummaryContextItem";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -56,7 +57,7 @@ const Drink = ({
           value={moment(date).format("dddd DD MMMM à HH:mm")}
         />
         <SummaryItem label="Type" value={kind} />
-        <SummaryItem label="Contexte" value={context} />
+        <SummaryContextItem label="Contexte" value={context} />
         <SummaryItem label="Volume" value={measure} />
         <SummaryItem label="Commentaire" value={comment} />
       </div>
