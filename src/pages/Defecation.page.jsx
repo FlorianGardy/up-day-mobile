@@ -15,8 +15,12 @@ import {
   updateComment
 } from "../pills/event/event.action";
 
-const Drink = ({
-  dispatch,
+const Defecation = ({
+  updateDate,
+  updateKind,
+  updateContext,
+  updateVolume,
+  updateComment,
   date,
   kind,
   measure,
@@ -39,42 +43,46 @@ const Drink = ({
           isVisible: kind && measure ? true : false
         }}
       />
-      <DateAndTime
-        date={date}
-        handleChange={date => dispatch(updateDate(date))}
-      />
-      <h2>Type d'envie</h2>
+      <DateAndTime date={date} handleChange={updateDate} />
       <OptionSelector
-        options={defecations} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
-        activeOption={kind} //la donnée selectioné dans le state
-        onClick={defecation => dispatch(updateKind(defecation))} //la fonction qui enregistre l'etat au click du bouton
+        title="type d'envie"
+        options={defecations}
+        activeOption={kind}
+        onClick={updateKind}
       />
-      <h2>Context</h2>
       <ContextSelector
+        title="Context"
         options={contextDefecation}
         context={context}
-        onChange={(context, checked) =>
-          dispatch(updateContext(context, checked))
-        }
+        onChange={updateContext}
       />
-      <h2>Volume</h2>
       <OptionSelector
+        title="Volume"
         options={volumes}
         activeOption={measure}
-        onClick={volume => dispatch(updateMeasure(volume))}
+        onClick={updateVolume}
       />
-      <h2>Commentaire</h2>
       <Comment
+        title="Commentaire"
         commentText={comment}
-        onChange={e => dispatch(updateComment(e.target.value))}
+        onChange={updateComment}
       />
       <Navbar />
     </div>
   );
 };
 
-const mapDispatchToProps = state => ({
-  // Je fais passer toutes les données dans le reducer de l'event en props de la page.
+const mapDispatchToProps = dispatch => {
+  return {
+    updateDate: date => dispatch(updateDate(date)),
+    updateKind: drink => dispatch(updateKind(drink)),
+    updateContext: (context, check) => dispatch(updateContext(context, check)),
+    updateVolume: volume => dispatch(updateMeasure(volume)),
+    updateComment: e => dispatch(updateComment(e.target.value))
+  };
+};
+
+const mapStateToProps = state => ({
   date: state.EventReducer.date,
   kind: state.EventReducer.kind,
   measure: state.EventReducer.measure,
@@ -82,4 +90,7 @@ const mapDispatchToProps = state => ({
   comment: state.EventReducer.comment
 });
 
-export default connect(mapDispatchToProps)(Drink);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Defecation);

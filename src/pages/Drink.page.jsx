@@ -14,7 +14,11 @@ import {
 } from "../pills/event/event.action";
 
 const Drink = ({
-  dispatch,
+  updateDate,
+  updateKind,
+  updateContext,
+  updateVolume,
+  updateComment,
   date,
   kind,
   measure,
@@ -37,34 +41,39 @@ const Drink = ({
           isVisible: kind && measure ? true : false
         }}
       />
-      <DateAndTime
-        date={date}
-        handleChange={date => dispatch(updateDate(date))}
-      />
-      <h2>Type de boissons</h2>
+      <DateAndTime date={date} handleChange={updateDate} />
       <OptionSelector
-        options={drinks} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
-        activeOption={kind} //la donnée selectioné dans le state
-        onClick={drink => dispatch(updateKind(drink))} //la fonction qui enregistre l'etat au click du bouton
+        title="Type de boisson"
+        options={drinks}
+        activeOption={kind}
+        onClick={updateKind}
       />
-      <h2>Volume</h2>
       <OptionSelector
+        title="Volume"
         options={volumes}
         activeOption={measure}
-        onClick={volume => dispatch(updateMeasure(volume))}
+        onClick={updateVolume}
       />
-      <h2>Commentaire</h2>
       <Comment
+        title="Commentaire"
         commentText={comment}
-        onChange={e => dispatch(updateComment(e.target.value))}
+        onChange={updateComment}
       />
       <Navbar />
     </div>
   );
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    updateDate: date => dispatch(updateDate(date)),
+    updateKind: drink => dispatch(updateKind(drink)),
+    updateVolume: volume => dispatch(updateMeasure(volume)),
+    updateComment: e => dispatch(updateComment(e.target.value))
+  };
+};
+
 const mapStateToProps = state => ({
-  // Je fais passer toutes les données dans le reducer de l'event en props de la page.
   date: state.EventReducer.date,
   kind: state.EventReducer.kind,
   measure: state.EventReducer.measure,
@@ -72,4 +81,7 @@ const mapStateToProps = state => ({
   comment: state.EventReducer.comment
 });
 
-export default connect(mapStateToProps)(Drink);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Drink);
