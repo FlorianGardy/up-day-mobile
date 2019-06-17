@@ -1,10 +1,11 @@
 import React from "react";
 import SummaryItem from "../components/SummaryItem";
+import SummaryContextItem from "../components/SummaryContextItem";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import moment from "moment";
 import TopBar from "../components/TopBar";
-import { resetEvent } from "../pills/event/event.action";
+import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
 const Drink = ({
   dispatch,
@@ -13,7 +14,8 @@ const Drink = ({
   measure,
   context,
   comment,
-  history
+  history,
+  userId
 }) => {
   return (
     <div>
@@ -29,11 +31,17 @@ const Drink = ({
         }}
         rightButtonInfo={{
           text: "Terminer",
-          onClick: () => {
-            console.log("send to database");
-            dispatch(resetEvent());
+          onClick: async () => {
+            await sendDatasToDatabase(
+              date,
+              kind,
+              measure,
+              context,
+              comment,
+              userId
+            );
             history.push("/history");
-          }, // Function to send data to api
+          },
           isVisible: true
         }}
       />
@@ -49,7 +57,7 @@ const Drink = ({
           value={moment(date).format("dddd DD MMMM à HH:mm")}
         />
         <SummaryItem label="Type" value={kind} />
-        <SummaryItem label="Contexte" value={context} />
+        <SummaryContextItem label="Contexte" value={context} />
         <SummaryItem label="Volume" value={measure} />
         <SummaryItem label="Commentaire" value={comment} />
       </div>
@@ -64,7 +72,8 @@ const mapDispatchToProps = state => ({
   kind: state.EventReducer.kind,
   measure: state.EventReducer.measure,
   context: state.EventReducer.context,
-  comment: state.EventReducer.comment
+  comment: state.EventReducer.comment,
+  userId: state.LoginReducer.user
 });
 
 export default connect(mapDispatchToProps)(Drink);

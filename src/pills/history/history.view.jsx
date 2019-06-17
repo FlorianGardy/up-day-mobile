@@ -5,8 +5,8 @@ import "moment/locale/fr";
 
 const HistoryView = ({ history }) => {
   return (
-    <div>
-      {history.map(event => (
+    <div style={{ maxHeight: "60vh", overflow: "auto" }}>
+      {history.reverse().map(event => (
         <EventRow
           key={event.id}
           date={moment(event.date).format("HH:mm")}

@@ -2,7 +2,7 @@ import React from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import { volumes, urinations } from "../data";
+import { volumes, urinations, contextUrination } from "../data";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
@@ -10,11 +10,17 @@ import {
   updateDate,
   updateKind,
   updateMeasure,
-  updateComment
+  updateComment,
+  updateContext
 } from "../pills/event/event.action";
+import ContextSelector from "../components/ContextSelector";
 
-const Drink = ({
-  dispatch,
+const Urination = ({
+  updateDate,
+  updateKind,
+  updateContext,
+  updateVolume,
+  updateComment,
   date,
   kind,
   measure,
@@ -37,34 +43,46 @@ const Drink = ({
           isVisible: kind && measure ? true : false
         }}
       />
-      <DateAndTime
-        date={date}
-        handleChange={date => dispatch(updateDate(date))}
-      />
-      <h2>Type d'envie</h2>
+      <DateAndTime date={date} handleChange={updateDate} />
       <OptionSelector
-        options={urinations} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
-        activeOption={kind} //la donnée selectioné dans le state
-        onClick={drink => dispatch(updateKind(drink))} //la fonction qui enregistre l'etat au click du bouton
+        title="Type d'envie"
+        options={urinations}
+        activeOption={kind}
+        onClick={updateKind}
       />
-      <h2>Volume</h2>
+      <ContextSelector
+        title="Context"
+        options={contextUrination}
+        context={context}
+        onChange={updateContext}
+      />
       <OptionSelector
+        title="Volume"
         options={volumes}
         activeOption={measure}
-        onClick={volume => dispatch(updateMeasure(volume))}
+        onClick={updateVolume}
       />
-      <h2>Commentaire</h2>
       <Comment
+        title="Commentaire"
         commentText={comment}
-        onChange={e => dispatch(updateComment(e.target.value))}
+        onChange={updateComment}
       />
       <Navbar />
     </div>
   );
 };
 
-const mapDispatchToProps = state => ({
-  // Je fais passer toutes les données dans le reducer de l'event en props de la page.
+const mapDispatchToProps = dispatch => {
+  return {
+    updateDate: date => dispatch(updateDate(date)),
+    updateKind: drink => dispatch(updateKind(drink)),
+    updateContext: (context, check) => dispatch(updateContext(context, check)),
+    updateVolume: volume => dispatch(updateMeasure(volume)),
+    updateComment: e => dispatch(updateComment(e.target.value))
+  };
+};
+
+const mapStateToProps = state => ({
   date: state.EventReducer.date,
   kind: state.EventReducer.kind,
   measure: state.EventReducer.measure,
@@ -72,4 +90,7 @@ const mapDispatchToProps = state => ({
   comment: state.EventReducer.comment
 });
 
-export default connect(mapDispatchToProps)(Drink);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Urination);

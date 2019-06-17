@@ -1,5 +1,6 @@
 import { userSelector } from "../login/login.selectors";
 import { getUserHistoryFromAPI } from "../../API/getUserHistoryFromAPI";
+import moment from "moment";
 
 // ACTIONS
 export const ADD_EVENT = "@history/ADD_EVENT";
@@ -47,11 +48,17 @@ export function shiftDate(direction) {
     const history = store.HistoryReducer.history;
     const currentDate = store.HistoryReducer.selectedHistoryDate;
     // Creates an array containing (unique) sorted dates from history
-    const sortedDates = [...new Set(history.map(event => event.date))].sort(
-      (a, b) => a - b
-    );
+    const sortedDates = [
+      ...new Set(
+        history.sort((a, b) => a.date - b.date).map(event => event.date)
+      )
+    ];
     if (direction === "left") {
-      const filteredSortedDate = sortedDates.filter(date => date < currentDate);
+      const filteredSortedDate = sortedDates.filter(
+        date =>
+          moment(date).format("DD/MM/YYYY") <
+          moment(currentDate).format("DD/MM/YYYY")
+      );
       if (filteredSortedDate.length > 0) {
         const newDate = new Date(
           filteredSortedDate[filteredSortedDate.length - 1]
@@ -59,7 +66,11 @@ export function shiftDate(direction) {
         dispatch(updateSelectedDate(newDate));
       }
     } else if (direction === "right") {
-      const filteredSortedDate = sortedDates.filter(date => date > currentDate);
+      const filteredSortedDate = sortedDates.filter(
+        date =>
+          moment(date).format("DD/MM/YYYY") >
+          moment(currentDate).format("DD/MM/YYYY")
+      );
       if (filteredSortedDate.length > 0) {
         const newDate = new Date(filteredSortedDate[0]);
         dispatch(updateSelectedDate(newDate));

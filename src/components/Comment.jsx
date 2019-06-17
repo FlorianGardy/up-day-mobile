@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Comment = ({ onChange, commentText }) => {
+const Comment = ({ onChange, commentText, title }) => {
   const style = { textAlign: "center", resize: "none" };
   return (
     <div>
+      <h2>{title}</h2>
       <textarea
         style={style}
         placeholder="Laissez un commentaire"
@@ -18,6 +19,7 @@ const Comment = ({ onChange, commentText }) => {
 };
 
 Comment.propTypes = {
+  title: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   commentText: PropTypes.string
 };

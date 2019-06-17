@@ -17,7 +17,9 @@ const DateAndTime = ({ date, handleChange }) => {
         timeFormat="HH:mm"
         dateFormat="dd MMMM yyyy à HH:mm"
         withPortal
-        tetherConstraints={[]}
+        shouldCloseOnSelect={true}
+        fixedHeight
+        maxDate={new Date()}
       />
     </div>
   );
