@@ -14,6 +14,7 @@ import {
   updateContext
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
+import "./layout.scss";
 
 const Urination = ({
   updateDate,
@@ -29,8 +30,9 @@ const Urination = ({
   history
 }) => {
   return (
-    <div>
+    <div className="page">
       <TopBar
+        className="topBar"
         title="Miction"
         leftButtonInfo={{
           text: "Annuler",

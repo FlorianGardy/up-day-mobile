@@ -3,6 +3,7 @@
   top: 0;
   width: 100%;
   display: grid;
+  height: 10vh;
   grid-template-columns: repeat(3, 1fr);
 }
 .TopBar h1 {
