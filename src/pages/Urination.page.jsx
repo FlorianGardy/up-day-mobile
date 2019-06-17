@@ -2,7 +2,7 @@ import React from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import { volumes, urinations } from "../data";
+import { volumes, urinations, contextUrination } from "../data";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
@@ -10,8 +10,10 @@ import {
   updateDate,
   updateKind,
   updateMeasure,
-  updateComment
+  updateComment,
+  updateContext
 } from "../pills/event/event.action";
+import ContextSelector from "../components/ContextSelector";
 
 const Drink = ({
   dispatch,
@@ -46,6 +48,15 @@ const Drink = ({
         options={urinations} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
         activeOption={kind} //la donnée selectioné dans le state
         onClick={drink => dispatch(updateKind(drink))} //la fonction qui enregistre l'etat au click du bouton
+      />
+
+      <h2>Context</h2>
+      <ContextSelector
+        options={contextUrination}
+        context={context}
+        onChange={(context, checked, i) =>
+          dispatch(updateContext(context, checked, i))
+        }
       />
       <h2>Volume</h2>
       <OptionSelector
