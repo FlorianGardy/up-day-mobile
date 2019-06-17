@@ -11,7 +11,7 @@ const ContextSelector = ({ options, onChange, context }) => {
             <label className={styles.switch}>
               <input
                 type="checkbox"
-                checked={context.checked}
+                checked={context.map(el => el.value).includes(option.label)}
                 onChange={e => onChange(option.label, e.target.checked)}
               />
               <span className={[styles.slider, styles.round].join(" ")} />
@@ -26,7 +26,7 @@ const ContextSelector = ({ options, onChange, context }) => {
 
 ContextSelector.propTypes = {
   options: PropTypes.array.isRequired,
-  activeOption: PropTypes.string.isRequired,
+  context: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired
 };
 

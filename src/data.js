@@ -122,6 +122,17 @@ export const defecations = [
   }
 ];
 
+export const contextUrination = [
+  {
+    label: "Suite à une fuite",
+    value: "Suite à une fuite"
+  },
+  {
+    label: "Difficultés",
+    value: "Difficultés"
+  }
+];
+
 export const contextDefecation = [
   {
     label: "Suite à une fuite",
