@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import moment from "moment";
 import TopBar from "../components/TopBar";
-import Axios from "axios";
+import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
 const Drink = ({
   dispatch,
@@ -14,7 +14,8 @@ const Drink = ({
   measure,
   context,
   comment,
-  history
+  history,
+  userId
 }) => {
   return (
     <div>
@@ -31,17 +32,16 @@ const Drink = ({
         rightButtonInfo={{
           text: "Terminer",
           onClick: async () => {
-            await Axios.post("http://localhost:3030/events", {
+            await sendDatasToDatabase(
               date,
-              type: kind,
-              nature: "coco",
-              volume: measure,
+              kind,
+              measure,
               context,
               comment,
-              userId: 1
-            });
+              userId
+            );
             history.push("/history");
-          }, // Function to send data to api
+          },
           isVisible: true
         }}
       />
@@ -72,7 +72,8 @@ const mapDispatchToProps = state => ({
   kind: state.EventReducer.kind,
   measure: state.EventReducer.measure,
   context: state.EventReducer.context,
-  comment: state.EventReducer.comment
+  comment: state.EventReducer.comment,
+  userId: state.LoginReducer.user
 });
 
 export default connect(mapDispatchToProps)(Drink);
