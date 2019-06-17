@@ -12,6 +12,7 @@ import {
   updateMeasure,
   updateComment
 } from "../pills/event/event.action";
+import "./layout.scss";
 
 const Drink = ({
   dispatch,
@@ -23,8 +24,9 @@ const Drink = ({
   history
 }) => {
   return (
-    <div>
+    <div className="page">
       <TopBar
+        className="topBar"
         title="Miction"
         leftButtonInfo={{
           text: "Annuler",
@@ -37,28 +39,30 @@ const Drink = ({
           isVisible: kind && measure ? true : false
         }}
       />
-      <DateAndTime
-        date={date}
-        handleChange={date => dispatch(updateDate(date))}
-      />
-      <h2>Type d'envie</h2>
-      <OptionSelector
-        options={urinations} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
-        activeOption={kind} //la donnée selectioné dans le state
-        onClick={drink => dispatch(updateKind(drink))} //la fonction qui enregistre l'etat au click du bouton
-      />
-      <h2>Volume</h2>
-      <OptionSelector
-        options={volumes}
-        activeOption={measure}
-        onClick={volume => dispatch(updateMeasure(volume))}
-      />
-      <h2>Commentaire</h2>
-      <Comment
-        commentText={comment}
-        onChange={e => dispatch(updateComment(e.target.value))}
-      />
-      <Navbar />
+      <section className="pageBody">
+        <DateAndTime
+          date={date}
+          handleChange={date => dispatch(updateDate(date))}
+        />
+        <h2>Type d'envie</h2>
+        <OptionSelector
+          options={urinations} //Creer des bouttons a l'aide d'un tableau d'objet avec le couple label -> value
+          activeOption={kind} //la donnée selectioné dans le state
+          onClick={drink => dispatch(updateKind(drink))} //la fonction qui enregistre l'etat au click du bouton
+        />
+        <h2>Volume</h2>
+        <OptionSelector
+          options={volumes}
+          activeOption={measure}
+          onClick={volume => dispatch(updateMeasure(volume))}
+        />
+        <h2>Commentaire</h2>
+        <Comment
+          commentText={comment}
+          onChange={e => dispatch(updateComment(e.target.value))}
+        />
+      </section>
+      <Navbar className="navBar" />
     </div>
   );
 };

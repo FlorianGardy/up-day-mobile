@@ -1,0 +1,206 @@
+@import "../global.scss";
+
+$btnAddEventDiameter: 70px;
+$navHeight: 10vh;
+
+.navBar {
+  position: sticky;
+  bottom: 0;
+
+  //Style the Menu of the Navbar
+  .bottomNavBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "history events info" "history events info";
+
+    position: relative;
+    height: $navHeight;
+    width: 100vw;
+    background-color: $secondary-dark;
+    z-index: 1;
+
+    a {
+      text-decoration: none;
+      color: $text-color-light;
+      font-weight: 600;
+    }
+  }
+
+  .history {
+    grid-area: history;
+    align-self: center;
+    justify-self: start;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .events {
+    grid-area: events;
+    position: relative;
+    bottom: 30px;
+    display: flex;
+    justify-self: center;
+    height: $btnAddEventDiameter;
+    width: $btnAddEventDiameter;
+    border: 5px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 99;
+    background-color: $primary-dark;
+  }
+  .cross {
+    margin: auto;
+    overflow: hidden;
+    fill: $secondary-dark;
+  }
+  .events:hover .cross {
+    fill: white;
+  }
+
+  .about {
+    grid-area: info;
+    justify-self: end;
+    align-self: center;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+  .history:hover,
+  .events:hover,
+  .about:hover {
+    background-color: $secondary-light;
+  }
+
+  //Style and Show (or not) the event menu
+  .hiddenEventBtnGroup {
+    transform: translateY(1500px);
+    position: absolute;
+    top: 0;
+    background-color: rgb(177, 162, 162);
+    opacity: 0.5;
+    transition: all 0.6s ease 0.5s;
+    .btn {
+      -webkit-animation: scale-out-center 0.5s
+        cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+      animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+        both;
+    }
+  }
+
+  .shownEventBtnGroup {
+    opacity: 1;
+    position: absolute;
+    bottom: $navHeight;
+    transition: all 0.6s ease;
+    background-color: rgb(177, 162, 162);
+
+    .btn {
+      -webkit-animation: scale-in-center 0.5s
+        cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+  }
+  //Style of buttons
+  .btnGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "poo pee" "activity drink";
+
+    width: 100vw;
+    height: 90vh;
+    .btn {
+      line-height: (130px);
+      width: 130px;
+      height: 130px;
+      border: 7px solid white;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.1em;
+      justify-self: center;
+      align-self: center;
+
+      -webkit-box-shadow: 2px 5px 16px 0px grey,
+        inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 2px 5px 16px 0px grey,
+        inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: rgb(73, 69, 69);
+        transition: all 0.3s ease 0s;
+      }
+    }
+  }
+
+  .btnPee {
+    background-color: goldenrod;
+    grid-area: pee;
+  }
+  .btnDrink {
+    background-color: rgb(83, 139, 190);
+    grid-area: drink;
+  }
+  .btnActivity {
+    background-color: rgb(116, 184, 38);
+    grid-area: activity;
+  }
+  .btnPoo {
+    background-color: $secondary-dark;
+    grid-area: poo;
+  }
+
+  // animation scale-in-center
+
+  @-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  // animation scale-out-center
+
+  @-webkit-keyframes scale-out-center {
+    0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-out-center {
+    0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+.page {
+  display: grid;
+  grid-template-rows: 10vh 80vh 10vh;
+  grid-template-columns: 1fr;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  .topBar {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .pageBody {
+    grid-row: 2/8;
+    grid-column: 1;
+  }
+  .navBar {
+    grid-row: 8/9;
+    grid-column: 1;
+  }
+}
