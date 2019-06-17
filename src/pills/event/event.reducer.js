@@ -33,7 +33,7 @@ export default function event(state = initialState, action) {
     case "@event/UPDATE_COMMENT":
       return { ...state, comment: action.comment };
     case "@event/RESET_EVENT":
-      return { ...initialState, context: [] };
+      return { ...initialState, context: [], date: new Date() };
     default:
       return state;
   }
