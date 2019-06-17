@@ -55,6 +55,15 @@ const Drink = ({
         activeOption={measure}
         onClick={volume => dispatch(updateMeasure(volume))}
       />
+
+      <h2>Context</h2>
+      <ContextSelector
+        options={contextDefecation}
+        context={context}
+        onChange={(context, checked, i) =>
+          dispatch(updateContext(context, checked, i))
+        }
+      />
       <h2>Commentaire</h2>
       <Comment
         commentText={comment}

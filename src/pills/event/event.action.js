@@ -17,8 +17,8 @@ export const updateMeasure = measure => {
   return { type: UPDATE_MEASURE, measure };
 };
 
-export const updateContext = context => {
-  return { type: UPDATE_CONTEXT, context };
+export const updateContext = (context, checked) => {
+  return { type: UPDATE_CONTEXT, context, checked };
 };
 
 export const updateComment = comment => {

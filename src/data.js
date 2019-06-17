@@ -106,3 +106,29 @@ export const urinations = [
     value: "Urgence"
   }
 ];
+
+export const defecations = [
+  {
+    label: "Normale",
+    value: "Normale"
+  },
+  {
+    label: "Difficulté",
+    value: "Difficulté"
+  },
+  {
+    label: "Urgence",
+    value: "Urgence"
+  }
+];
+
+export const contextDefecation = [
+  {
+    label: "Suite à une fuite",
+    value: "Suite à une fuite"
+  },
+  {
+    label: "Suite à des gazs",
+    value: "Suite à des gazs"
+  }
+];
