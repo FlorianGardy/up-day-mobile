@@ -54,8 +54,8 @@ const Drink = ({
       <ContextSelector
         options={contextUrination}
         context={context}
-        onChange={(context, checked, i) =>
-          dispatch(updateContext(context, checked, i))
+        onChange={(context, checked) =>
+          dispatch(updateContext(context, checked))
         }
       />
       <h2>Volume</h2>
