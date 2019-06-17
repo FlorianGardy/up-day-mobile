@@ -49,13 +49,6 @@ const Drink = ({
         activeOption={kind} //la donnée selectioné dans le state
         onClick={defecation => dispatch(updateKind(defecation))} //la fonction qui enregistre l'etat au click du bouton
       />
-      <h2>Volume</h2>
-      <OptionSelector
-        options={volumes}
-        activeOption={measure}
-        onClick={volume => dispatch(updateMeasure(volume))}
-      />
-
       <h2>Context</h2>
       <ContextSelector
         options={contextDefecation}
@@ -63,6 +56,12 @@ const Drink = ({
         onChange={(context, checked, i) =>
           dispatch(updateContext(context, checked, i))
         }
+      />
+      <h2>Volume</h2>
+      <OptionSelector
+        options={volumes}
+        activeOption={measure}
+        onClick={volume => dispatch(updateMeasure(volume))}
       />
       <h2>Commentaire</h2>
       <Comment
