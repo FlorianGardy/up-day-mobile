@@ -20,7 +20,7 @@ const Navbar = ({ dispatch }) => {
   return (
     <nav className="navBar">
       <div className="bottomNavBar">
-        <NavLink to="/history" className="history">
+        <NavLink to="/history" activeClassName="activeLink" className="history">
           <FontAwesomeIcon icon={faCalendarAlt} size="2x" />
         </NavLink>
         <div onClick={handleClick} className="events">
@@ -34,29 +34,47 @@ const Navbar = ({ dispatch }) => {
             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
           </svg>
         </div>
-        <NavLink to="/about" className="about">
+        <NavLink to="/about" activeClassName="activeLink" className="about">
           <FontAwesomeIcon icon={faQuestion} size="2x" />
         </NavLink>
       </div>
       <div
-        className={`${eventBtnGroup} btnGrid`}
+        className={`${eventBtnGroup}`}
         onClick={() => {
           dispatch(resetEvent());
           setShouldDrop(false);
         }}
       >
-        <NavLink className="btn btnPee" to="/events/urination">
-          MICTION
-        </NavLink>
-        <NavLink className="btn btnDrink" to="/events/drink">
-          BOISSON
-        </NavLink>
-        <NavLink className="btn btnActivity" to="/events/activity">
-          ACTIVITE
-        </NavLink>
-        <NavLink className="btn btnPoo" to="/events/defecation">
-          DEFECATION
-        </NavLink>
+        <div className="wrapper">
+          <NavLink
+            className="btn btnPee"
+            to="/events/urination"
+            activeClassName="activeLink"
+          >
+            Miction
+          </NavLink>
+          <NavLink
+            className="btn btnDrink"
+            to="/events/drink"
+            activeClassName="activeLink"
+          >
+            Boisson
+          </NavLink>
+          <NavLink
+            className="btn btnActivity"
+            to="/events/activity"
+            activeClassName="activeLink"
+          >
+            Activité
+          </NavLink>
+          <NavLink
+            className="btn btnPoo"
+            to="/events/defecation"
+            activeClassName="activeLink"
+          >
+            Défécation
+          </NavLink>
+        </div>
       </div>
     </nav>
   );
