@@ -50,9 +50,7 @@ export function shiftDate(direction) {
     // Creates an array containing (unique) sorted dates from history
     const sortedDates = [
       ...new Set(
-        history
-          .sort((a, b) => new Date(a.date) - new Date(b.date))
-          .map(event => event.date)
+        history.sort((a, b) => a.date - b.date).map(event => event.date)
       )
     ];
     if (direction === "left") {
