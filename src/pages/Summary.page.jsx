@@ -10,6 +10,7 @@ import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 const Drink = ({
   dispatch,
   date,
+  nature,
   kind,
   measure,
   context,
@@ -34,6 +35,7 @@ const Drink = ({
           onClick: async () => {
             await sendDatasToDatabase(
               date,
+              nature,
               kind,
               measure,
               context,
@@ -69,6 +71,7 @@ const Drink = ({
 const mapDispatchToProps = state => ({
   // Je fais passer toutes les données dans le reducer de l'event en props de la page.
   date: state.EventReducer.date,
+  nature: state.EventReducer.nature,
   kind: state.EventReducer.kind,
   measure: state.EventReducer.measure,
   context: state.EventReducer.context,

@@ -1,6 +1,7 @@
 const initialState = {
   date: new Date(),
   kind: "",
+  nature: "",
   measure: "",
   context: [],
   comment: ""
@@ -10,6 +11,8 @@ export default function event(state = initialState, action) {
   switch (action.type) {
     case "@event/UPDATE_DATE":
       return { ...state, date: action.date };
+    case "@event/UPDATE_NATURE":
+      return { ...state, nature: action.nature };
     case "@event/UPDATE_KIND":
       return { ...state, kind: action.kind };
     case "@event/UPDATE_MEASURE":

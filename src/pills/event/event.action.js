@@ -1,4 +1,5 @@
 const UPDATE_DATE = "@event/UPDATE_DATE";
+const UPDATE_NATURE = "@event/UPDATE_NATURE";
 const UPDATE_KIND = "@event/UPDATE_KIND";
 const UPDATE_MEASURE = "@event/UPDATE_MEASURE";
 const UPDATE_CONTEXT = "@event/UPDATE_CONTEXT";
@@ -7,6 +8,10 @@ const RESET_EVENT = "@event/RESET_EVENT";
 
 export const updateDate = date => {
   return { type: UPDATE_DATE, date };
+};
+
+export const updateNature = nature => {
+  return { type: UPDATE_NATURE, nature };
 };
 
 export const updateKind = kind => {

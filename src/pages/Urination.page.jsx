@@ -11,7 +11,8 @@ import {
   updateKind,
   updateMeasure,
   updateComment,
-  updateContext
+  updateContext,
+  updateNature
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
 
@@ -75,7 +76,10 @@ const Urination = ({
 const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
-    updateKind: drink => dispatch(updateKind(drink)),
+    updateKind: kind => {
+      dispatch(updateKind(kind));
+      dispatch(updateNature("Miction"));
+    },
     updateContext: (context, check) => dispatch(updateContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))

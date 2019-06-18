@@ -10,7 +10,8 @@ import {
   updateDate,
   updateKind,
   updateMeasure,
-  updateComment
+  updateComment,
+  updateNature
 } from "../pills/event/event.action";
 
 const Drink = ({
@@ -67,7 +68,10 @@ const Drink = ({
 const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
-    updateKind: drink => dispatch(updateKind(drink)),
+    updateKind: kind => {
+      dispatch(updateKind(kind));
+      dispatch(updateNature("Boisson"));
+    },
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };
