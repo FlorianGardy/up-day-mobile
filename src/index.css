@@ -2,7 +2,6 @@
 @import "../src/sass/_reset.scss";
 
 body {
-  /* margin: 0; */
   font-family: -apple-system, BlinkMacSystemFont, "Raleway", "Montserrat",
     "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;

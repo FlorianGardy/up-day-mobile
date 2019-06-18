@@ -1,4 +1,5 @@
 @import "../global.scss";
+@import "../sass/mixins";
 
 $btnAddEventDiameter: 70px;
 $navHeight: 10vh;
@@ -43,10 +44,7 @@ $navHeight: 10vh;
       border-radius: 50%;
       cursor: pointer;
       z-index: 99;
-      background-color: $primary-dark;
-      &:hover {
-        background-color: $secondary-light;
-      }
+      @include button-bg($primary-dark);
       .cross {
         margin: auto;
         overflow: hidden;
@@ -125,19 +123,19 @@ $navHeight: 10vh;
   }
 
   .btnPee {
-    background-color: goldenrod;
+    @include button-bg(#f1c40f);
     grid-area: pee;
   }
   .btnDrink {
-    background-color: rgb(83, 139, 190);
+    @include button-bg(#3498db);
     grid-area: drink;
   }
   .btnActivity {
-    background-color: rgb(116, 184, 38);
+    @include button-bg(#2ecc71);
     grid-area: activity;
   }
   .btnPoo {
-    background-color: $secondary-dark;
+    @include button-bg(#e74c3c);
     grid-area: poo;
   }
 
