@@ -8,7 +8,10 @@ const EventRow = ({ date, type, nature, volume, context, comment }) => {
       <div className={styles.time}>{date}</div>
       <div className={styles.info}>
         {type} - {nature}
-        <br /> {context}
+        <br />
+        {context.length !== 0
+          ? context.map(el => <div>->{el.value}</div>)
+          : "Aucun context"}
       </div>
       <div className={styles.volume}>{volume}</div>
     </div>
@@ -20,7 +23,7 @@ EventRow.propTypes = {
   type: PropTypes.string.isRequired,
   nature: PropTypes.string.isRequired,
   volume: PropTypes.string.isRequired,
-  context: PropTypes.string,
+  context: PropTypes.array,
   comment: PropTypes.string
 };
 
