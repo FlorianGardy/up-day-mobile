@@ -1,37 +1,30 @@
-//Media queries
-
-@mixin for-size($size) {
-  @if $size == phone-only {
-    @media (max-width: 599px) {
-      @content;
-    }
-  } @else if $size == tablet-portrait-up {
-    @media (min-width: 600px) {
-      @content;
-    }
-  } @else if $size == tablet-landscape-up {
-    @media (min-width: 900px) {
-      @content;
-    }
-  } @else if $size == desktop-up {
-    @media (min-width: 1200px) {
-      @content;
-    }
-  } @else if $size == big-desktop-up {
-    @media (min-width: 1800px) {
-      @content;
-    }
-  }
+//Give dimensions to a box
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
 }
+// USAGE
+// You must provide at least one parameter to make it work:
 
-// To use it in your code:
+// .square {
+//   @include box(50px);
+// }
+// .rectangle {
+//   @include box(100px, 50px);
+// }
+// ------------------------------------------
 
-// .header-title {
-//   font-size: 2rem;
-
-//   @include for-size(phone-only) {
-//      font-size: 1rem;
-//   }
+// Browser Prefixes
+@mixin transform($transform) {
+  -ms-transform: $transform;
+  -webkit-transform: $transform;
+  -o-transform: $transform;
+  -moz-transform: $transform;
+  transform: $transform;
+}
+// Exemple:
+// .btn {
+//   @include transform(rotate(10deg));
 // }
 // ------------------------------------------
 
@@ -43,13 +36,55 @@
     transition: all 0.3s ease;
   }
   &:active {
-    background: darken($bg, 25%);
+    background: darken($bg, 15%);
   }
 }
 
 // How to use it in code
-
 //  .btn-green {
 //     @include button-bg(#2ecc71);
 //  }
+// ------------------------------------------
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+// ------------------------------------------
+
+// Shadows for the modalEventBtn
+@mixin shadowEffect {
+  -webkit-box-shadow: 2px 5px 14px 0px grey,
+    inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 5px 14px 0px grey, inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+}
+// ------------------------------------------
+
+// Triangle for date and time component
+@mixin triangle($color: #fff, $size: 10px) {
+  &::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: $size solid $color;
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    position: absolute;
+    bottom: $size * -1;
+    left: calc(50% - #{$size});
+  }
+}
+// How to use it
+// @include triangle($color: choose color, $size: choose size);
 // ------------------------------------------

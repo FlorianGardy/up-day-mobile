@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 
-import "./navBar.scss";
+import "./NavBar.scss";
 
 const Navbar = ({ dispatch }) => {
   const [shouldDrop, setShouldDrop] = useState(false);
@@ -15,7 +15,7 @@ const Navbar = ({ dispatch }) => {
     setShouldDrop(!shouldDrop);
   };
 
-  let eventBtnGroup = shouldDrop ? "shownEventBtnGroup" : "hiddenEventBtnGroup";
+  let eventBtnGroup = shouldDrop ? "modalVisible" : "modalHidden";
 
   return (
     <nav className="navBar">
@@ -45,34 +45,18 @@ const Navbar = ({ dispatch }) => {
           setShouldDrop(false);
         }}
       >
-        <div className="wrapper">
-          <NavLink
-            className="btn btnPee"
-            to="/events/urination"
-            activeClassName="activeLink"
-          >
+        <div className="modal">
+          <NavLink className="btn-Poo" to="/events/defecation">
+            Défécation
+          </NavLink>
+          <NavLink className="btn-Pee" to="/events/urination">
             Miction
           </NavLink>
-          <NavLink
-            className="btn btnDrink"
-            to="/events/drink"
-            activeClassName="activeLink"
-          >
-            Boisson
-          </NavLink>
-          <NavLink
-            className="btn btnActivity"
-            to="/events/activity"
-            activeClassName="activeLink"
-          >
+          <NavLink className="btn-Activity" to="/events/activity">
             Activité
           </NavLink>
-          <NavLink
-            className="btn btnPoo"
-            to="/events/defecation"
-            activeClassName="activeLink"
-          >
-            Défécation
+          <NavLink className="btn-Drink" to="/events/drink">
+            Boisson
           </NavLink>
         </div>
       </div>

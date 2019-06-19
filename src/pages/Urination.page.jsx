@@ -14,7 +14,7 @@ import {
   updateContext
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
-import "./layout.scss";
+import "./grid.scss";
 
 const Urination = ({
   updateDate,
