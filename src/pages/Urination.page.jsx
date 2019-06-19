@@ -14,6 +14,7 @@ import {
   updateContext
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
+import "./grid.scss";
 
 const Urination = ({
   updateDate,
@@ -29,7 +30,7 @@ const Urination = ({
   history
 }) => {
   return (
-    <div>
+    <div className="page">
       <TopBar
         title="Miction"
         leftButtonInfo={{
@@ -43,30 +44,32 @@ const Urination = ({
           isVisible: kind && measure ? true : false
         }}
       />
-      <DateAndTime date={date} handleChange={updateDate} />
-      <OptionSelector
-        title="Type d'envie"
-        options={urinations}
-        activeOption={kind}
-        onClick={updateKind}
-      />
-      <ContextSelector
-        title="Context"
-        options={contextUrination}
-        context={context}
-        onChange={updateContext}
-      />
-      <OptionSelector
-        title="Volume"
-        options={volumes}
-        activeOption={measure}
-        onClick={updateVolume}
-      />
-      <Comment
-        title="Commentaire"
-        commentText={comment}
-        onChange={updateComment}
-      />
+      <section className="pageBody">
+        <DateAndTime date={date} handleChange={updateDate} />
+        <OptionSelector
+          title="Type d'envie"
+          options={urinations}
+          activeOption={kind}
+          onClick={updateKind}
+        />
+        <ContextSelector
+          title="Context"
+          options={contextUrination}
+          context={context}
+          onChange={updateContext}
+        />
+        <OptionSelector
+          title="Volume"
+          options={volumes}
+          activeOption={measure}
+          onClick={updateVolume}
+        />
+        <Comment
+          title="Commentaire"
+          commentText={comment}
+          onChange={updateComment}
+        />
+      </section>
       <Navbar />
     </div>
   );

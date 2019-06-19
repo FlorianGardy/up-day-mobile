@@ -3,15 +3,17 @@
   top: 0;
   width: 100%;
   display: grid;
+  height: 10vh;
   grid-template-columns: repeat(3, 1fr);
+  align-items: center;
 }
 .TopBar h1 {
   grid-column: 2/3;
+  margin: 0;
 }
 .TopBar > button {
   height: 40px;
   width: 80px;
-  align-self: center;
   margin: 0 20px;
   border-radius: 5px;
 }

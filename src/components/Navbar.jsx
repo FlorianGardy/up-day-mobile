@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { resetEvent } from "../pills/event/event.action";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 
-import styles from "./Navbar.module.scss";
+import "./NavBar.scss";
 
 const Navbar = ({ dispatch }) => {
   const [shouldDrop, setShouldDrop] = useState(false);
@@ -12,37 +15,50 @@ const Navbar = ({ dispatch }) => {
     setShouldDrop(!shouldDrop);
   };
 
-  let eventButtonGroup = shouldDrop
-    ? styles.shownEventButtonGroup
-    : styles.hiddenEventButtonGroup;
+  let eventBtnGroup = shouldDrop ? "modalVisible" : "modalHidden";
 
   return (
-    <nav className={styles.bottomNavBar}>
-      <NavLink to="/history" className={styles.history}>
-        Historique
-      </NavLink>
-      <div onClick={handleClick} className={styles.events}>
-        +
+    <nav className="navBar">
+      <div className="bottomNavBar">
+        <NavLink to="/history" activeClassName="activeLink" className="history">
+          <FontAwesomeIcon icon={faCalendarAlt} size="2x" />
+        </NavLink>
+        <div onClick={handleClick} className="events">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            className="cross"
+          >
+            <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+          </svg>
+        </div>
+        <NavLink to="/about" activeClassName="activeLink" className="about">
+          <FontAwesomeIcon icon={faQuestion} size="2x" />
+        </NavLink>
       </div>
-      <NavLink to="/about" className={styles.about}>
-        Infos
-      </NavLink>
       <div
-        className={eventButtonGroup}
+        className={`${eventBtnGroup}`}
         onClick={() => {
           dispatch(resetEvent());
           setShouldDrop(false);
         }}
       >
-        <NavLink id={styles.buttonPee} to="/events/urination">
-          Miction
-        </NavLink>
-        <NavLink id={styles.buttonDrink} to="/events/drink">
-          Boisson
-        </NavLink>
-        <NavLink id={styles.buttonPoo} to="/events/defecation">
-          Défécation
-        </NavLink>
+        <div className="modal">
+          <NavLink className="btn-Poo" to="/events/defecation">
+            Défécation
+          </NavLink>
+          <NavLink className="btn-Pee" to="/events/urination">
+            Miction
+          </NavLink>
+          <NavLink className="btn-Activity" to="/events/activity">
+            Activité
+          </NavLink>
+          <NavLink className="btn-Drink" to="/events/drink">
+            Boisson
+          </NavLink>
+        </div>
       </div>
     </nav>
   );
