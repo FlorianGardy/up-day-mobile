@@ -12,14 +12,14 @@ import {
   updateNature,
   updateKind,
   updateMeasure,
-  updateContext,
+  getContext,
   updateComment
 } from "../pills/event/event.action";
 
 const Defecation = ({
   updateDate,
   updateKind,
-  updateContext,
+  getContext,
   updateVolume,
   updateComment,
   date,
@@ -55,7 +55,7 @@ const Defecation = ({
         title="Context"
         options={contextDefecation}
         context={context}
-        onChange={updateContext}
+        onChange={getContext}
       />
       <OptionSelector
         title="Volume"
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateKind(kind));
       dispatch(updateNature("Défécation"));
     },
-    updateContext: (context, check) => dispatch(updateContext(context, check)),
+    getContext: (context, check) => dispatch(getContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };

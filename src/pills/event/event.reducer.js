@@ -18,14 +18,6 @@ export default function event(state = initialState, action) {
     case "@event/UPDATE_MEASURE":
       return { ...state, measure: action.measure };
     case "@event/UPDATE_CONTEXT":
-      if (action.checked === true) {
-        state.context.push(action.context);
-      } else if (action.checked === false) {
-        const index = state.context.findIndex(i => i === action.context);
-        if (index !== -1) {
-          state.context.splice(index, 1);
-        }
-      }
       return {
         ...state,
         context: [...state.context]
