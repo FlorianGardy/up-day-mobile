@@ -11,9 +11,7 @@ const SummaryItem = ({ label, value }) => {
   return (
     <div style={style}>
       <h2>{label}</h2>
-      {value.length !== 0
-        ? value.map((v, i) => <p key={i}>{v.value}</p>)
-        : "Aucun"}
+      {value.length !== 0 ? value.map((v, i) => <p key={i}>{v}</p>) : "Aucun"}
     </div>
   );
 };

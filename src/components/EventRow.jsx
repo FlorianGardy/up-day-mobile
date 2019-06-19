@@ -7,10 +7,10 @@ const EventRow = ({ date, type, nature, volume, context, comment }) => {
     <div className={styles.main}>
       <div className={styles.time}>{date}</div>
       <div className={styles.info}>
-        {type} - {nature}
+        {nature} - {type}
         <br />
         {context.length !== 0
-          ? context.map(el => <div>->{el.value}</div>)
+          ? context.map(el => <div>->{el}</div>)
           : "Aucun context"}
       </div>
       <div className={styles.volume}>{volume}</div>
