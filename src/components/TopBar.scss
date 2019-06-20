@@ -16,24 +16,22 @@
     display: flex;
     align-items: center;
 
-    font-size: 1.3em;
-    font-weight: bold;
-    color: grey;
+    font-size: 1rem;
+    // color: rgb(194, 193, 193);
+    @include button-text-color(rgb(194, 193, 193));
     cursor: pointer;
     padding: 0 5vw;
 
     &.left {
       grid-area: leftBtn;
       justify-self: start;
-      // @include button-bg($secondary-color);
     }
     &.right {
       grid-area: rightBtn;
       justify-self: end;
-      // @include button-bg($primary-color);
     }
     &.isActive {
-      color: green;
+      @include button-text-color(rgb(123, 160, 67));
     }
   }
   .title {
@@ -42,7 +40,8 @@
     justify-self: center;
     grid-area: title;
 
-    font-size: 2rem;
+    color: $text-color-dark;
+    font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
   }

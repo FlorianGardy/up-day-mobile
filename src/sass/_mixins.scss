@@ -46,6 +46,19 @@
 //  }
 // ------------------------------------------
 
+// Button's color changes on hover and active
+@mixin button-text-color($text-color) {
+  color: $text-color;
+  &:hover {
+    color: darken($text-color, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    color: darken($text-color, 15%);
+  }
+}
+// ------------------------------------------
+
 // keyframes mixin
 @mixin keyframes($name) {
   @-webkit-keyframes #{$name} {

@@ -1,5 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faCheckCircle
+} from "@fortawesome/free-regular-svg-icons";
 
 // import Styles from "./TopBar.module.css";
 import "./TopBar.scss";
@@ -9,11 +14,8 @@ const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {
   return (
     <div className="topBar">
       {leftButtonInfo.isVisible && (
-        <div
-          className="btn left isActive"
-          onClick={() => leftButtonInfo.onClick()}
-        >
-          {leftButtonInfo.text}
+        <div className="btn left" onClick={() => leftButtonInfo.onClick()}>
+          <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
         </div>
       )}
       <h1 className="title">{title}</h1>
@@ -22,10 +24,14 @@ const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {
           className="btn right isActive"
           onClick={() => rightButtonInfo.onClick()}
         >
-          {rightButtonInfo.text}
+          <FontAwesomeIcon icon={faCheckCircle} size="2x" />
+        </div>
+      ) : rightButtonInfo.isVisible ? (
+        <div className="btn right">
+          <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         </div>
       ) : (
-        <div className="btn right">{rightButtonInfo.text}</div>
+        ""
       )}
     </div>
   );
