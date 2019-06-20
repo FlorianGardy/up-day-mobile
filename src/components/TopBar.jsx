@@ -9,15 +9,23 @@ const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {
   return (
     <div className="topBar">
       {leftButtonInfo.isVisible && (
-        <button className="leftBtn" onClick={() => leftButtonInfo.onClick()}>
+        <div
+          className="btn left isActive"
+          onClick={() => leftButtonInfo.onClick()}
+        >
           {leftButtonInfo.text}
-        </button>
+        </div>
       )}
       <h1 className="title">{title}</h1>
-      {rightButtonInfo.isVisible && (
-        <button className="rightBtn" onClick={() => rightButtonInfo.onClick()}>
+      {rightButtonInfo.isVisible && rightButtonInfo.isActive ? (
+        <div
+          className="btn right isActive"
+          onClick={() => rightButtonInfo.onClick()}
+        >
           {rightButtonInfo.text}
-        </button>
+        </div>
+      ) : (
+        <div className="btn right">{rightButtonInfo.text}</div>
       )}
     </div>
   );

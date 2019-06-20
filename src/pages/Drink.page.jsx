@@ -38,7 +38,8 @@ const Drink = ({
         rightButtonInfo={{
           text: "Suivant",
           onClick: () => history.push("/events/summary"),
-          isVisible: kind && measure ? true : false
+          isVisible: true,
+          isActive: kind && measure ? true : false
         }}
       />
       <DateAndTime date={date} handleChange={updateDate} />

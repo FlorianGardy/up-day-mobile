@@ -1,36 +1,49 @@
 @import "../sass/main.scss";
 
 .topBar {
-  display: grid;
+  display: inline-grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 10vh;
   grid-template-areas: "leftBtn title rightBtn";
 
   align-items: center;
-  button {
-    // height: 40px;
-    // width: 80px;
-    margin: 0 5vw;
+  justify-items: center;
+  place-items: stretch;
+  width: 100%;
+  background: $primary-light;
+
+  .btn {
+    display: flex;
+    align-items: center;
+
     font-size: 1.3em;
-    background-color: transparent;
-    border: none;
-    // border-radius: 5px;
-    // padding: em(2) em(5);
-  }
-  .leftBtn {
-    grid-area: leftBtn;
-    justify-self: start;
-    // @include button-bg($secondary-color);
-  }
-  .rightBtn {
-    grid-area: rightBtn;
-    justify-self: end;
-    // @include button-bg($primary-color);
+    font-weight: bold;
+    color: grey;
+    cursor: pointer;
+    padding: 0 5vw;
+
+    &.left {
+      grid-area: leftBtn;
+      justify-self: start;
+      // @include button-bg($secondary-color);
+    }
+    &.right {
+      grid-area: rightBtn;
+      justify-self: end;
+      // @include button-bg($primary-color);
+    }
+    &.isActive {
+      color: green;
+    }
   }
   .title {
-    grid-area: title;
+    display: flex;
+    align-items: center;
     justify-self: center;
+    grid-area: title;
+
     font-size: 2rem;
+    font-weight: bold;
     text-transform: uppercase;
   }
 }
