@@ -1,20 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Styles from "./TopBar.module.css";
+// import Styles from "./TopBar.module.css";
+import "./TopBar.scss";
 
 const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {
   // Render
   return (
-    <div className={Styles.TopBar}>
+    <div className="topBar">
       {leftButtonInfo.isVisible && (
-        <button onClick={() => leftButtonInfo.onClick()}>
+        <button className="leftBtn" onClick={() => leftButtonInfo.onClick()}>
           {leftButtonInfo.text}
         </button>
       )}
-      <h1>{title}</h1>
+      <h1 className="title">{title}</h1>
       {rightButtonInfo.isVisible && (
-        <button onClick={() => rightButtonInfo.onClick()}>
+        <button className="rightBtn" onClick={() => rightButtonInfo.onClick()}>
           {rightButtonInfo.text}
         </button>
       )}
