@@ -2,23 +2,29 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import TopBar from "../components/TopBar";
 
+import "./layout.scss";
+
 function Infos() {
   // Component style
   const style = {
+    main: {
+      margin: "20px"
+    },
     ulist: {
-      textAlign: "left"
+      textAlign: "left",
+      padding: "10px"
     },
     titleComment: {}
   };
 
   return (
-    <div>
+    <div className="page">
       <TopBar
         title="Informations"
         leftButtonInfo={{ isVisible: false }}
         rightButtonInfo={{ isVisible: false }}
       />
-      <div style={style.main}>
+      <section className="pageBody" style={style.main}>
         <div id="firstBlock">
           <h2>Pourquoi ?</h2>
           <p>Cette évaluation vous aide à:</p>
@@ -41,7 +47,7 @@ function Infos() {
             <li>2 jours avec contraintes horaires</li>
           </ul>
         </div>
-      </div>
+      </section>
       <Navbar />
     </div>
   );

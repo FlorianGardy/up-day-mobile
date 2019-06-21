@@ -44,7 +44,8 @@ const Drink = ({
             );
             history.push("/history");
           },
-          isVisible: true
+          isVisible: true,
+          isActive: true
         }}
       />
       <section className="pageBody">

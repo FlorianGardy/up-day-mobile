@@ -1,13 +1,21 @@
+@import "../sass/main.scss";
+
 .optionSelector {
-  height: 20vh;
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin-right: 10px;
+  }
   .btn {
-    color: blue;
-    margin: 2px;
-    width: 80px;
+    color: $text-color-dark;
+    width: 70px;
+    height: 30px;
+    padding: em(5) em(5);
     &.selected {
-      color: red;
-      margin: 2px;
-      width: 80px;
+      color: $funcky-pink;
     }
     /* remove border when clicked */
     &.selected:focus {
