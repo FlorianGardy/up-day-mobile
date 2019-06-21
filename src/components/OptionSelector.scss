@@ -1,18 +1,25 @@
 @import "../sass/main.scss";
 
 .optionSelector {
-  height: 15vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  margin: 20px auto;
+  align-content: center;
+  justify-content: space-around;
+
+  height: 15vh;
+  width: 90vw;
+  border: 0.5px solid $beige;
+  border-radius: 10px;
+  background-color: darken(#fff, 2%);
 
   h2 {
-    margin-right: 10px;
+    font-size: 1.2rem;
   }
   .btn {
     color: $text-color-dark;
-    width: 70px;
     height: 30px;
+    min-width: 75px;
     padding: em(5) em(5);
     &.selected {
       color: $funcky-pink;

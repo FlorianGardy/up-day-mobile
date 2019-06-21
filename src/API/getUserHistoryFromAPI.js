@@ -5,12 +5,15 @@ export function getUserHistoryFromAPI(userID) {
   const config = {
     method: "get",
     baseURL: APIconfig.baseUrl,
-    url: `/events/${userID}`
+    url: `events/${userID}`
   };
 
   return axios
     .request(config)
-    .then(response => dataSelection(response))
+    .then(response => {
+      console.log(response);
+      return dataSelection(response);
+    })
     .then(selectedData => dataNormalization(selectedData))
     .catch(error => {
       console.log(error);
