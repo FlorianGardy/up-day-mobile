@@ -15,6 +15,8 @@ import {
   updateComment
 } from "../pills/event/event.action";
 
+import "./layout.scss";
+
 const Defecation = ({
   updateDate,
   updateKind,
@@ -29,7 +31,7 @@ const Defecation = ({
   history
 }) => {
   return (
-    <div>
+    <div className="page">
       <TopBar
         title="Défécation"
         leftButtonInfo={{
@@ -40,33 +42,36 @@ const Defecation = ({
         rightButtonInfo={{
           text: "Suivant",
           onClick: () => history.push("/events/summary"),
-          isVisible: kind && measure ? true : false
+          isVisible: true,
+          isActive: kind && measure ? true : false
         }}
       />
-      <DateAndTime date={date} handleChange={updateDate} />
-      <OptionSelector
-        title="type d'envie"
-        options={defecations}
-        activeOption={kind}
-        onClick={updateKind}
-      />
-      <ContextSelector
-        title="Context"
-        options={contextDefecation}
-        context={context}
-        onChange={updateContext}
-      />
-      <OptionSelector
-        title="Volume"
-        options={volumes}
-        activeOption={measure}
-        onClick={updateVolume}
-      />
-      <Comment
-        title="Commentaire"
-        commentText={comment}
-        onChange={updateComment}
-      />
+      <section className="pageBody">
+        <DateAndTime date={date} handleChange={updateDate} />
+        <OptionSelector
+          title="type d'envie"
+          options={defecations}
+          activeOption={kind}
+          onClick={updateKind}
+        />
+        <ContextSelector
+          title="Context"
+          options={contextDefecation}
+          context={context}
+          onChange={updateContext}
+        />
+        <OptionSelector
+          title="Volume"
+          options={volumes}
+          activeOption={measure}
+          onClick={updateVolume}
+        />
+        <Comment
+          title="Commentaire"
+          commentText={comment}
+          onChange={updateComment}
+        />
+      </section>
       <Navbar />
     </div>
   );

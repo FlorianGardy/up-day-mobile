@@ -6,7 +6,6 @@ import {
   faCheckCircle
 } from "@fortawesome/free-regular-svg-icons";
 
-// import Styles from "./TopBar.module.css";
 import "./TopBar.scss";
 
 const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {

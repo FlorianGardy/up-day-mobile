@@ -7,6 +7,8 @@ import moment from "moment";
 import TopBar from "../components/TopBar";
 import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
+import "./layout.scss";
+
 const Drink = ({
   dispatch,
   date,
@@ -18,7 +20,7 @@ const Drink = ({
   userId
 }) => {
   return (
-    <div>
+    <div className="page">
       {/* redirect of kind and measure are not set */}
       {!kind && !measure && history.push("/history")}
 
@@ -45,22 +47,24 @@ const Drink = ({
           isVisible: true
         }}
       />
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-around"
-        }}
-      >
-        <SummaryItem
-          label="date"
-          value={moment(date).format("dddd DD MMMM à HH:mm")}
-        />
-        <SummaryItem label="Type" value={kind} />
-        <SummaryContextItem label="Contexte" value={context} />
-        <SummaryItem label="Volume" value={measure} />
-        <SummaryItem label="Commentaire" value={comment} />
-      </div>
+      <section className="pageBody">
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around"
+          }}
+        >
+          <SummaryItem
+            label="date"
+            value={moment(date).format("dddd DD MMMM à HH:mm")}
+          />
+          <SummaryItem label="Type" value={kind} />
+          <SummaryContextItem label="Contexte" value={context} />
+          <SummaryItem label="Volume" value={measure} />
+          <SummaryItem label="Commentaire" value={comment} />
+        </div>
+      </section>
       <Navbar />
     </div>
   );

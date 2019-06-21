@@ -2,7 +2,7 @@ import React from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import { volumes, drinks } from "../data";
+import { volumes, urinations, contextUrination } from "../data";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
@@ -10,12 +10,13 @@ import {
   updateDate,
   updateKind,
   updateMeasure,
-  updateComment
+  updateComment,
+  updateContext
 } from "../pills/event/event.action";
-
+import ContextSelector from "../components/ContextSelector";
 import "./layout.scss";
 
-const Drink = ({
+const Activity = ({
   updateDate,
   updateKind,
   updateContext,
@@ -31,7 +32,7 @@ const Drink = ({
   return (
     <div className="page">
       <TopBar
-        title="Boisson"
+        title="Activité"
         leftButtonInfo={{
           text: "Annuler",
           onClick: () => history.push("/history"),
@@ -47,10 +48,16 @@ const Drink = ({
       <section className="pageBody">
         <DateAndTime date={date} handleChange={updateDate} />
         <OptionSelector
-          title="Type de boisson"
-          options={drinks}
+          title="Type d'activité"
+          options={urinations}
           activeOption={kind}
           onClick={updateKind}
+        />
+        <ContextSelector
+          title="Contexte"
+          options={contextUrination}
+          context={context}
+          onChange={updateContext}
         />
         <OptionSelector
           title="Volume"
@@ -73,6 +80,7 @@ const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
     updateKind: drink => dispatch(updateKind(drink)),
+    updateContext: (context, check) => dispatch(updateContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };
@@ -89,4 +97,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Drink);
+)(Activity);

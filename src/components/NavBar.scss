@@ -19,7 +19,6 @@ $modalEventsBtn: (
     grid-template-rows: 1fr 1fr;
     grid-template-areas: "history events info" "history events info";
 
-    position: fixed;
     font-size: 35 / 100 * $navHeight;
     bottom: 0;
     height: $navHeight;
@@ -31,7 +30,7 @@ $modalEventsBtn: (
     }
     a {
       text-decoration: none;
-      color: #fff;
+      color: $almost-white;
       font-weight: 600;
     }
     .history {
@@ -74,7 +73,7 @@ $modalEventsBtn: (
         fill: $funcky-pink;
       }
       &:hover .cross {
-        fill: white;
+        fill: $almost-white;
       }
     }
   }
@@ -97,12 +96,13 @@ $modalEventsBtn: (
     %btn {
       display: flex;
       @include box(35vmin);
-      border: 7px solid $smooth-white;
+      // border: 7px solid $smooth-white;
+
       border-radius: 50%;
       justify-self: center;
       align-self: center;
 
-      color: $smooth-white;
+      color: $text-color-dark;
       text-decoration: none;
       font-weight: 800;
       font-size: 4vmin;
@@ -118,7 +118,8 @@ $modalEventsBtn: (
     @each $event, $bgColor in $modalEventsBtn {
       .btn-#{$event} {
         @extend %btn;
-        @include button-bg($bgColor);
+        border: 8px solid $bgColor;
+        @include button-bg($almost-white);
         grid-area: $event;
       }
     }

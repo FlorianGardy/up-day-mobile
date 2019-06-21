@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./OptionSelector.module.css";
+// import styles from "./OptionSelector.module.css";
+import "./OptionSelector.scss";
 
 const OptionSelector = ({ options, onClick, activeOption, title }) => {
   return (
-    <>
+    <div className="optionSelector">
       <h2>{title}</h2>
       <div>
         {options.map((option, i) => {
-          let styleButton = styles.button;
+          let styleButton = "btn";
           if (activeOption === option.value) {
-            styleButton = styles.selectedButton;
+            styleButton = "btn selected";
           }
           return (
             <button
@@ -23,7 +24,7 @@ const OptionSelector = ({ options, onClick, activeOption, title }) => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

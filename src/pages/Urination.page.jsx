@@ -14,7 +14,7 @@ import {
   updateContext
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
-import "./grid.scss";
+import "./layout.scss";
 
 const Urination = ({
   updateDate,
@@ -41,7 +41,8 @@ const Urination = ({
         rightButtonInfo={{
           text: "Suivant",
           onClick: () => history.push("/events/summary"),
-          isVisible: kind && measure ? true : false
+          isVisible: true,
+          isActive: kind && measure ? true : false
         }}
       />
       <section className="pageBody">

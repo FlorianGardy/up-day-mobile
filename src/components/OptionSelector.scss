@@ -1,0 +1,17 @@
+.optionSelector {
+  height: 20vh;
+  .btn {
+    color: blue;
+    margin: 2px;
+    width: 80px;
+    &.selected {
+      color: red;
+      margin: 2px;
+      width: 80px;
+    }
+    /* remove border when clicked */
+    &.selected:focus {
+      outline: none;
+    }
+  }
+}

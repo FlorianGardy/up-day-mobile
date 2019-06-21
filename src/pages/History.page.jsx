@@ -4,16 +4,20 @@ import HistoryDateSelector from "../components/HistoryDateSelector";
 import TopBar from "../components/TopBar";
 import HistoryContainer from "../pills/history/history.container";
 
+import "./layout.scss";
+
 const History = () => {
   return (
-    <div>
+    <div className="page">
       <TopBar
         title="Historique"
         leftButtonInfo={{ isVisible: false }}
         rightButtonInfo={{ isVisible: false }}
       />
-      <HistoryDateSelector />
-      <HistoryContainer />
+      <section className="pageBody">
+        <HistoryDateSelector />
+        <HistoryContainer />
+      </section>
       <Navbar />
     </div>
   );

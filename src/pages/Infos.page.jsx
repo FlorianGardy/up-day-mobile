@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import TopBar from "../components/TopBar";
 
-function About() {
+function Infos() {
   // Component style
   const style = {
     ulist: {
@@ -47,4 +47,4 @@ function About() {
   );
 }
 
-export default About;
+export default Infos;
