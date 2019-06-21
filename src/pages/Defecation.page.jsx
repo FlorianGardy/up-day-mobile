@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
 import {
   updateDate,
+  updateNature,
   updateKind,
   updateMeasure,
   updateContext,
@@ -80,7 +81,11 @@ const Defecation = ({
 const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
-    updateKind: drink => dispatch(updateKind(drink)),
+    updateNature: nature => dispatch(updateNature(nature)),
+    updateKind: kind => {
+      dispatch(updateKind(kind));
+      dispatch(updateNature("Défécation"));
+    },
     updateContext: (context, check) => dispatch(updateContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))

@@ -3,6 +3,7 @@ import { APIconfig } from "./axiosConfig";
 
 export function sendDatasToDatabase(
   date,
+  nature,
   kind,
   measure,
   context,
@@ -15,8 +16,8 @@ export function sendDatasToDatabase(
     url: "/events",
     data: {
       date,
+      nature,
       type: kind,
-      nature: "coco",
       volume: measure,
       context,
       comment,

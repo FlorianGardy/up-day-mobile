@@ -13,12 +13,12 @@ const ContextSelector = ({ options, onChange, context, title }) => {
               <label className={styles.switch}>
                 <input
                   type="checkbox"
-                  checked={context.map(el => el.value).includes(option.label)}
-                  onChange={e => onChange(option.label, e.target.checked)}
+                  checked={context.includes(option)}
+                  onChange={e => onChange(option, e.target.checked)}
                 />
                 <span className={[styles.slider, styles.round].join(" ")} />
               </label>
-              {option.label}
+              {option}
             </div>
           );
         })}

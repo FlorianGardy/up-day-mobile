@@ -10,16 +10,16 @@ const OptionSelector = ({ options, onClick, activeOption, title }) => {
       <div>
         {options.map((option, i) => {
           let styleButton = "btn";
-          if (activeOption === option.value) {
+          if (activeOption === option) {
             styleButton = "btn selected";
           }
           return (
             <button
               className={styleButton}
               key={i}
-              onClick={() => onClick(option.value)}
+              onClick={() => onClick(option)}
             >
-              {option.label}
+              {option}
             </button>
           );
         })}
