@@ -49,6 +49,7 @@
 // Button's color changes on hover and active
 @mixin button-text-color($text-color) {
   color: $text-color;
+  transition: 0.4s;
   &:hover {
     color: darken($text-color, 8%);
     transition: all 0.3s ease;

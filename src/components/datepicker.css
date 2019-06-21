@@ -1,5 +1,9 @@
 .center-text-datepicker {
   text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  width: 100vw;
+  height: 10vh;
 }
 
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle,

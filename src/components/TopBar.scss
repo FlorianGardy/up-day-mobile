@@ -10,15 +10,14 @@
   justify-items: center;
   place-items: stretch;
   width: 100%;
-  background: $primary-light;
+  background: $secondary-light;
 
   .btn {
     display: flex;
     align-items: center;
 
     font-size: 1rem;
-    // color: rgb(194, 193, 193);
-    @include button-text-color(rgb(194, 193, 193));
+    @include button-text-color($btn-grey);
     cursor: pointer;
     padding: 0 5vw;
 
@@ -31,7 +30,7 @@
       justify-self: end;
     }
     &.isActive {
-      @include button-text-color(rgb(123, 160, 67));
+      @include button-text-color($btn-green);
     }
   }
   .title {

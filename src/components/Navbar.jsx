@@ -21,7 +21,8 @@ const Navbar = ({ dispatch }) => {
     <nav className="navBar">
       <div className="bottomNavBar">
         <NavLink to="/history" activeClassName="activeLink" className="history">
-          <FontAwesomeIcon icon={faCalendarAlt} size="2x" />
+          <FontAwesomeIcon icon={faCalendarAlt} size="1x" />
+          <h3 className="calendar">Calendrier</h3>
         </NavLink>
         <div onClick={handleClick} className="events">
           <svg
@@ -35,7 +36,8 @@ const Navbar = ({ dispatch }) => {
           </svg>
         </div>
         <NavLink to="/about" activeClassName="activeLink" className="about">
-          <FontAwesomeIcon icon={faQuestion} size="2x" />
+          <FontAwesomeIcon icon={faQuestion} size="1x" />
+          <h3 className="infos">Infos</h3>
         </NavLink>
       </div>
       <div
