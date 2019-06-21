@@ -34,17 +34,19 @@ export const resetEvent = () => {
   return { type: RESET_EVENT };
 };
 
-export const getContext = (context, checked) => {
+export const getContext = (valueContext, checked) => {
   return (dispatch, getState) => {
-    const store = getState();
+    const context = getState().EventReducer.context;
     if (checked === true) {
-      store.EventReducer.context.push(context);
+      context.push(valueContext);
     } else if (checked === false) {
-      const index = store.EventReducer.context.findIndex(i => i === context);
+      const index = context.findIndex(i => i === valueContext);
       if (index !== -1) {
-        store.EventReducer.context.splice(index, 1);
+        context.splice(index, 1);
       }
     }
-    dispatch(updateContext(updateContext));
+    console.log(context);
+
+    dispatch(updateContext(context));
   };
 };
