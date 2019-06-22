@@ -7,7 +7,7 @@ const OptionSelector = ({ options, onClick, activeOption, title }) => {
   return (
     <div className="optionSelector">
       <h2>{title}</h2>
-      <div>
+      <div className="btnGroup">
         {options.map((option, i) => {
           let styleButton = "btn";
           if (activeOption === option) {

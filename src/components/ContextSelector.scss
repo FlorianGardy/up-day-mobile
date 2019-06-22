@@ -11,7 +11,7 @@
 
   h2 {
     font-size: 1.2rem;
-    padding-bottom: 8px;
+    padding-bottom: 1vh;
   }
 
   .allLine {
@@ -25,7 +25,7 @@
       display: inline-block;
       width: 60px;
       height: 30px;
-      margin: 1vh 5vw 0 15vw;
+      margin: 0 5vw 1% 15vw;
     }
 
     /* Hide default HTML checkbox */
@@ -62,10 +62,6 @@
 
     input:checked + .slider {
       background-color: $funcky-pink;
-    }
-
-    input:focus + .slider {
-      box-shadow: 0 0 1px $funcky-pink;
     }
 
     input:checked + .slider:before {

@@ -16,7 +16,6 @@
   display: grid;
   grid-template-columns: 100vw;
   grid-template-rows: 10vh 80vh;
-  align-items: stretch;
   .topBar {
     grid-row: 1;
   }
@@ -25,14 +24,14 @@
 
     display: grid;
     grid-template-rows: 8vh 72vh;
-    height: auto;
     .timeBar {
       grid-row: 1;
     }
     .options {
       grid-row: 2;
-      height: 100%;
+
       display: grid;
+      height: 100%;
       grid-template-rows: auto;
 
       & > :first-child {
@@ -49,7 +48,4 @@
       }
     }
   }
-}
-.navBar {
-  grid-row: 10/11;
 }
