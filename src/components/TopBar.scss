@@ -9,8 +9,9 @@
   align-items: center;
   justify-items: center;
   place-items: stretch;
-  width: 100%;
-  background: $secondary-light;
+  width: 100vw;
+  height: 10vh;
+  background: transparent;
 
   .btn {
     display: flex;

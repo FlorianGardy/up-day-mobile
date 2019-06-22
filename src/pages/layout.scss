@@ -1,9 +1,55 @@
+// .page {
+//   display: flex;
+//   flex-direction: column;
+//   // flex-basis: 0;
+//   height: 100vh;
+//   width: 100vw;
+//   .pageBody {
+//     flex-grow: 1;
+//     .options {
+//       height: 70vh;
+//       align-content: space-around;
+//     }
+//   }
+// }
 .page {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  .pageBody {
-    flex-grow: 1;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 10vh 80vh;
+  align-items: stretch;
+  .topBar {
+    grid-row: 1;
   }
+  .pageBody {
+    grid-row: 2;
+
+    display: grid;
+    grid-template-rows: 8vh 72vh;
+    height: auto;
+    .timeBar {
+      grid-row: 1;
+    }
+    .options {
+      grid-row: 2;
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto;
+
+      & > :first-child {
+        height: auto;
+      }
+      & > :nth-child(2) {
+        height: auto;
+      }
+      & > :nth-last-child(2) {
+        height: auto;
+      }
+      & > :last-child {
+        height: auto;
+      }
+    }
+  }
+}
+.navBar {
+  grid-row: 10/11;
 }

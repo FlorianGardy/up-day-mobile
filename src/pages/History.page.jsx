@@ -8,18 +8,20 @@ import "./layout.scss";
 
 const History = () => {
   return (
-    <div className="page">
-      <TopBar
-        title="Historique"
-        leftButtonInfo={{ isVisible: false }}
-        rightButtonInfo={{ isVisible: false }}
-      />
-      <section className="pageBody">
-        <HistoryDateSelector />
-        <HistoryContainer />
-      </section>
+    <>
+      <div className="page">
+        <TopBar
+          title="Historique"
+          leftButtonInfo={{ isVisible: false }}
+          rightButtonInfo={{ isVisible: false }}
+        />
+        <section>
+          <HistoryDateSelector />
+          <HistoryContainer />
+        </section>
+      </div>
       <Navbar />
-    </div>
+    </>
   );
 };
 

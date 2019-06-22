@@ -3,30 +3,41 @@
 .optionSelector {
   display: flex;
   flex-direction: column;
-  margin: 20px auto;
+  margin: 10px auto;
   align-content: center;
   justify-content: space-around;
-
-  height: 15vh;
   width: 90vw;
-  border: 0.5px solid $beige;
-  border-radius: 10px;
-  background-color: darken(#fff, 2%);
+  min-height: min-content;
 
   h2 {
     font-size: 1.2rem;
+    text-align: left;
   }
   .btn {
-    color: $text-color-dark;
-    height: 30px;
-    min-width: 75px;
-    padding: em(5) em(5);
+    color: $text-color-light;
+    min-height: 40px;
+    min-width: 29vw;
+    padding: em(3) em(10);
+    background-color: $secondary-dark;
+    font-size: 1.1em;
+    border-style: none;
+
     &.selected {
-      color: $funcky-pink;
+      background-color: $funcky-pink;
     }
     /* remove border when clicked */
     &.selected:focus {
       outline: none;
+    }
+    &:nth-child(1) {
+      border-radius: 10px 0 0 10px;
+    }
+    &:nth-child(2) {
+      border-radius: 0;
+      margin: 0 2px;
+    }
+    &:nth-child(3) {
+      border-radius: 0 10px 10px 0;
     }
   }
 }

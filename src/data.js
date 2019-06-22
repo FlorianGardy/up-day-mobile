@@ -9,18 +9,21 @@ export const users = [
   }
 ];
 
-export const drinks = ["Eau / Soda", "Café / Thé", "Alcool"];
+export const drinks = ["Eau-Soda", "Café-Thé", "Alcool"];
 
-export const volumes = ["+", "++", "+++"];
+export const volumes = ["+", "+ +", "+ + +"];
 
-export const urinations = ["Normale", "Par précaution", "En urgence"];
+export const urinations = ["Normale", "Précaution", "Urgence"];
 
-export const defecations = ["Normale", "Avec difficulté", "En urgence"];
+export const defecations = ["Normale", "Difficulté", "Urgence"];
 
-export const contextUrination = ["Suite à une fuite", "Avec Gaz"];
+export const activities = ["Normale", "Sport", "Travail"];
 
-export const contextDefecation = [
+export const contextUrination = [
   "Suite à une fuite",
-  "Poussé anormale",
+  "Poussée anormale",
   "Avec difficulé"
 ];
+export const contextDefecation = ["Suite à une fuite", "Avec Gaz"];
+
+export const contextActivity = ["1 heure", "1/2 journée", "Journée"];

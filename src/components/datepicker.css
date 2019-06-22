@@ -3,7 +3,10 @@
   font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
   width: 100vw;
-  height: 10vh;
+  height: 8vh;
+  border: none;
+  background-color: rgb(216, 207, 175);
+  box-shadow: inset 0px 0px 30px -1px rgba(250, 248, 248, 0.5);
 }
 
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle,

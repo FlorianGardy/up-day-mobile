@@ -90,7 +90,7 @@ $modalEventsBtn: (
     height: 100 - $navHeight;
     width: 100vw;
     overflow: hidden;
-    background-color: $secondary-light;
+    background-color: $secondary-dark;
     will-change: transform, opacity;
 
     %btn {
