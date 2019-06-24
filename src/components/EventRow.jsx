@@ -10,7 +10,9 @@ const EventRow = ({ date, type, nature, volume, context, comment }) => {
         {nature} - {type}
         <br />
         {context.length !== 0
-          ? context.map((el, i) => <div key={i}>->{el}</div>)
+          ? context.map((contextItem, index) => (
+              <div key={index}>->{contextItem}</div>
+            ))
           : "Aucun context"}
       </div>
       <div className={styles.volume}>{volume}</div>

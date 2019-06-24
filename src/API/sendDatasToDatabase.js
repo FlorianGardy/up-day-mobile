@@ -10,7 +10,7 @@ export function sendDatasToDatabase(
   comment,
   userId
 ) {
-  let id = 1; //Force user 1 during dev
+  userId = 1; // TODO: Put in place Auth process
   const config = {
     method: "POST",
     baseURL: APIconfig.baseUrl,
@@ -22,7 +22,7 @@ export function sendDatasToDatabase(
       volume: measure,
       context,
       comment,
-      userId: id
+      userId: userId
     }
   };
 

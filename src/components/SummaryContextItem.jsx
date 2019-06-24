@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Summary.scss";
 
-const SummaryItem = ({ label, value }) => {
+const SummaryContextItem = ({ label, value }) => {
   return (
     <div className="summaryItems">
       <h2>{label}</h2>
@@ -20,9 +20,9 @@ const SummaryItem = ({ label, value }) => {
   );
 };
 
-SummaryItem.propTypes = {
+SummaryContextItem.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.array.isRequired
 };
 
-export default SummaryItem;
+export default SummaryContextItem;

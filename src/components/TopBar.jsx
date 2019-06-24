@@ -41,12 +41,10 @@ TopBar.propTypes = {
   title: PropTypes.string.isRequired,
   leftButtonInfo: PropTypes.shape({
     onClick: PropTypes.func,
-    text: PropTypes.string,
     isVisible: PropTypes.bool.isRequired
   }),
   rightButtonInfo: PropTypes.shape({
     onClick: PropTypes.func,
-    text: PropTypes.string,
     isVisible: PropTypes.bool.isRequired
   })
 };

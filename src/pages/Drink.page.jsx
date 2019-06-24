@@ -35,12 +35,10 @@ const Drink = ({
         <TopBar
           title="Boisson"
           leftButtonInfo={{
-            // text: "Annuler",
             onClick: () => history.push("/history"),
             isVisible: true
           }}
           rightButtonInfo={{
-            // text: "Suivant",
             onClick: () => history.push("/events/summary"),
             isVisible: true,
             isActive: kind && measure ? true : false

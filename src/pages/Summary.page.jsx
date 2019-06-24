@@ -22,18 +22,16 @@ const Drink = ({
 }) => {
   return (
     <div className="page">
-      {/* redirect of kind and measure are not set */}
+      {/* If kind or measure are not define, redirect to history page */}
       {!kind && !measure && history.push("/history")}
 
       <TopBar
         title="Résumé"
         leftButtonInfo={{
-          // text: "Retour",
           onClick: () => history.goBack(),
           isVisible: true
         }}
         rightButtonInfo={{
-          // text: "Terminer",
           onClick: async () => {
             await sendDatasToDatabase(
               date,
@@ -58,7 +56,6 @@ const Drink = ({
         <SummaryItem label="Type" value={kind} />
         <SummaryContextItem label="Contexte" value={context} />
         <SummaryItem label="Volume" value={measure} />
-        {/* {comment && <SummaryItem label="Commentaire" value={comment} />} */}
         <SummaryItem label="Commentaire" value={comment} />
       </section>
       <Navbar />

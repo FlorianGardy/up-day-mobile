@@ -45,8 +45,6 @@ export const getContext = (valueContext, checked) => {
         context.splice(index, 1);
       }
     }
-    console.log(context);
-
     dispatch(updateContext(context));
   };
 };

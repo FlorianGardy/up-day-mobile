@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import "./Summary.scss";
 
 const SummaryItem = ({ label, value }) => {
-  /* Style des containers de recap */
-
   return (
     <div className="summaryItems">
       <h2>{label}</h2>
