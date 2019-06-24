@@ -50,7 +50,7 @@ const Drink = ({
           isActive: true
         }}
       />
-      <section className="pageBody">
+      <section className="pageBodySummary">
         <div
           style={{
             display: "flex",
@@ -59,13 +59,14 @@ const Drink = ({
           }}
         >
           <SummaryItem
-            label="date"
+            label="Date"
             value={moment(date).format("dddd DD MMMM à HH:mm")}
           />
           <SummaryItem label="Type" value={kind} />
           <SummaryContextItem label="Contexte" value={context} />
           <SummaryItem label="Volume" value={measure} />
-          {comment && <SummaryItem label="Commentaire" value={comment} />}
+          {/* {comment && <SummaryItem label="Commentaire" value={comment} />} */}
+          <SummaryItem label="Commentaire" value={comment} />
         </div>
       </section>
       <Navbar />

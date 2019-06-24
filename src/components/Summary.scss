@@ -1,0 +1,19 @@
+@import "../sass/main.scss";
+
+.summaryItems {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+
+  min-width: min-content;
+  min-height: min-content;
+  padding: 20px;
+  border: 1px solid $funcky-pink;
+  h2 {
+    grid-row: 1/2;
+    font-size: 1.5rem;
+  }
+  p {
+    grid-row: 2/3;
+    font-size: 1.2rem;
+  }
+}

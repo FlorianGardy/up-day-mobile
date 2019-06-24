@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Summary.scss";
 
 const SummaryItem = ({ label, value }) => {
   /* Style des containers de recap */
@@ -9,7 +10,7 @@ const SummaryItem = ({ label, value }) => {
     margin: "5px"
   };
   return (
-    <div style={style}>
+    <div className="summaryItems">
       <h2>{label}</h2>
       {value.length !== 0 ? value.map((v, i) => <p key={i}>{v}</p>) : "Aucun"}
     </div>
