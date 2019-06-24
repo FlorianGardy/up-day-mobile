@@ -61,7 +61,7 @@ const Defecation = ({
               title="Contexte"
               options={contextDefecation}
               context={context}
-              onChange={updateContext}
+              onChange={getContext}
             />
             <OptionSelector
               title="Volume"

@@ -26,14 +26,14 @@ const Drink = ({
       {!kind && !measure && history.push("/history")}
 
       <TopBar
-        title="Récap"
+        title="Résumé"
         leftButtonInfo={{
-          text: "Retour",
+          // text: "Retour",
           onClick: () => history.goBack(),
           isVisible: true
         }}
         rightButtonInfo={{
-          text: "Terminer",
+          // text: "Terminer",
           onClick: async () => {
             await sendDatasToDatabase(
               date,
@@ -51,23 +51,15 @@ const Drink = ({
         }}
       />
       <section className="pageBodySummary">
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-around"
-          }}
-        >
-          <SummaryItem
-            label="Date"
-            value={moment(date).format("dddd DD MMMM à HH:mm")}
-          />
-          <SummaryItem label="Type" value={kind} />
-          <SummaryContextItem label="Contexte" value={context} />
-          <SummaryItem label="Volume" value={measure} />
-          {/* {comment && <SummaryItem label="Commentaire" value={comment} />} */}
-          <SummaryItem label="Commentaire" value={comment} />
-        </div>
+        <SummaryItem
+          label="Date"
+          value={moment(date).format("dddd DD MMMM à HH:mm")}
+        />
+        <SummaryItem label="Type" value={kind} />
+        <SummaryContextItem label="Contexte" value={context} />
+        <SummaryItem label="Volume" value={measure} />
+        {/* {comment && <SummaryItem label="Commentaire" value={comment} />} */}
+        <SummaryItem label="Commentaire" value={comment} />
       </section>
       <Navbar />
     </div>
