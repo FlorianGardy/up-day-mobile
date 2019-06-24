@@ -5,7 +5,8 @@ export function getUserHistoryFromAPI(userID) {
   const config = {
     method: "get",
     baseURL: APIconfig.baseUrl,
-    url: `events/${userID}`
+    // url: `events/${userID}`
+    url: `/events/1`
   };
 
   return axios

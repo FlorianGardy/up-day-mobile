@@ -10,6 +10,7 @@ export function sendDatasToDatabase(
   comment,
   userId
 ) {
+  let id = 1; //Force user 1 during dev
   const config = {
     method: "POST",
     baseURL: APIconfig.baseUrl,
@@ -21,7 +22,7 @@ export function sendDatasToDatabase(
       volume: measure,
       context,
       comment,
-      userId
+      userId: id
     }
   };
 

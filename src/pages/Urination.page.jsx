@@ -11,7 +11,7 @@ import {
   updateKind,
   updateMeasure,
   updateComment,
-  updateContext,
+  getContext,
   updateNature
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
@@ -20,7 +20,7 @@ import "./layout.scss";
 const Urination = ({
   updateDate,
   updateKind,
-  updateContext,
+  getContext,
   updateVolume,
   updateComment,
   date,
@@ -88,7 +88,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateKind(kind));
       dispatch(updateNature("Miction"));
     },
-    updateContext: (context, check) => dispatch(updateContext(context, check)),
+    getContext: (context, check) => dispatch(getContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };

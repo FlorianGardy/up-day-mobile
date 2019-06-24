@@ -22,8 +22,8 @@ export const updateMeasure = measure => {
   return { type: UPDATE_MEASURE, measure };
 };
 
-export const updateContext = (context, checked) => {
-  return { type: UPDATE_CONTEXT, context, checked };
+export const updateContext = context => {
+  return { type: UPDATE_CONTEXT, context };
 };
 
 export const updateComment = comment => {
@@ -32,4 +32,21 @@ export const updateComment = comment => {
 
 export const resetEvent = () => {
   return { type: RESET_EVENT };
+};
+
+export const getContext = (valueContext, checked) => {
+  return (dispatch, getState) => {
+    const context = getState().EventReducer.context;
+    if (checked === true) {
+      context.push(valueContext);
+    } else if (checked === false) {
+      const index = context.findIndex(i => i === valueContext);
+      if (index !== -1) {
+        context.splice(index, 1);
+      }
+    }
+    console.log(context);
+
+    dispatch(updateContext(context));
+  };
 };
