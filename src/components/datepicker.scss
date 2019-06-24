@@ -1,3 +1,5 @@
+@import "../sass/main.scss";
+
 .center-text-datepicker {
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -5,7 +7,7 @@
   width: 100vw;
   height: 8vh;
   border: none;
-  background-color: rgb(216, 207, 175);
+  background-color: $secondary-light;
   box-shadow: inset 0px 0px 30px -1px rgba(250, 248, 248, 0.5);
 }
 

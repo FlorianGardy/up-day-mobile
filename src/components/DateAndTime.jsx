@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import DatePicker, { registerLocale } from "react-datepicker";
 import fr from "date-fns/locale/fr"; // the locale you want
-import "./datepicker.css";
+import "./datepicker.scss";
 registerLocale("fr", fr); // register it with the name you want
 
 const DateAndTime = ({ date, handleChange }) => {

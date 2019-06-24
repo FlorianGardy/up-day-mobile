@@ -15,7 +15,7 @@ const History = () => {
           leftButtonInfo={{ isVisible: false }}
           rightButtonInfo={{ isVisible: false }}
         />
-        <section>
+        <section className="pageBodyHistory">
           <HistoryDateSelector />
           <HistoryContainer />
         </section>

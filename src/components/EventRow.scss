@@ -1,0 +1,25 @@
+.eventRow {
+  display: grid;
+  grid-template-columns: 15% 70% 15%;
+  margin-top: 0.5vh;
+  height: 11vh;
+  & > * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.info {
+  background: lightgray;
+}
+
+.time {
+  color: white;
+  background: grey;
+}
+
+.volume {
+  color: white;
+  background: darkgray;
+}

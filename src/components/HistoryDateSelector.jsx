@@ -6,18 +6,15 @@ import moment from "moment";
 import "moment/locale/fr";
 
 const HistoryDateSelector = ({ dispatch, selectedHistoryDate }) => {
-  const style = { margin: "20px" };
   return (
-    <div style={style}>
+    <div className="historyDateSelector">
       <input
-        style={style}
         type="button"
         onClick={() => dispatch(shiftDate("left"))}
         value="&larr;"
       />
       {moment(selectedHistoryDate).format("dddd DD MMMM")}
       <input
-        style={style}
         type="button"
         onClick={() => dispatch(shiftDate("right"))}
         value="&rarr;"
