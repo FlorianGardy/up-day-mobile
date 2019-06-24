@@ -3,5 +3,3 @@
 @mixin google-font($family) {
   @import url("http://fonts.googleapis.com/css?family=#{$family}");
 }
-// How to use it in code
-// @include google-font("Raleway");
