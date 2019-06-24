@@ -2,7 +2,7 @@
 @import "../sass/mixins";
 @import "../sass/variables";
 
-$btnAddEventDiameter: 70px;
+$btnAddEventDiameter: 50px;
 $navHeight: 10vh;
 $modalEventsBtn: (
   "Poo": $poo,
@@ -24,21 +24,20 @@ $modalEventsBtn: (
     height: $navHeight;
     width: 100vw;
     background-color: $funcky-pink;
+    a {
+      color: $almost-white;
+      text-decoration: none;
+    }
     z-index: 1;
     .activeLink {
-      color: $secondary-light;
+      color: $funcky-dark-pink;
     }
-    a {
-      text-decoration: none;
-      color: $almost-white;
-      font-weight: 600;
-    }
+
     .history {
       grid-area: history;
       align-self: center;
       justify-self: start;
       width: 100%;
-
       .calendar {
         padding-top: 1vh;
         font-size: 0.8rem;
@@ -56,24 +55,15 @@ $modalEventsBtn: (
     }
     .events {
       grid-area: events;
-      position: relative;
-      bottom: 30px;
-      display: flex;
       justify-self: center;
-      height: $btnAddEventDiameter;
-      width: $btnAddEventDiameter;
-      border: 5px solid white;
-      border-radius: 50%;
+      align-self: center;
+      text-decoration: none;
+      color: $almost-white;
       cursor: pointer;
-      z-index: 99;
-      @include button-bg($secondary-light);
-      .cross {
-        margin: auto;
-        overflow: hidden;
-        fill: $funcky-pink;
-      }
-      &:hover .cross {
-        fill: $almost-white;
+      width: 100%;
+      .new {
+        padding-top: 1vh;
+        font-size: 0.8rem;
       }
     }
   }
@@ -96,7 +86,6 @@ $modalEventsBtn: (
     %btn {
       display: flex;
       @include box(35vmin);
-      // border: 7px solid $smooth-white;
 
       border-radius: 50%;
       justify-self: center;
@@ -110,8 +99,6 @@ $modalEventsBtn: (
       text-transform: uppercase;
       justify-content: center;
       align-items: center;
-
-      // @include shadowEffect;
     }
 
     // It's like a map... we don't have to write the same code for our 4 buttons
