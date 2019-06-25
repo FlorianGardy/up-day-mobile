@@ -1,6 +1,4 @@
-@import "../sass/functions";
-@import "../sass/mixins";
-@import "../sass/variables";
+@import "../sass/main.scss";
 
 $btnAddEventDiameter: 50px;
 $navHeight: 10vh;
@@ -28,7 +26,7 @@ $modalEventsBtn: (
       color: $almost-white;
       text-decoration: none;
     }
-    z-index: 1;
+    z-index: 2;
     .activeLink {
       color: $funcky-dark-pink;
     }

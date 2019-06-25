@@ -3,20 +3,9 @@ import Navbar from "../components/Navbar";
 import TopBar from "../components/TopBar";
 
 import "./layout.scss";
+import "./Infos.page.scss";
 
 function Infos() {
-  // Component style
-  const style = {
-    main: {
-      margin: "20px"
-    },
-    ulist: {
-      textAlign: "left",
-      padding: "10px"
-    },
-    titleComment: {}
-  };
-
   return (
     <>
       <div className="page">
@@ -25,27 +14,25 @@ function Infos() {
           leftButtonInfo={{ isVisible: false }}
           rightButtonInfo={{ isVisible: false }}
         />
-        <section style={style.main}>
-          <div id="firstBlock">
-            <h2>Pourquoi ?</h2>
-            <p>Cette évaluation vous aide à:</p>
-            <ul style={style.ulist}>
-              <li>
-                analyser avec votre thérapeuthe et à comprendre vos habitude
-                mictionnelles et défécatoire
-              </li>
-              <li>prendre en charge vos problèmes</li>
-            </ul>
+        <section className="pageBodyInfos">
+          <div className="firstBlock">
+            <h2>A quoi sert cette évaluation?</h2>
+            <p>
+              {" "}
+              Permettre à votre thérapeute d'analyser et de comprendre vos
+              habitudes mictionnelles et défécatoires, afin de trouver une
+              solution à vos problèmes.
+            </p>
           </div>
-          <div id="secondBlock">
-            <h2 style={style.titleComment}>Comment ?</h2>
+          <div className="secondBlock">
+            <h2>Comment faire?</h2>
             <p>
               Noter à chaque fois et au moment précis où ça se produit les
-              événements suivants pendant 3 jours et 3 nuits
+              événements suivants pendant 3 jours et 3 nuits, avec :
             </p>
-            <ul style={style.ulist}>
-              <li>1 jour sans contrainte (WE)</li>
-              <li>2 jours avec contraintes horaires</li>
+            <ul>
+              <li>- 1 jour sans contrainte (ex. WE)</li>
+              <li>- 2 jours avec contraintes horaires</li>
             </ul>
           </div>
         </section>

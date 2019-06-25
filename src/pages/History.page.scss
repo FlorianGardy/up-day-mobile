@@ -6,17 +6,24 @@
 
   .historyDateSelector {
     grid-row: 1;
-    height: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $secondary-light;
     color: $secondary-dark;
+    .btn {
+      color: $funcky-dark-pink;
+      margin: 0 2rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
   }
   .historyContainer {
     grid-row: 2;
-    align-self: flex-start;
     height: 100%;
+
+    align-self: flex-start;
     overflow: scroll;
 
     .eventRow {
