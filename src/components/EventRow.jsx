@@ -5,17 +5,19 @@ import "./EventRow.scss";
 const EventRow = ({ date, type, nature, volume, context, comment }) => {
   return (
     <div className="eventRow">
-      <div className="time">{date}</div>
-      <div className="info">
-        {nature} - {type}
-        <br />
-        {context.length !== 0
-          ? context.map((contextItem, index) => (
-              <div key={index}>->{contextItem}</div>
-            ))
-          : "Aucun context"}
+      <div className="eventTime">{date}</div>
+      <div className="eventNature">{nature}</div>
+      <div className="eventVolume">{volume}</div>
+      <div className="rowDetails">
+        <div className="eventType">{type}</div>
+        <ul className="eventContext">
+          {context.length !== 0
+            ? context.map((contextItem, index) => (
+                <li key={index}>{contextItem}</li>
+              ))
+            : ""}
+        </ul>
       </div>
-      <div className="volume">{volume}</div>
     </div>
   );
 };

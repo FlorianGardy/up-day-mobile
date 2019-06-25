@@ -11,7 +11,8 @@ import {
   updateKind,
   updateMeasure,
   updateComment,
-  updateContext
+  getContext,
+  updateNature
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
 import "./layout.scss";
@@ -19,7 +20,7 @@ import "./layout.scss";
 const Activity = ({
   updateDate,
   updateKind,
-  updateContext,
+  getContext,
   updateVolume,
   updateComment,
   date,
@@ -57,7 +58,7 @@ const Activity = ({
               title="Contexte"
               options={contextActivity}
               context={context}
-              onChange={updateContext}
+              onChange={getContext}
             />
             <OptionSelector
               title="Intensité de l'effort"
@@ -81,8 +82,11 @@ const Activity = ({
 const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
-    updateKind: drink => dispatch(updateKind(drink)),
-    updateContext: (context, check) => dispatch(updateContext(context, check)),
+    updateKind: kind => {
+      dispatch(updateKind(kind));
+      dispatch(updateNature("Activité"));
+    },
+    getContext: (context, check) => dispatch(getContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };

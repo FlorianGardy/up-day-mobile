@@ -19,7 +19,7 @@ import "./layout.scss";
 const Drink = ({
   updateDate,
   updateKind,
-  updateContext,
+  getContext,
   updateVolume,
   updateComment,
   date,

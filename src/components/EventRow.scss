@@ -1,25 +1,46 @@
+@import "../sass/main.scss";
+
 .eventRow {
   display: grid;
-  grid-template-columns: 15% 70% 15%;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 25% 50% 25%;
+  grid-template-areas: "time nature volume" "details details details";
   margin-top: 0.5vh;
+  background-color: $almost-white;
+  border-bottom: 2px solid $secondary-light;
+
   height: 11vh;
   & > * {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1vw;
+    font-size: 1.2rem;
+    color: $text-color-dark;
   }
-}
-
-.info {
-  background: lightgray;
-}
-
-.time {
-  color: white;
-  background: grey;
-}
-
-.volume {
-  color: white;
-  background: darkgray;
+  .eventTime {
+    grid-area: time;
+  }
+  .eventNature {
+    grid-area: nature;
+  }
+  .eventVolume {
+    grid-area: volume;
+  }
+  .rowDetails {
+    grid-area: details;
+    background-color: #fff;
+    color: $btn-grey;
+  }
+  .eventType {
+    font-size: 0.9rem;
+    padding: 2vw;
+  }
+  .eventContext {
+    font-size: 0.8rem;
+    display: flex;
+    li {
+      padding: 2vw;
+    }
+  }
 }
