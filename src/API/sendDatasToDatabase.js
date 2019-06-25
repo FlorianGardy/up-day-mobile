@@ -3,24 +3,26 @@ import { APIconfig } from "./axiosConfig";
 
 export function sendDatasToDatabase(
   date,
+  nature,
   kind,
   measure,
   context,
   comment,
   userId
 ) {
+  userId = 1; // TODO: Put in place Auth process
   const config = {
     method: "POST",
     baseURL: APIconfig.baseUrl,
     url: "/events",
     data: {
       date,
+      nature,
       type: kind,
-      nature: "coco",
       volume: measure,
       context,
       comment,
-      userId
+      userId: userId
     }
   };
 

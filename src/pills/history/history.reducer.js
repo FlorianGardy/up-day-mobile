@@ -14,13 +14,13 @@ const initialState = {
 export default function history(state = initialState, action) {
   switch (action.type) {
     case ADD_EVENT:
-      // TO BE COMPLETED
+      // TODO: Add an event to the history
       return { ...state };
     case UPDATE_EVENT:
-      // TO BE COMPLETED
+      // TODO: Update an event into the history
       return { ...state };
     case REMOVE_EVENT:
-      // TO BE COMPLETED
+      // TODO: Remove an event from the history
       return { ...state };
     case REFRESH_HISTORY:
       return { ...state, history: action.history };

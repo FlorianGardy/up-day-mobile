@@ -1,29 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./ContextSelector.module.css";
+import "./ContextSelector.scss";
 
 const ContextSelector = ({ options, onChange, context, title }) => {
   return (
-    <>
-      <div>
-        <h2>{title}</h2>
-        {options.map((option, i) => {
-          return (
-            <div key={i} style={{ margin: "2px" }}>
-              <label className={styles.switch}>
-                <input
-                  type="checkbox"
-                  checked={context.map(el => el.value).includes(option.label)}
-                  onChange={e => onChange(option.label, e.target.checked)}
-                />
-                <span className={[styles.slider, styles.round].join(" ")} />
-              </label>
-              {option.label}
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <div className="context">
+      <h2>{title}</h2>
+      {options.map((option, i) => {
+        return (
+          <div className="allLine" key={i}>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={context.includes(option)}
+                onChange={e => onChange(option, e.target.checked)}
+              />
+              <span className="slider round" />
+            </label>
+            <span className="text">{option}</span>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

@@ -3,16 +3,6 @@
   width: $width;
   height: $height;
 }
-// USAGE
-// You must provide at least one parameter to make it work:
-
-// .square {
-//   @include box(50px);
-// }
-// .rectangle {
-//   @include box(100px, 50px);
-// }
-// ------------------------------------------
 
 // Browser Prefixes
 @mixin transform($transform) {
@@ -22,11 +12,6 @@
   -moz-transform: $transform;
   transform: $transform;
 }
-// Exemple:
-// .btn {
-//   @include transform(rotate(10deg));
-// }
-// ------------------------------------------
 
 // Button's background changes on hover and active
 @mixin button-bg($bg) {
@@ -40,11 +25,18 @@
   }
 }
 
-// How to use it in code
-//  .btn-green {
-//     @include button-bg(#2ecc71);
-//  }
-// ------------------------------------------
+// Button's color changes on hover and active
+@mixin button-text-color($text-color) {
+  color: $text-color;
+  transition: 0.4s;
+  &:hover {
+    color: darken($text-color, 8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    color: darken($text-color, 15%);
+  }
+}
 
 // keyframes mixin
 @mixin keyframes($name) {
@@ -61,7 +53,6 @@
     @content;
   }
 }
-// ------------------------------------------
 
 // Shadows for the modalEventBtn
 @mixin shadowEffect {
@@ -69,7 +60,6 @@
     inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 2px 5px 14px 0px grey, inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
 }
-// ------------------------------------------
 
 // Triangle for date and time component
 @mixin triangle($color: #fff, $size: 10px) {
@@ -85,6 +75,3 @@
     left: calc(50% - #{$size});
   }
 }
-// How to use it
-// @include triangle($color: choose color, $size: choose size);
-// ------------------------------------------

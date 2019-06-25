@@ -1,27 +1,25 @@
 import React from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
-import ContextSelector from "../components/ContextSelector";
 import Comment from "../components/Comment";
-import { volumes, defecations, contextDefecation } from "../data";
+import { volumes, activities, contextActivity } from "../data";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
 import {
   updateDate,
-  updateNature,
   updateKind,
   updateMeasure,
-  getContext,
-  updateComment
+  updateComment,
+  updateContext
 } from "../pills/event/event.action";
-
+import ContextSelector from "../components/ContextSelector";
 import "./layout.scss";
 
-const Defecation = ({
+const Activity = ({
   updateDate,
   updateKind,
-  getContext,
+  updateContext,
   updateVolume,
   updateComment,
   date,
@@ -35,7 +33,7 @@ const Defecation = ({
     <>
       <div className="page">
         <TopBar
-          title="Défécation"
+          title="Activité"
           leftButtonInfo={{
             onClick: () => history.push("/history"),
             isVisible: true
@@ -50,19 +48,19 @@ const Defecation = ({
           <DateAndTime date={date} handleChange={updateDate} />
           <div className="options">
             <OptionSelector
-              title="Type d'envie"
-              options={defecations}
+              title="Type d'activité"
+              options={activities}
               activeOption={kind}
               onClick={updateKind}
             />
             <ContextSelector
               title="Contexte"
-              options={contextDefecation}
+              options={contextActivity}
               context={context}
-              onChange={getContext}
+              onChange={updateContext}
             />
             <OptionSelector
-              title="Volume"
+              title="Intensité de l'effort"
               options={volumes}
               activeOption={measure}
               onClick={updateVolume}
@@ -83,12 +81,8 @@ const Defecation = ({
 const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
-    updateNature: nature => dispatch(updateNature(nature)),
-    updateKind: kind => {
-      dispatch(updateKind(kind));
-      dispatch(updateNature("Défécation"));
-    },
-    getContext: (context, check) => dispatch(getContext(context, check)),
+    updateKind: drink => dispatch(updateKind(drink)),
+    updateContext: (context, check) => dispatch(updateContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };
@@ -105,4 +99,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Defecation);
+)(Activity);

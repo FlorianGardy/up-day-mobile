@@ -1,15 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Summary.scss";
 
 const SummaryItem = ({ label, value }) => {
-  /* Style des containers de recap */
-  const style = {
-    width: "45%",
-    border: "1px pink solid",
-    margin: "5px"
-  };
   return (
-    <div style={style}>
+    <div className="summaryItems">
       <h2>{label}</h2>
       <p>{value}</p>
     </div>

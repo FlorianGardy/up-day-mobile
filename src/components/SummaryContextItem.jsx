@@ -1,26 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Summary.scss";
 
-const SummaryItem = ({ label, value }) => {
-  /* Style des containers de recap */
-  const style = {
-    width: "45%",
-    border: "1px pink solid",
-    margin: "5px"
-  };
+const SummaryContextItem = ({ label, value }) => {
   return (
-    <div style={style}>
+    <div className="summaryItems">
       <h2>{label}</h2>
-      {value.length !== 0
-        ? value.map((v, i) => <p key={i}>{v.value}</p>)
-        : "Aucun"}
+      <ul>
+        {value.length !== 0
+          ? value.map((v, i) => (
+              <li key={i}>
+                {v}
+                <br />
+              </li>
+            ))
+          : "Aucun"}
+      </ul>
     </div>
   );
 };
 
-SummaryItem.propTypes = {
+SummaryContextItem.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.array.isRequired
 };
 
-export default SummaryItem;
+export default SummaryContextItem;

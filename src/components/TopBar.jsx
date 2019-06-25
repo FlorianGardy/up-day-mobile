@@ -1,22 +1,36 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faCheckCircle
+} from "@fortawesome/free-regular-svg-icons";
 
-import Styles from "./TopBar.module.css";
+import "./TopBar.scss";
 
 const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {
   // Render
   return (
-    <div className={Styles.TopBar}>
+    <div className="topBar">
       {leftButtonInfo.isVisible && (
-        <button onClick={() => leftButtonInfo.onClick()}>
-          {leftButtonInfo.text}
-        </button>
+        <div className="btn left" onClick={() => leftButtonInfo.onClick()}>
+          <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
+        </div>
       )}
-      <h1>{title}</h1>
-      {rightButtonInfo.isVisible && (
-        <button onClick={() => rightButtonInfo.onClick()}>
-          {rightButtonInfo.text}
-        </button>
+      <h1 className="title">{title}</h1>
+      {rightButtonInfo.isVisible && rightButtonInfo.isActive ? (
+        <div
+          className="btn right isActive"
+          onClick={() => rightButtonInfo.onClick()}
+        >
+          <FontAwesomeIcon icon={faCheckCircle} size="2x" />
+        </div>
+      ) : rightButtonInfo.isVisible ? (
+        <div className="btn right">
+          <FontAwesomeIcon icon={faCheckCircle} size="2x" />
+        </div>
+      ) : (
+        ""
       )}
     </div>
   );
@@ -27,12 +41,10 @@ TopBar.propTypes = {
   title: PropTypes.string.isRequired,
   leftButtonInfo: PropTypes.shape({
     onClick: PropTypes.func,
-    text: PropTypes.string,
     isVisible: PropTypes.bool.isRequired
   }),
   rightButtonInfo: PropTypes.shape({
     onClick: PropTypes.func,
-    text: PropTypes.string,
     isVisible: PropTypes.bool.isRequired
   })
 };

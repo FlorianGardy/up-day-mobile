@@ -7,9 +7,12 @@ import moment from "moment";
 import TopBar from "../components/TopBar";
 import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
+import "./layout.scss";
+
 const Drink = ({
   dispatch,
   date,
+  nature,
   kind,
   measure,
   context,
@@ -18,22 +21,21 @@ const Drink = ({
   userId
 }) => {
   return (
-    <div>
-      {/* redirect of kind and measure are not set */}
+    <div className="page">
+      {/* If kind or measure are not define, redirect to history page */}
       {!kind && !measure && history.push("/history")}
 
       <TopBar
-        title="Récap"
+        title="Résumé"
         leftButtonInfo={{
-          text: "Retour",
           onClick: () => history.goBack(),
           isVisible: true
         }}
         rightButtonInfo={{
-          text: "Terminer",
           onClick: async () => {
             await sendDatasToDatabase(
               date,
+              nature,
               kind,
               measure,
               context,
@@ -42,33 +44,28 @@ const Drink = ({
             );
             history.push("/history");
           },
-          isVisible: true
+          isVisible: true,
+          isActive: true
         }}
       />
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-around"
-        }}
-      >
+      <section className="pageBodySummary">
         <SummaryItem
-          label="date"
+          label="Date"
           value={moment(date).format("dddd DD MMMM à HH:mm")}
         />
         <SummaryItem label="Type" value={kind} />
         <SummaryContextItem label="Contexte" value={context} />
         <SummaryItem label="Volume" value={measure} />
         <SummaryItem label="Commentaire" value={comment} />
-      </div>
+      </section>
       <Navbar />
     </div>
   );
 };
 
 const mapDispatchToProps = state => ({
-  // Je fais passer toutes les données dans le reducer de l'event en props de la page.
   date: state.EventReducer.date,
+  nature: state.EventReducer.nature,
   kind: state.EventReducer.kind,
   measure: state.EventReducer.measure,
   context: state.EventReducer.context,

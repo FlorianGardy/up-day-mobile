@@ -11,15 +11,16 @@ import {
   updateKind,
   updateMeasure,
   updateComment,
-  updateContext
+  getContext,
+  updateNature
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
-import "./grid.scss";
+import "./layout.scss";
 
 const Urination = ({
   updateDate,
   updateKind,
-  updateContext,
+  getContext,
   updateVolume,
   updateComment,
   date,
@@ -30,56 +31,62 @@ const Urination = ({
   history
 }) => {
   return (
-    <div className="page">
-      <TopBar
-        title="Miction"
-        leftButtonInfo={{
-          text: "Annuler",
-          onClick: () => history.push("/history"),
-          isVisible: true
-        }}
-        rightButtonInfo={{
-          text: "Suivant",
-          onClick: () => history.push("/events/summary"),
-          isVisible: kind && measure ? true : false
-        }}
-      />
-      <section className="pageBody">
-        <DateAndTime date={date} handleChange={updateDate} />
-        <OptionSelector
-          title="Type d'envie"
-          options={urinations}
-          activeOption={kind}
-          onClick={updateKind}
+    <>
+      <div className="page">
+        <TopBar
+          title="Miction"
+          leftButtonInfo={{
+            onClick: () => history.push("/history"),
+            isVisible: true
+          }}
+          rightButtonInfo={{
+            onClick: () => history.push("/events/summary"),
+            isVisible: true,
+            isActive: kind && measure ? true : false
+          }}
         />
-        <ContextSelector
-          title="Context"
-          options={contextUrination}
-          context={context}
-          onChange={updateContext}
-        />
-        <OptionSelector
-          title="Volume"
-          options={volumes}
-          activeOption={measure}
-          onClick={updateVolume}
-        />
-        <Comment
-          title="Commentaire"
-          commentText={comment}
-          onChange={updateComment}
-        />
-      </section>
+        <section className="pageBody">
+          <DateAndTime date={date} handleChange={updateDate} />
+          <div className="options">
+            <OptionSelector
+              title="Type d'envie"
+              options={urinations}
+              activeOption={kind}
+              onClick={updateKind}
+            />
+            <ContextSelector
+              title="Contexte"
+              options={contextUrination}
+              context={context}
+              onChange={getContext}
+            />
+            <OptionSelector
+              title="Volume"
+              options={volumes}
+              activeOption={measure}
+              onClick={updateVolume}
+            />
+            <Comment
+              title="Commentaire"
+              commentText={comment}
+              onChange={updateComment}
+            />
+          </div>
+        </section>
+      </div>
       <Navbar />
-    </div>
+    </>
   );
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
-    updateKind: drink => dispatch(updateKind(drink)),
-    updateContext: (context, check) => dispatch(updateContext(context, check)),
+    updateKind: kind => {
+      dispatch(updateKind(kind));
+      dispatch(updateNature("Miction"));
+    },
+    getContext: (context, check) => dispatch(getContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };

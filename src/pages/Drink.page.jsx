@@ -10,8 +10,11 @@ import {
   updateDate,
   updateKind,
   updateMeasure,
-  updateComment
+  updateComment,
+  updateNature
 } from "../pills/event/event.action";
+
+import "./layout.scss";
 
 const Drink = ({
   updateDate,
@@ -27,47 +30,55 @@ const Drink = ({
   history
 }) => {
   return (
-    <div>
-      <TopBar
-        title="Boisson"
-        leftButtonInfo={{
-          text: "Annuler",
-          onClick: () => history.push("/history"),
-          isVisible: true
-        }}
-        rightButtonInfo={{
-          text: "Suivant",
-          onClick: () => history.push("/events/summary"),
-          isVisible: kind && measure ? true : false
-        }}
-      />
-      <DateAndTime date={date} handleChange={updateDate} />
-      <OptionSelector
-        title="Type de boisson"
-        options={drinks}
-        activeOption={kind}
-        onClick={updateKind}
-      />
-      <OptionSelector
-        title="Volume"
-        options={volumes}
-        activeOption={measure}
-        onClick={updateVolume}
-      />
-      <Comment
-        title="Commentaire"
-        commentText={comment}
-        onChange={updateComment}
-      />
+    <>
+      <div className="page">
+        <TopBar
+          title="Boisson"
+          leftButtonInfo={{
+            onClick: () => history.push("/history"),
+            isVisible: true
+          }}
+          rightButtonInfo={{
+            onClick: () => history.push("/events/summary"),
+            isVisible: true,
+            isActive: kind && measure ? true : false
+          }}
+        />
+        <section className="pageBody">
+          <DateAndTime date={date} handleChange={updateDate} />
+          <div className="options">
+            <OptionSelector
+              title="Type de boisson"
+              options={drinks}
+              activeOption={kind}
+              onClick={updateKind}
+            />
+            <OptionSelector
+              title="Volume"
+              options={volumes}
+              activeOption={measure}
+              onClick={updateVolume}
+            />
+            <Comment
+              title="Commentaire"
+              commentText={comment}
+              onChange={updateComment}
+            />
+          </div>
+        </section>
+      </div>
       <Navbar />
-    </div>
+    </>
   );
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     updateDate: date => dispatch(updateDate(date)),
-    updateKind: drink => dispatch(updateKind(drink)),
+    updateKind: kind => {
+      dispatch(updateKind(kind));
+      dispatch(updateNature("Boisson"));
+    },
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };

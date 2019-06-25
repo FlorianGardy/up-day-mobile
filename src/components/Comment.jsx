@@ -1,18 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./Comment.scss";
+
 const Comment = ({ onChange, commentText, title }) => {
-  const style = { textAlign: "center", resize: "none" };
   return (
-    <div>
+    <div className="comment">
       <h2>{title}</h2>
       <textarea
-        style={style}
+        className="text"
         placeholder="Laissez un commentaire"
         onChange={onChange}
         value={commentText}
-        cols="30"
-        rows="5"
+        cols="25"
+        rows="4"
       />
     </div>
   );
