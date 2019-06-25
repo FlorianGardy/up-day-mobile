@@ -1,0 +1,67 @@
+@import "../../sass/main.scss";
+
+.loginPage {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10vh 30% 1fr 10vh;
+  justify-items: center;
+  align-items: center;
+  background-color: $almost-white;
+  color: $secondary-dark;
+  .logo {
+    grid-row: 2;
+    width: 50%;
+
+    img {
+      width: 50%;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: $funcky-pink;
+      letter-spacing: 4px;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+  }
+  form {
+    grid-row: 3;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    height: 20vh;
+    width: 70vw;
+
+    & > * {
+      border-radius: 50px;
+      box-sizing: border-box;
+      padding: rem(3) rem(5);
+      letter-spacing: 1px;
+      font-size: 1.2rem;
+    }
+    //this code is to change the autofill color, comment this section to see the diference.
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px white inset;
+      background-color: transparent;
+    }
+    input[type="text"] {
+      grid-row: 1;
+      select {
+        background-color: green !important;
+      }
+    }
+    input[type="password"] {
+      grid-row: 2;
+    }
+    input[type="submit"] {
+      grid-row: 3;
+      background-color: $funcky-pink;
+      font-weight: bold;
+      color: $almost-white;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
 import { isUserInDatabase } from "../../API/functions.js";
 import { Redirect } from "react-router-dom";
+import logoKineGrey from "./logoKineGrey.png";
 
 const Login = ({ dispatch }) => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
@@ -27,7 +28,8 @@ const Login = ({ dispatch }) => {
       {shouldRedirect && <Redirect to="/history" />}
       <LoginView
         onSubmit={handleSubmit}
-        logo="https://www.logogenie.fr/download/preview/medium/4165102"
+        // logo="https://www.logogenie.fr/download/preview/medium/4165102"
+        logo={logoKineGrey}
       />
     </div>
   );
