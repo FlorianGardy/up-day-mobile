@@ -9,52 +9,9 @@
   }
   .pageBodyHistory {
     grid-row: 2;
-
-    display: grid;
-    grid-template-rows: 8vh 72vh;
-    .historyDateSelector {
-      grid-row: 1;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: $secondary-light;
-    }
-    .historyContainer {
-      grid-row: 2;
-      align-self: flex-start;
-      height: 100%;
-      overflow: scroll;
-    }
   }
   .pageBodySummary {
     grid-row: 2;
-
-    display: grid;
-    grid-template-areas: "date type" "context quantity" "comment comment";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, 1fr);
-    justify-content: space-around;
-    align-content: space-around;
-    grid-gap: 15px;
-    padding: 15px;
-    background-color: $secondary-dark;
-
-    & > :first-child {
-      grid-area: date;
-    }
-    & > :nth-child(2) {
-      grid-area: type;
-    }
-    & > :nth-last-child(3) {
-      grid-area: context;
-    }
-    & > :nth-last-child(2) {
-      grid-area: quantity;
-    }
-    & > :last-child {
-      grid-area: comment;
-    }
   }
   .pageBodyEvents {
     grid-row: 2;

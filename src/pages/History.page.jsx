@@ -4,7 +4,8 @@ import HistoryDateSelector from "../components/HistoryDateSelector";
 import TopBar from "../components/TopBar";
 import HistoryContainer from "../pills/history/history.container";
 
-import "./layout.scss";
+// import "./layout.scss";
+import "./History.page.scss";
 
 const History = () => {
   return (
