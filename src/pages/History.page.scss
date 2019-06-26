@@ -26,6 +26,17 @@
     align-self: flex-start;
     overflow: scroll;
 
+    .historyFirstCo {
+      font-size: 1.2rem;
+      line-height: 2.5rem;
+      height: 100%;
+      display: grid;
+      padding: 5vw;
+      h2 {
+        align-self: center;
+      }
+    }
+
     .eventRow {
       display: grid;
       grid-template-rows: 50% 50%;
