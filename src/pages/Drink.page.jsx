@@ -19,7 +19,7 @@ import "./layout.scss";
 const Drink = ({
   updateDate,
   updateKind,
-  updateContext,
+  getContext,
   updateVolume,
   updateComment,
   date,
@@ -44,7 +44,7 @@ const Drink = ({
             isActive: kind && measure ? true : false
           }}
         />
-        <section className="pageBody">
+        <section className="pageBodyEvents">
           <DateAndTime date={date} handleChange={updateDate} />
           <div className="options">
             <OptionSelector

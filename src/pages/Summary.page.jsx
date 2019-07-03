@@ -7,6 +7,7 @@ import moment from "moment";
 import TopBar from "../components/TopBar";
 import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
+import "./Summary.page.scss";
 import "./layout.scss";
 
 const Drink = ({

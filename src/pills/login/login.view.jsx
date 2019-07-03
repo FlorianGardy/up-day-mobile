@@ -1,9 +1,14 @@
 import React from "react";
+import "./login.scss";
 
 const loginView = ({ onSubmit, logo }) => {
   return (
-    <div>
-      <img src={logo} alt="logo" height="100px" />
+    <div className="loginPage">
+      <section className="logo">
+        <img src={logo} alt="logo" />
+        <h1>KinAid</h1>
+        <h2>Calendrier Mictionnel</h2>
+      </section>
       <form onSubmit={e => onSubmit(e)}>
         <input name="username" type="text" placeholder="Identifiant" />
         <input name="password" type="password" placeholder="Mot de passe" />

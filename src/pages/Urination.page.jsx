@@ -45,7 +45,7 @@ const Urination = ({
             isActive: kind && measure ? true : false
           }}
         />
-        <section className="pageBody">
+        <section className="pageBodyEvents">
           <DateAndTime date={date} handleChange={updateDate} />
           <div className="options">
             <OptionSelector

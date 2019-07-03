@@ -26,7 +26,7 @@ const HistoryContainer = ({ dispatch, selectedHistoryDate, history, user }) => {
   }, [user, dispatch]);
 
   return (
-    <div>
+    <div className="historyContainer">
       <HistoryView history={filteredHistory} />
     </div>
   );

@@ -1,21 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./EventRow.module.css";
 
 const EventRow = ({ date, type, nature, volume, context, comment }) => {
   return (
-    <div className={styles.main}>
-      <div className={styles.time}>{date}</div>
-      <div className={styles.info}>
-        {nature} - {type}
-        <br />
-        {context.length !== 0
-          ? context.map((contextItem, index) => (
-              <div key={index}>->{contextItem}</div>
-            ))
-          : "Aucun context"}
+    <div className="eventRow">
+      <div className="eventTime">{date}</div>
+      <div className="eventNature">{nature}</div>
+      <div className="eventVolume">{volume}</div>
+      <div className="rowDetails">
+        <div className="eventType">{type}</div>
+        <ul className="eventContext">
+          {context.length !== 0
+            ? context.map((contextItem, index) => (
+                <li key={index}>{contextItem}</li>
+              ))
+            : ""}
+        </ul>
       </div>
-      <div className={styles.volume}>{volume}</div>
     </div>
   );
 };

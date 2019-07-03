@@ -6,10 +6,9 @@ import "./Comment.scss";
 const Comment = ({ onChange, commentText, title }) => {
   return (
     <div className="comment">
-      <h2>{title}</h2>
       <textarea
         className="text"
-        placeholder="Laissez un commentaire"
+        placeholder="Commentaires..."
         onChange={onChange}
         value={commentText}
         cols="25"

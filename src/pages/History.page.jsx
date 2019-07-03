@@ -5,6 +5,7 @@ import TopBar from "../components/TopBar";
 import HistoryContainer from "../pills/history/history.container";
 
 import "./layout.scss";
+import "./History.page.scss";
 
 const History = () => {
   return (
@@ -15,7 +16,7 @@ const History = () => {
           leftButtonInfo={{ isVisible: false }}
           rightButtonInfo={{ isVisible: false }}
         />
-        <section>
+        <section className="pageBodyHistory">
           <HistoryDateSelector />
           <HistoryContainer />
         </section>
