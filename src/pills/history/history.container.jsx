@@ -6,7 +6,12 @@ import "moment/locale/fr";
 import { getHistory } from "../history/history.action";
 import { userSelector } from "../login/login.selectors";
 
-const HistoryContainer = ({ dispatch, selectedHistoryDate, history, user }) => {
+const HistoryContainer = ({
+  getHistoryDispatch,
+  selectedHistoryDate,
+  history,
+  user
+}) => {
   const [filteredHistory, setFilteredHistory] = useState([]);
   useEffect(() => {
     const newFilteredHistory = history.filter(event => {
@@ -22,14 +27,23 @@ const HistoryContainer = ({ dispatch, selectedHistoryDate, history, user }) => {
   }, [history, selectedHistoryDate]);
 
   useEffect(() => {
-    dispatch(getHistory());
-  }, [user, dispatch]);
+    getHistoryDispatch();
+  }, [user, getHistoryDispatch]);
 
   return (
     <div className="historyContainer">
-      <HistoryView history={filteredHistory} />
+      <HistoryView
+        history={filteredHistory}
+        getHistoryDispatch={getHistoryDispatch}
+      />
     </div>
   );
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getHistoryDispatch: () => dispatch(getHistory())
+  };
 };
 
 const mapStateToProps = state => ({
@@ -38,4 +52,7 @@ const mapStateToProps = state => ({
   user: userSelector(state)
 });
 
-export default connect(mapStateToProps)(HistoryContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HistoryContainer);
