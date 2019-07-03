@@ -23,14 +23,12 @@ const HistoryView = ({ history, getHistoryDispatch }) => {
                 onPress: async () => {
                   await deleteEventInDatabase(event.id);
                   await getHistoryDispatch();
-                  console.log("L'event a été supprimé et histo rafraichi");
                 },
                 style: { backgroundColor: "red", color: "white" }
               }
             ]}
           >
             <EventRow
-              // key={event.id}
               date={moment(event.date).format("HH:mm")}
               type={event.type}
               nature={event.nature}
