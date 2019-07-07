@@ -12,9 +12,7 @@ export const getUserCredentials = (userName, UserPass) => {
       userName,
       UserPass
     );
-    console.log(uuid, name, email, token);
-
-    if (token !== "") {
+    if (token) {
       dispatch(updateUser(uuid, name, email, token));
     }
   };
