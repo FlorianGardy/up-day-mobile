@@ -17,7 +17,7 @@ const Login = ({ dispatch }) => {
       dispatch(updateUser("1")); // TODO: Put in place Auth process
       setShouldRedirect(true);
     } else {
-      alert("Vouuuuss ne passerez paaaaas !");
+      alert("Veuillez vérifier votre identifiant ou votre mot de passe !");
     }
 
     e.preventDefault();
@@ -26,11 +26,7 @@ const Login = ({ dispatch }) => {
   return (
     <div>
       {shouldRedirect && <Redirect to="/history" />}
-      <LoginView
-        onSubmit={handleSubmit}
-        // logo="https://www.logogenie.fr/download/preview/medium/4165102"
-        logo={logoKineGrey}
-      />
+      <LoginView onSubmit={handleSubmit} logo={logoKineGrey} />
     </div>
   );
 };
