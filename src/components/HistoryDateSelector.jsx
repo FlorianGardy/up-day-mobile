@@ -6,6 +6,7 @@ import moment from "moment";
 import "moment/locale/fr";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { getSelectedHistoryDate } from "../pills/history/history.selector";
 
 const HistoryDateSelector = ({ dispatch, selectedHistoryDate }) => {
   return (
@@ -34,7 +35,7 @@ HistoryDateSelector.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  selectedHistoryDate: state.HistoryReducer.selectedHistoryDate
+  selectedHistoryDate: getSelectedHistoryDate(state)
 });
 
 export default connect(mapStateToProps)(HistoryDateSelector);

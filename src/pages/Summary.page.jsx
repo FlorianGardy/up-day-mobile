@@ -9,6 +9,14 @@ import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
 import "./Summary.page.scss";
 import "./layout.scss";
+import {
+  getEventNature,
+  getEventKind,
+  getEventDate,
+  getEventMeasure,
+  getEventContext,
+  getEventComment
+} from "../pills/event/event.selector";
 
 const Drink = ({
   dispatch,
@@ -64,14 +72,14 @@ const Drink = ({
   );
 };
 
-const mapDispatchToProps = state => ({
-  date: state.EventReducer.date,
-  nature: state.EventReducer.nature,
-  kind: state.EventReducer.kind,
-  measure: state.EventReducer.measure,
-  context: state.EventReducer.context,
-  comment: state.EventReducer.comment,
+const mapStateToProps = state => ({
+  date: getEventDate(state),
+  kind: getEventKind(state),
+  nature: getEventNature(state),
+  measure: getEventMeasure(state),
+  context: getEventContext(state),
+  comment: getEventComment(state),
   userId: state.LoginReducer.user
 });
 
-export default connect(mapDispatchToProps)(Drink);
+export default connect(mapStateToProps)(Drink);

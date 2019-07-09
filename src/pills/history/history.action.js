@@ -3,26 +3,11 @@ import { getUserHistoryFromAPI } from "../../API/getUserHistoryFromAPI";
 import moment from "moment";
 
 // ACTIONS
-export const ADD_EVENT = "@history/ADD_EVENT";
-export const UPDATE_EVENT = "@history/UPDATE_EVENT";
-export const REMOVE_EVENT = "@history/REMOVE_EVENT";
 export const REFRESH_HISTORY = "@history/REFRESH_HISTORY";
 export const SHIFT_DATE = "@history/SHIFT_DATE";
 export const UPDATE_SELECTED_DATE = "@history/UPDATE_SELECTED_DATE";
 
 // ACTION CREATORS
-export const addEvent = event => {
-  return { type: ADD_EVENT, event };
-};
-
-export const updateEvent = event => {
-  return { type: UPDATE_EVENT, event };
-};
-
-export const removeEvent = event => {
-  return { type: REMOVE_EVENT, event };
-};
-
 export const refreshHistory = history => {
   return { type: REFRESH_HISTORY, history };
 };

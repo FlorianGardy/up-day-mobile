@@ -5,6 +5,7 @@ import moment from "moment";
 import "moment/locale/fr";
 import { getHistory } from "../history/history.action";
 import { userSelector } from "../login/login.selectors";
+import { getSelectedHistoryDate, getHistoryList } from "./history.selector";
 
 const HistoryContainer = ({ dispatch, selectedHistoryDate, history, user }) => {
   const [filteredHistory, setFilteredHistory] = useState([]);
@@ -33,8 +34,8 @@ const HistoryContainer = ({ dispatch, selectedHistoryDate, history, user }) => {
 };
 
 const mapStateToProps = state => ({
-  selectedHistoryDate: state.HistoryReducer.selectedHistoryDate,
-  history: state.HistoryReducer.history,
+  selectedHistoryDate: getSelectedHistoryDate(state),
+  history: getHistoryList(state),
   user: userSelector(state)
 });
 

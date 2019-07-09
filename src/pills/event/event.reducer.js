@@ -1,3 +1,13 @@
+import {
+  UPDATE_DATE,
+  UPDATE_NATURE,
+  UPDATE_KIND,
+  UPDATE_MEASURE,
+  UPDATE_CONTEXT,
+  UPDATE_COMMENT,
+  RESET_EVENT
+} from "./event.action";
+
 const initialState = {
   date: new Date(),
   kind: "",
@@ -9,19 +19,19 @@ const initialState = {
 
 export default function event(state = initialState, action) {
   switch (action.type) {
-    case "@event/UPDATE_DATE":
+    case UPDATE_DATE:
       return { ...state, date: action.date };
-    case "@event/UPDATE_NATURE":
+    case UPDATE_NATURE:
       return { ...state, nature: action.nature };
-    case "@event/UPDATE_KIND":
+    case UPDATE_KIND:
       return { ...state, kind: action.kind };
-    case "@event/UPDATE_MEASURE":
+    case UPDATE_MEASURE:
       return { ...state, measure: action.measure };
-    case "@event/UPDATE_CONTEXT":
+    case UPDATE_CONTEXT:
       return { ...state, context: [...action.context] };
-    case "@event/UPDATE_COMMENT":
+    case UPDATE_COMMENT:
       return { ...state, comment: action.comment };
-    case "@event/RESET_EVENT":
+    case RESET_EVENT:
       return { ...initialState, context: [], date: new Date() };
     default:
       return state;
