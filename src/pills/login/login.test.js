@@ -4,12 +4,15 @@ import login from "./login.reducer";
 describe("# Login", () => {
   describe("## action", () => {
     it("should create an action to update username", () => {
-      const user = "Check Norris";
+      const uuid = "aaaa-1111-aaaa";
+      const name = "Chuck Norris";
+      const email = "bestman@gmail.com";
+      const token = "myToken";
       const expectedAction = {
         type: UPDATE_USER,
-        user
+        payload: { uuid, name, email, token }
       };
-      expect(updateUser(user)).toEqual(expectedAction);
+      expect(updateUser(uuid, name, email, token)).toEqual(expectedAction);
     });
   });
 
@@ -19,9 +22,25 @@ describe("# Login", () => {
     });
 
     it("should handle UPDATE_USERNAME", () => {
-      const user = "Chuck Norris";
-      expect(login({ user: "" }, { type: UPDATE_USER, user })).toEqual({
-        user: "Chuck Norris"
+      const uuid = "aaaa-1111-aaaa";
+      const name = "Chuck Norris";
+      const email = "bestman@gmail.com";
+      const token = "myToken";
+      expect(
+        login(
+          {
+            uuid: "",
+            name: "",
+            email: "",
+            token: ""
+          },
+          { type: UPDATE_USER, payload: { uuid, name, email, token } }
+        )
+      ).toEqual({
+        uuid: "aaaa-1111-aaaa",
+        name: "Chuck Norris",
+        email: "bestman@gmail.com",
+        token: "myToken"
       });
     });
   });

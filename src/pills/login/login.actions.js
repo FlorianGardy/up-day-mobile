@@ -1,6 +1,6 @@
 import { getUserCredentialsFromAPI } from "../../API/getUserCredentialsFromAPI";
 
-const UPDATE_USER = "@login/UPDATE_USER";
+export const UPDATE_USER = "@login/UPDATE_USER";
 
 export const updateUser = (uuid, name, email, token) => {
   return { type: UPDATE_USER, payload: { uuid, name, email, token } };
