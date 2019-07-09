@@ -6,7 +6,7 @@ const loginView = ({ onSubmit, logo }) => {
     <div className="loginPage">
       <section className="logo">
         <img src={logo} alt="logo" />
-        <h1>KinAid</h1>
+        <h1>UP Day</h1>
         <h2>Calendrier Mictionnel</h2>
       </section>
       <form onSubmit={e => onSubmit(e)}>

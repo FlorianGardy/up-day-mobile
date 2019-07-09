@@ -13,13 +13,13 @@ export const drinks = ["Eau-Soda", "Café-Thé", "Alcool"];
 
 export const volumes = ["+", "+ +", "+ + +"];
 
-export const urinations = ["Normale", "Précaution", "Urgence"];
+export const urinations = ["Précaution", "Volontaire"];
 
-export const defecations = ["Normale", "Difficulté", "Urgence"];
+export const defecations = ["Précaution", "Volontaire"];
 
-export const activities = ["Normale", "Sport", "Travail"];
+export const activities = ["Sport", "Travail"];
 
-export const contextUrination = ["Fuite", "Poussée anormale", "Difficulté"];
-export const contextDefecation = ["Suite à une fuite", "Avec Gaz"];
+export const contextUrination = ["Fuite", "Difficulté", "Urgence"];
+export const contextDefecation = ["Fuite", "Difficulté", "Urgence"];
 
 export const contextActivity = ["1 heure", "1/2 journée", "Journée"];

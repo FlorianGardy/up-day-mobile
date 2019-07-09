@@ -11,7 +11,8 @@ const HistoryContainer = ({
   dispatch,
   selectedHistoryDate,
   history,
-  userUuid
+  userUuid,
+  getHistoryDispatch
 }) => {
   const [filteredHistory, setFilteredHistory] = useState([]);
   useEffect(() => {
@@ -33,9 +34,18 @@ const HistoryContainer = ({
 
   return (
     <div className="historyContainer">
-      <HistoryView history={filteredHistory} />
+      <HistoryView
+        history={filteredHistory}
+        getHistoryDispatch={getHistoryDispatch}
+      />
     </div>
   );
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getHistoryDispatch: () => dispatch(getHistory())
+  };
 };
 
 const mapStateToProps = state => ({
@@ -44,4 +54,7 @@ const mapStateToProps = state => ({
   userUuid: getUuid(state)
 });
 
-export default connect(mapStateToProps)(HistoryContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HistoryContainer);
