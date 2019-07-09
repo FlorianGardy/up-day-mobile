@@ -1,4 +1,4 @@
-import { userSelector } from "../login/login.selectors";
+import { getUuid } from "../login/login.selectors";
 import { getUserHistoryFromAPI } from "../../API/getUserHistoryFromAPI";
 import moment from "moment";
 
@@ -15,8 +15,8 @@ export const refreshHistory = history => {
 export function getHistory() {
   return async (dispatch, getState) => {
     const store = getState();
-    const user = userSelector(store);
-    const history = await getUserHistoryFromAPI(user);
+    const userUuid = getUuid(store);
+    const history = await getUserHistoryFromAPI(userUuid);
     if (typeof history !== "undefined") {
       dispatch(refreshHistory(history));
     }
