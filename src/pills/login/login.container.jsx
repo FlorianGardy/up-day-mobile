@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import LoginView from "./login.view.jsx";
 import { getUserCredentials, updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
