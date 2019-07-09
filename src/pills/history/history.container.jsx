@@ -29,8 +29,8 @@ const HistoryContainer = ({
   }, [history, selectedHistoryDate]);
 
   useEffect(() => {
-    dispatch(getHistory());
-  }, [userUuid, dispatch]);
+    getHistoryDispatch();
+  }, [userUuid, getHistoryDispatch]);
 
   return (
     <div className="historyContainer">
