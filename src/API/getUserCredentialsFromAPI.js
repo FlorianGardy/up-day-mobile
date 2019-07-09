@@ -1,11 +1,14 @@
 import axios from "axios";
-import { APIconfig } from "./axiosConfig";
+import { getAPIconfig } from "./axiosConfig";
 
 export function getUserCredentialsFromAPI(name, password) {
+  const { baseURL, headers } = getAPIconfig();
+
   const config = {
     method: "post",
-    baseURL: APIconfig.baseUrl,
+    baseURL,
     url: `login`,
+    headers,
     data: {
       name,
       password

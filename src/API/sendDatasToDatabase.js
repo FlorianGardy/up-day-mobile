@@ -1,5 +1,5 @@
 import axios from "axios";
-import { APIconfig } from "./axiosConfig";
+import { getAPIconfig } from "./axiosConfig";
 
 export function sendDatasToDatabase(
   date,
@@ -24,10 +24,13 @@ export function sendDatasToDatabase(
     body.comment = comment;
   }
 
+  const { baseURL, headers } = getAPIconfig();
+
   const config = {
     method: "POST",
-    baseURL: APIconfig.baseUrl,
+    baseURL,
     url: "/events",
+    headers,
     data: body
   };
 
