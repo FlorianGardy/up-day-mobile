@@ -17,6 +17,7 @@ import {
   getEventContext,
   getEventComment
 } from "../pills/event/event.selector";
+import { getUuid } from "../pills/login/login.selectors";
 
 const Drink = ({
   dispatch,
@@ -27,7 +28,7 @@ const Drink = ({
   context,
   comment,
   history,
-  userId
+  userUuid
 }) => {
   return (
     <div className="page">
@@ -49,7 +50,7 @@ const Drink = ({
               measure,
               context,
               comment,
-              userId
+              userUuid
             );
             history.push("/history");
           },
@@ -79,7 +80,7 @@ const mapStateToProps = state => ({
   measure: getEventMeasure(state),
   context: getEventContext(state),
   comment: getEventComment(state),
-  userId: state.LoginReducer.user
+  userUuid: getUuid(state)
 });
 
 export default connect(mapStateToProps)(Drink);
