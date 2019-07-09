@@ -4,8 +4,9 @@ import { getUserCredentials, updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import logoKineGrey from "./logoKineGrey.png";
+import { getUuid } from "../login/login.selectors";
 
-const Login = ({ dispatch }) => {
+const Login = ({ dispatch, userUuid }) => {
   useEffect(() => {
     if (localStorage.getItem("user")) {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -22,11 +23,15 @@ const Login = ({ dispatch }) => {
     dispatch(getUserCredentials(username, password));
   };
 
-  if (localStorage.getItem("user")) {
+  if (userUuid) {
     return <Redirect to="/" />;
   }
 
   return <LoginView onSubmit={handleSubmit} logo={logoKineGrey} />;
 };
 
-export default connect()(Login);
+const mapStateToProps = state => ({
+  userUuid: getUuid(state)
+});
+
+export default connect(mapStateToProps)(Login);
