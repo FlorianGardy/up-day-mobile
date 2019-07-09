@@ -8,22 +8,27 @@ export function sendDatasToDatabase(
   measure,
   context,
   comment,
-  userId
+  uuid
 ) {
-  userId = 1; // TODO: Put in place Auth process
+  const body = {
+    date,
+    nature,
+    type: kind,
+    volume: measure,
+    uuid
+  };
+  if (context.length !== 0) {
+    body.context = context.join("|");
+  }
+  if (comment) {
+    body.comment = comment;
+  }
+
   const config = {
     method: "POST",
     baseURL: APIconfig.baseUrl,
     url: "/events",
-    data: {
-      date,
-      nature,
-      type: kind,
-      volume: measure,
-      context,
-      comment,
-      userId: userId
-    }
+    data: body
   };
 
   return axios.request(config);

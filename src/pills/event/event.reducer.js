@@ -14,7 +14,7 @@ const initialState = {
   nature: "",
   measure: "",
   context: [],
-  comment: ""
+  comment: null
 };
 
 export default function event(state = initialState, action) {
