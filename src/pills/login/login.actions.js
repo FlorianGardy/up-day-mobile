@@ -13,6 +13,8 @@ export const getUserCredentials = (userName, UserPass) => {
       UserPass
     );
     if (token) {
+      let storedUser = JSON.stringify({ uuid, name, email, token });
+      localStorage.setItem("user", storedUser);
       dispatch(updateUser(uuid, name, email, token));
     }
   };
