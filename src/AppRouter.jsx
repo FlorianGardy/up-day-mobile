@@ -8,20 +8,26 @@ import History from "./pages/History.page.jsx";
 import Urination from "./pages/Urination.page.jsx";
 import Activity from "./pages/Activity.page.jsx";
 import Summary from "./pages/Summary.page.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 function AppRouter() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/" exact component={Login} />
-          <Route path="/events/summary" exact component={Summary} />
-          <Route path="/events/defecation" exact component={Defecation} />
-          <Route path="/events/drink" exact component={Drink} />
-          <Route path="/events/urination" exact component={Urination} />
-          <Route path="/events/activity" exact component={Activity} />
-          <Route path="/history" exact component={History} />
-          <Route path="/about" exact component={Infos} />
+          <Route path="/login" exact component={Login} />
+          <PrivateRoute path="/" exact component={History} />
+          <PrivateRoute path="/events/summary" exact component={Summary} />
+          <PrivateRoute
+            path="/events/defecation"
+            exact
+            component={Defecation}
+          />
+          <PrivateRoute path="/events/drink" exact component={Drink} />
+          <PrivateRoute path="/events/urination" exact component={Urination} />
+          <PrivateRoute path="/events/activity" exact component={Activity} />
+          <PrivateRoute path="/history" exact component={History} />
+          <PrivateRoute path="/about" exact component={Infos} />
         </Switch>
       </div>
     </Router>
