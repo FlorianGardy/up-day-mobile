@@ -10,10 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $secondary-light;
-    color: $secondary-dark;
+    background-color: $primary-light;
+    color: $primary-dark;
     .btn {
-      color: $funcky-dark-pink;
+      color: $primary-dark;
       margin: 0 2rem;
       font-size: 0.9rem;
       cursor: pointer;
@@ -43,7 +43,7 @@
       grid-template-columns: 25% 50% 25%;
       grid-template-areas: "time nature volume" "details details details";
       background-color: $almost-white;
-      border-bottom: 2px solid $secondary-light;
+      border-bottom: 2px solid $primary-light;
 
       height: 11vh;
       & > * {
@@ -52,7 +52,7 @@
         align-items: center;
         padding: 1vw;
         font-size: 1.2rem;
-        color: $secondary-dark;
+        color: $primary-dark;
       }
       .eventTime {
         grid-area: time;

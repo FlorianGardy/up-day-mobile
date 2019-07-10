@@ -21,14 +21,14 @@ $modalEventsBtn: (
     bottom: 0;
     height: $navHeight;
     width: 100vw;
-    background-color: $funcky-pink;
+    background-color: $primary-color;
     a {
       color: $almost-white;
       text-decoration: none;
     }
     z-index: 2;
     .activeLink {
-      color: $funcky-dark-pink;
+      color: $primary-dark;
     }
 
     .history {
@@ -78,7 +78,7 @@ $modalEventsBtn: (
     height: 100 - $navHeight;
     width: 100vw;
     overflow: hidden;
-    background-color: $secondary-dark;
+    background-color: $primary-dark;
     will-change: transform, opacity;
 
     %btn {

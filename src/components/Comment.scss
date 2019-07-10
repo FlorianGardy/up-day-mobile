@@ -21,11 +21,11 @@
     font-size: 1rem;
     padding: rem(8) rem(15);
     max-height: 10vh;
-    color: $secondary-dark;
+    color: $primary-dark;
     font-family: "Montserrat", serif;
 
     &::placeholder {
-      color: $secondary-dark;
+      color: $primary-dark;
     }
   }
 }
