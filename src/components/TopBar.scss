@@ -31,7 +31,7 @@
       justify-self: end;
     }
     &.isActive {
-      @include button-text-color($btn-green);
+      @include button-text-color($btn-orange);
       animation-name: btnGrow;
       animation-duration: 1s;
     }

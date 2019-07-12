@@ -28,7 +28,7 @@ $modalEventsBtn: (
     }
     z-index: 2;
     .activeLink {
-      color: $primary-dark;
+      color: $primary-light;
     }
 
     .history {
@@ -36,9 +36,11 @@ $modalEventsBtn: (
       align-self: center;
       justify-self: start;
       width: 100%;
+
       .calendar {
         padding-top: 1vh;
         font-size: 0.8rem;
+        font-weight: bold;
       }
     }
     .about {
@@ -49,6 +51,7 @@ $modalEventsBtn: (
       .infos {
         padding-top: 1vh;
         font-size: 0.8rem;
+        font-weight: bold;
       }
     }
     .events {
@@ -62,6 +65,7 @@ $modalEventsBtn: (
       .new {
         padding-top: 1vh;
         font-size: 0.8rem;
+        font-weight: bold;
       }
     }
   }

@@ -3,7 +3,7 @@ import LoginView from "./login.view.jsx";
 import { getUserCredentials, updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import logoKineGrey from "./logoKineGrey.png";
+import logoKineOrange from "./logoKineOrange.png";
 import { getUuid } from "../login/login.selectors";
 
 const Login = ({ dispatch, userUuid }) => {
@@ -27,7 +27,7 @@ const Login = ({ dispatch, userUuid }) => {
     return <Redirect to="/" />;
   }
 
-  return <LoginView onSubmit={handleSubmit} logo={logoKineGrey} />;
+  return <LoginView onSubmit={handleSubmit} logo={logoKineOrange} />;
 };
 
 const mapStateToProps = state => ({
