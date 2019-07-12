@@ -5,10 +5,12 @@ const HistoryFirstCo = () => {
     <div className="historyFirstCo">
       <h2>Bienvenue !</h2>
       <p>
-        Pour démarrer voter calendrier, appuyez sur le boutton + en bas de votre
-        écran. <br />
-        Choisissez ensuite l'évènement que vous voulez enregistrer et renseignez
-        les informations demandées.
+        Il n'existe aucun évenement à cette date.
+        <br />
+        :-(
+        <br />
+        <br />
+        Cliquez sur le bouton "+" en bas de l'écran pour en créer un.
       </p>
     </div>
   );
