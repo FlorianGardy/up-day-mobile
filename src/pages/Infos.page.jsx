@@ -16,24 +16,18 @@ function Infos() {
         />
         <section className="pageBodyInfos">
           <div className="firstBlock">
-            <h2>A quoi sert cette évaluation?</h2>
+            <h2>Pourquoi ?</h2>
             <p>
-              {" "}
-              Permettre à votre thérapeute d'analyser et de comprendre vos
-              habitudes mictionnelles et défécatoires, afin de trouver une
-              solution à vos problèmes.
+              Ce calendrier va être utile pour identifier vos habitudes
+              mictionelles et défécatoires afin d’optimiser la prise en charge.
             </p>
           </div>
           <div className="secondBlock">
-            <h2>Comment faire?</h2>
+            <h2>Comment ?</h2>
             <p>
-              Noter à chaque fois et au moment précis où ça se produit les
-              événements suivants pendant 3 jours et 3 nuits, avec :
+              Pensez à noter chaque situation quand elle se produit dans la
+              catégorie concernée pendant 3 jours et 3 nuits.
             </p>
-            <ul>
-              <li>- 1 jour sans contrainte (ex. WE)</li>
-              <li>- 2 jours avec contraintes horaires</li>
-            </ul>
           </div>
         </section>
       </div>
