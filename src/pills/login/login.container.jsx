@@ -4,9 +4,9 @@ import { getUserCredentials, updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import logoKineOrange from "./logoKineOrange.png";
-import { getUuid } from "../login/login.selectors";
+import { getUuid, getStatusCode } from "../login/login.selectors";
 
-const Login = ({ dispatch, userUuid }) => {
+const Login = ({ dispatch, userUuid, statusCode }) => {
   useEffect(() => {
     if (localStorage.getItem("user")) {
       const { uuid, name, email, token } = JSON.parse(
@@ -28,11 +28,18 @@ const Login = ({ dispatch, userUuid }) => {
     return <Redirect to="/" />;
   }
 
-  return <LoginView onSubmit={handleSubmit} logo={logoKineOrange} />;
+  return (
+    <LoginView
+      onSubmit={handleSubmit}
+      logo={logoKineOrange}
+      statusCode={statusCode}
+    />
+  );
 };
 
 const mapStateToProps = state => ({
-  userUuid: getUuid(state)
+  userUuid: getUuid(state),
+  statusCode: getStatusCode(state)
 });
 
 export default connect(mapStateToProps)(Login);

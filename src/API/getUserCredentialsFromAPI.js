@@ -19,7 +19,7 @@ export function getUserCredentialsFromAPI(name, password) {
     .request(config)
     .then(response => dataSelection(response))
     .catch(error => {
-      console.log(error);
+      return error.response.data.statusCode;
     });
 }
 

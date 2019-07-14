@@ -13,3 +13,7 @@ export function getEmail(state) {
 export function getToken(state) {
   return state.LoginReducer.token;
 }
+
+export function getStatusCode(state) {
+  return state.LoginReducer.statusCode;
+}
