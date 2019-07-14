@@ -18,8 +18,9 @@ export function getUserHistoryFromAPI(userUuid) {
       return dataSelection(response);
     })
     .then(selectedData => dataNormalization(selectedData))
-    .catch(error => {
-      console.log(error);
+    .catch(err => {
+      localStorage.clear();
+      return (window.location.href = "/login");
     });
 }
 
