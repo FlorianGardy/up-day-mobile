@@ -3,7 +3,6 @@ import { getAPIconfig } from "./axiosConfig";
 
 export function getUserHistoryFromAPI(userUuid) {
   const { baseURL, headers } = getAPIconfig();
-  console.log(baseURL);
 
   const config = {
     method: "get",
