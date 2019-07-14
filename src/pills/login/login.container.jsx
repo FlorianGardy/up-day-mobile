@@ -9,11 +9,12 @@ import { getUuid } from "../login/login.selectors";
 const Login = ({ dispatch, userUuid }) => {
   useEffect(() => {
     if (localStorage.getItem("user")) {
-      const user = JSON.parse(localStorage.getItem("user"));
-      const { uuid, name, email, token } = user;
+      const { uuid, name, email, token } = JSON.parse(
+        localStorage.getItem("user")
+      );
       dispatch(updateUser(uuid, name, email, token));
     }
-  }, [dispatch]);
+  }, [dispatch, userUuid]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -23,7 +24,7 @@ const Login = ({ dispatch, userUuid }) => {
     dispatch(getUserCredentials(username, password));
   };
 
-  if (userUuid) {
+  if (userUuid && localStorage.getItem("user")) {
     return <Redirect to="/" />;
   }
 
