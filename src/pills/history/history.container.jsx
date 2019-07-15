@@ -4,13 +4,15 @@ import HistoryView from "./history.view";
 import moment from "moment";
 import "moment/locale/fr";
 import { getHistory } from "../history/history.action";
-import { userSelector } from "../login/login.selectors";
+import { getUuid } from "../login/login.selectors";
+import { getSelectedHistoryDate, getHistoryList } from "./history.selector";
 
 const HistoryContainer = ({
-  getHistoryDispatch,
+  dispatch,
   selectedHistoryDate,
   history,
-  user
+  userUuid,
+  getHistoryDispatch
 }) => {
   const [filteredHistory, setFilteredHistory] = useState([]);
   useEffect(() => {
@@ -28,7 +30,7 @@ const HistoryContainer = ({
 
   useEffect(() => {
     getHistoryDispatch();
-  }, [user, getHistoryDispatch]);
+  }, [userUuid, getHistoryDispatch]);
 
   return (
     <div className="historyContainer">
@@ -47,9 +49,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
-  selectedHistoryDate: state.HistoryReducer.selectedHistoryDate,
-  history: state.HistoryReducer.history,
-  user: userSelector(state)
+  selectedHistoryDate: getSelectedHistoryDate(state),
+  history: getHistoryList(state),
+  userUuid: getUuid(state)
 });
 
 export default connect(

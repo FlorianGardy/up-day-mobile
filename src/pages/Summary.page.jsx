@@ -9,6 +9,15 @@ import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
 import "./Summary.page.scss";
 import "./layout.scss";
+import {
+  getEventNature,
+  getEventKind,
+  getEventDate,
+  getEventMeasure,
+  getEventContext,
+  getEventComment
+} from "../pills/event/event.selector";
+import { getUuid } from "../pills/login/login.selectors";
 
 const Drink = ({
   dispatch,
@@ -19,7 +28,7 @@ const Drink = ({
   context,
   comment,
   history,
-  userId
+  userUuid
 }) => {
   return (
     <div className="page">
@@ -41,7 +50,7 @@ const Drink = ({
               measure,
               context,
               comment,
-              userId
+              userUuid
             );
             history.push("/history");
           },
@@ -64,14 +73,14 @@ const Drink = ({
   );
 };
 
-const mapDispatchToProps = state => ({
-  date: state.EventReducer.date,
-  nature: state.EventReducer.nature,
-  kind: state.EventReducer.kind,
-  measure: state.EventReducer.measure,
-  context: state.EventReducer.context,
-  comment: state.EventReducer.comment,
-  userId: state.LoginReducer.user
+const mapStateToProps = state => ({
+  date: getEventDate(state),
+  kind: getEventKind(state),
+  nature: getEventNature(state),
+  measure: getEventMeasure(state),
+  context: getEventContext(state),
+  comment: getEventComment(state),
+  userUuid: getUuid(state)
 });
 
-export default connect(mapDispatchToProps)(Drink);
+export default connect(mapStateToProps)(Drink);

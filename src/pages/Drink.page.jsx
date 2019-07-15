@@ -15,6 +15,13 @@ import {
 } from "../pills/event/event.action";
 
 import "./layout.scss";
+import {
+  getEventDate,
+  getEventMeasure,
+  getEventContext,
+  getEventKind,
+  getEventComment
+} from "../pills/event/event.selector";
 
 const Drink = ({
   updateDate,
@@ -85,11 +92,11 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
-  date: state.EventReducer.date,
-  kind: state.EventReducer.kind,
-  measure: state.EventReducer.measure,
-  context: state.EventReducer.context,
-  comment: state.EventReducer.comment
+  date: getEventDate(state),
+  kind: getEventKind(state),
+  measure: getEventMeasure(state),
+  context: getEventContext(state),
+  comment: getEventComment(state)
 });
 
 export default connect(

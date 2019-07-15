@@ -1,10 +1,10 @@
-const UPDATE_DATE = "@event/UPDATE_DATE";
-const UPDATE_NATURE = "@event/UPDATE_NATURE";
-const UPDATE_KIND = "@event/UPDATE_KIND";
-const UPDATE_MEASURE = "@event/UPDATE_MEASURE";
-const UPDATE_CONTEXT = "@event/UPDATE_CONTEXT";
-const UPDATE_COMMENT = "@event/UPDATE_COMMENT";
-const RESET_EVENT = "@event/RESET_EVENT";
+export const UPDATE_DATE = "@event/UPDATE_DATE";
+export const UPDATE_NATURE = "@event/UPDATE_NATURE";
+export const UPDATE_KIND = "@event/UPDATE_KIND";
+export const UPDATE_MEASURE = "@event/UPDATE_MEASURE";
+export const UPDATE_CONTEXT = "@event/UPDATE_CONTEXT";
+export const UPDATE_COMMENT = "@event/UPDATE_COMMENT";
+export const RESET_EVENT = "@event/RESET_EVENT";
 
 export const updateDate = date => {
   return { type: UPDATE_DATE, date };

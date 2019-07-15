@@ -1,14 +1,3 @@
-export const users = [
-  {
-    name: "Jojo",
-    password: "1234"
-  },
-  {
-    name: "Laura",
-    password: "1234"
-  }
-];
-
 export const drinks = ["Eau-Soda", "Café-Thé", "Alcool"];
 
 export const volumes = ["+", "+ +", "+ + +"];

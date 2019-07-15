@@ -10,7 +10,7 @@ const EventRow = ({ date, type, nature, volume, context, comment }) => {
       <div className="rowDetails">
         <div className="eventType">{type}</div>
         <ul className="eventContext">
-          {context.length !== 0
+          {context
             ? context.map((contextItem, index) => (
                 <li key={index}>{contextItem}</li>
               ))

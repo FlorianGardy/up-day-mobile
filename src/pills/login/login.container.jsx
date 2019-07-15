@@ -1,34 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import LoginView from "./login.view.jsx";
-import { updateUser } from "./login.actions.js";
+import { getUserCredentials, updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
-import { isUserInDatabase } from "../../API/functions.js";
 import { Redirect } from "react-router-dom";
 import logoKineGrey from "./logoKineGrey.png";
+import { getUuid } from "../login/login.selectors";
 
-const Login = ({ dispatch }) => {
-  const [shouldRedirect, setShouldRedirect] = useState(false);
+const Login = ({ dispatch, userUuid }) => {
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      const { uuid, name, email, token } = user;
+      dispatch(updateUser(uuid, name, email, token));
+    }
+  }, [dispatch]);
 
   const handleSubmit = e => {
+    e.preventDefault();
     let username = e.target.username.value;
     let password = e.target.password.value;
 
-    if (isUserInDatabase(username, password)) {
-      dispatch(updateUser("1")); // TODO: Put in place Auth process
-      setShouldRedirect(true);
-    } else {
-      alert("Veuillez vérifier votre identifiant ou votre mot de passe !");
-    }
-
-    e.preventDefault();
+    dispatch(getUserCredentials(username, password));
   };
 
-  return (
-    <div>
-      {shouldRedirect && <Redirect to="/history" />}
-      <LoginView onSubmit={handleSubmit} logo={logoKineGrey} />
-    </div>
-  );
+  if (userUuid) {
+    return <Redirect to="/" />;
+  }
+
+  return <LoginView onSubmit={handleSubmit} logo={logoKineGrey} />;
 };
 
-export default connect()(Login);
+const mapStateToProps = state => ({
+  userUuid: getUuid(state)
+});
+
+export default connect(mapStateToProps)(Login);
