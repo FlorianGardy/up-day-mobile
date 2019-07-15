@@ -7,7 +7,7 @@ export function getUserHistoryFromAPI(userUuid) {
   const config = {
     method: "get",
     baseURL,
-    url: `events/${userUuid}`,
+    url: `events`,
     headers
   };
 
