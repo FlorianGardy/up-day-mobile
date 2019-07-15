@@ -9,7 +9,6 @@ import {
 import "./TopBar.scss";
 
 const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {
-  // Render
   return (
     <div className="topBar">
       {leftButtonInfo.isVisible && (

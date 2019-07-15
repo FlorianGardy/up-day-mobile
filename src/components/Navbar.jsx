@@ -48,7 +48,7 @@ const Navbar = ({ dispatch }) => {
             Miction
           </NavLink>
           <NavLink className="btn-Activity" to="/events/activity">
-            Activité
+            Sport
           </NavLink>
           <NavLink className="btn-Drink" to="/events/drink">
             Boisson

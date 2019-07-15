@@ -40,7 +40,7 @@ const Activity = ({
     <>
       <div className="page">
         <TopBar
-          title="Activité"
+          title="Sport"
           leftButtonInfo={{
             onClick: () => history.push("/history"),
             isVisible: true
@@ -65,6 +65,7 @@ const Activity = ({
               options={volumes}
               activeOption={measure}
               onClick={updateVolume}
+              bold
             />
             <Comment
               title="Commentaire"

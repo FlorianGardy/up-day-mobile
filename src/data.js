@@ -6,9 +6,7 @@ export const urinations = ["Précaution", "Volontaire"];
 
 export const defecations = ["Précaution", "Volontaire"];
 
-export const activities = ["1h", "2h", "1/2 journée"];
+export const activities = ["1h", "2h", "4h"];
 
 export const contextUrination = ["Fuite", "Difficulté", "Urgence"];
 export const contextDefecation = ["Fuite", "Difficulté", "Urgence"];
-
-export const contextActivity = ["1 heure", "1/2 journée", "Journée"];

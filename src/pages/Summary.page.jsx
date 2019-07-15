@@ -65,7 +65,7 @@ const Drink = ({
         />
         <SummaryItem label="Type" value={kind} />
         <SummaryContextItem label="Contexte" value={context} />
-        <SummaryItem label="Volume" value={measure} />
+        <SummaryItem label="Volume" value={measure} bold />
         <SummaryItem label="Commentaire" value={comment} />
       </section>
       <Navbar />
