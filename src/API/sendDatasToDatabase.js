@@ -34,5 +34,8 @@ export function sendDatasToDatabase(
     data: body
   };
 
-  return axios.request(config);
+  return axios.request(config).catch(err => {
+    localStorage.clear();
+    return (window.location.href = "/login");
+  });
 }

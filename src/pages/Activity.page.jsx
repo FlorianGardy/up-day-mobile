@@ -2,7 +2,7 @@ import React from "react";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import { volumes, activities, contextActivity } from "../data";
+import { volumes, activities } from "../data";
 import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
@@ -14,7 +14,6 @@ import {
   getContext,
   updateNature
 } from "../pills/event/event.action";
-import ContextSelector from "../components/ContextSelector";
 import "./layout.scss";
 import {
   getEventDate,
@@ -56,16 +55,10 @@ const Activity = ({
           <DateAndTime date={date} handleChange={updateDate} />
           <div className="options">
             <OptionSelector
-              title="Type d'activité"
+              title="Durée"
               options={activities}
               activeOption={kind}
               onClick={updateKind}
-            />
-            <ContextSelector
-              title="Contexte"
-              options={contextActivity}
-              context={context}
-              onChange={getContext}
             />
             <OptionSelector
               title="Intensité de l'effort"

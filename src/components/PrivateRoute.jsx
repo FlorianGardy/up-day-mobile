@@ -9,6 +9,8 @@ const PrivateRoute = ({ component: Component, dispatch, ...rest }) => {
       localStorage.getItem("user")
     );
     dispatch(updateUser(uuid, name, email, token));
+  } else {
+    dispatch(updateUser("", "", "", ""));
   }
   return (
     <Route

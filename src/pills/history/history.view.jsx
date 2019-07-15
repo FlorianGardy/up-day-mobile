@@ -24,7 +24,7 @@ const HistoryView = ({ history, getHistoryDispatch }) => {
                   await deleteEventInDatabase(event.id);
                   await getHistoryDispatch();
                 },
-                style: { backgroundColor: "red", color: "white" }
+                style: { margin: "2px", backgroundColor: "red", color: "white" }
               }
             ]}
           >

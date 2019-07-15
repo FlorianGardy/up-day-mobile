@@ -8,7 +8,7 @@
   justify-items: center;
   align-items: center;
   background-color: $almost-white;
-  color: $secondary-dark;
+  color: $primary-dark;
   .logo {
     grid-row: 2;
     grid-column: 2;
@@ -20,7 +20,7 @@
     h1 {
       font-size: 3rem;
       font-weight: bold;
-      color: $funcky-pink;
+      color: $primary-color;
       letter-spacing: 4px;
     }
     h2 {
@@ -59,7 +59,7 @@
     }
     input[type="submit"] {
       grid-row: 3;
-      background-color: $funcky-pink;
+      background-color: $primary-color;
       font-weight: bold;
       color: $almost-white;
       border: none;

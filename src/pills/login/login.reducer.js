@@ -2,7 +2,8 @@ const initialState = {
   uuid: "",
   name: "",
   email: "",
-  token: ""
+  token: "",
+  statusCode: 200
 };
 
 export default function login(state = initialState, action) {
@@ -13,7 +14,13 @@ export default function login(state = initialState, action) {
         uuid: action.payload.uuid,
         name: action.payload.name,
         email: action.payload.email,
-        token: action.payload.token
+        token: action.payload.token,
+        statusCode: 200
+      };
+    case "@login/UPDATE_USER_ERROR":
+      return {
+        ...state,
+        statusCode: action.payload
       };
     default:
       return state;

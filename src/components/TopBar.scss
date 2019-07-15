@@ -31,18 +31,34 @@
       justify-self: end;
     }
     &.isActive {
-      @include button-text-color($btn-green);
+      @include button-text-color($btn-orange);
+      animation-name: btnGrow;
+      animation-duration: 1s;
     }
   }
+
   .title {
     display: flex;
     align-items: center;
     justify-self: center;
     grid-area: title;
 
-    color: $funcky-pink;
+    color: $primary-color;
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
+  }
+}
+
+@keyframes btnGrow {
+  0% {
+    font-size: 1rem;
+  }
+
+  50% {
+    font-size: 1.5rem;
+  }
+  100% {
+    font-size: 1rem;
   }
 }
