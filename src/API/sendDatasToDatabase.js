@@ -7,15 +7,13 @@ export function sendDatasToDatabase(
   kind,
   measure,
   context,
-  comment,
-  uuid
+  comment
 ) {
   const body = {
     date,
     nature,
     type: kind,
-    volume: measure,
-    uuid
+    volume: measure
   };
   if (context.length !== 0) {
     body.context = context.join("|");
