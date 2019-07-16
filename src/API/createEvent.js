@@ -1,15 +1,9 @@
 import axios from "axios";
+
 import { getAPIconfig } from "./axiosConfig";
 import { manageError } from "./manageErrors";
 
-export function sendDatasToDatabase(
-  date,
-  nature,
-  kind,
-  measure,
-  context,
-  comment
-) {
+export function createEvent(date, nature, kind, measure, context, comment) {
   const body = {
     date,
     nature,
