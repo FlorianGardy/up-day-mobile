@@ -16,7 +16,6 @@ function AppRouter() {
       <div>
         <Switch>
           <Route path="/login" exact component={Login} />
-          <PrivateRoute path="/" exact component={History} />
           <PrivateRoute path="/events/summary" exact component={Summary} />
           <PrivateRoute
             path="/events/defecation"
