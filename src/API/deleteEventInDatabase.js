@@ -11,8 +11,7 @@ export function deleteEventInDatabase(id) {
     headers
   };
 
-  return axios.request(config).catch(err => {
-    localStorage.clear();
-    return (window.location.href = "/login");
+  return axios.request(config).catch(error => {
+    return error.response.data.statusCode;
   });
 }
