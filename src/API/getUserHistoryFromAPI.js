@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getAPIconfig } from "./axiosConfig";
+import { manageError } from "./manageErrors";
 
 export function getUserHistoryFromAPI(userUuid) {
   const { baseURL, headers } = getAPIconfig();
@@ -18,7 +19,7 @@ export function getUserHistoryFromAPI(userUuid) {
     })
     .then(selectedData => dataNormalization(selectedData))
     .catch(error => {
-      return error.response.data.statusCode;
+      return manageError(error);
     });
 }
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getAPIconfig } from "./axiosConfig";
+import { manageError } from "./manageErrors";
 
 export function sendDatasToDatabase(
   date,
@@ -33,6 +34,6 @@ export function sendDatasToDatabase(
   };
 
   return axios.request(config).catch(error => {
-    return error.response.data.statusCode;
+    return manageError(error);
   });
 }

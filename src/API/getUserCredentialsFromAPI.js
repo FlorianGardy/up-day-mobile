@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getAPIconfig } from "./axiosConfig";
+import { manageError } from "./manageErrors";
 
 export function getUserCredentialsFromAPI(name, password) {
   const { baseURL, headers } = getAPIconfig();
@@ -19,7 +20,7 @@ export function getUserCredentialsFromAPI(name, password) {
     .request(config)
     .then(response => dataSelection(response))
     .catch(error => {
-      return error.response.data.statusCode;
+      return manageError(error);
     });
 }
 
