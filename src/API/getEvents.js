@@ -1,8 +1,9 @@
 import axios from "axios";
+
 import { getAPIconfig } from "./axiosConfig";
 import { manageError } from "./manageErrors";
 
-export function getUserHistoryFromAPI(userUuid) {
+export function getEvents(userUuid) {
   const { baseURL, headers } = getAPIconfig();
 
   const config = {
@@ -17,25 +18,22 @@ export function getUserHistoryFromAPI(userUuid) {
     .then(response => {
       return dataSelection(response);
     })
-    .then(selectedData => dataNormalization(selectedData))
+    .then(events => dataNormalization(events))
     .catch(error => {
       return manageError(error);
     });
 }
 
-const dataSelection = response => {
-  let selectedData = response.data;
-  return selectedData;
-};
+const dataSelection = response => response.data;
 
-const dataNormalization = selectedData => {
-  let normalizedData = selectedData.map(event => {
+const dataNormalization = events => {
+  let normalizedData = events.map(event => {
     let id = event.id;
     let date = new Date(event.date);
     let type = event.type;
     let nature = event.nature;
     let volume = event.volume;
-    let context = event.context;
+    let contexts = event.context;
     let comment = event.comment;
 
     return {
@@ -44,7 +42,7 @@ const dataNormalization = selectedData => {
       type,
       nature,
       volume,
-      context,
+      contexts,
       comment
     };
   });
