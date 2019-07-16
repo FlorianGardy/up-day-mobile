@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const EventRow = ({ date, type, nature, volume, context, comment }) => {
+const EventRow = ({ date, type, nature, volume, contexts, comment }) => {
   return (
     <div className="eventRow">
       <div className="eventTime">{date}</div>
@@ -10,8 +10,8 @@ const EventRow = ({ date, type, nature, volume, context, comment }) => {
       <div className="rowDetails">
         <div className="eventType">{type}</div>
         <ul className="eventContext">
-          {context
-            ? context.map((contextItem, index) => (
+          {contexts
+            ? contexts.map((contextItem, index) => (
                 <li key={index}>{contextItem}</li>
               ))
             : ""}
@@ -26,7 +26,7 @@ EventRow.propTypes = {
   type: PropTypes.string.isRequired,
   nature: PropTypes.string.isRequired,
   volume: PropTypes.string.isRequired,
-  context: PropTypes.array,
+  contexts: PropTypes.arrayOf(PropTypes.string),
   comment: PropTypes.string
 };
 
