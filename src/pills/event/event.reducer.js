@@ -3,7 +3,7 @@ import {
   UPDATE_NATURE,
   UPDATE_KIND,
   UPDATE_MEASURE,
-  UPDATE_CONTEXT,
+  UPDATE_CONTEXTS,
   UPDATE_COMMENT,
   RESET_EVENT
 } from "./event.action";
@@ -13,7 +13,7 @@ const initialState = {
   kind: "",
   nature: "",
   measure: "",
-  context: [],
+  contexts: [],
   comment: ""
 };
 
@@ -27,8 +27,8 @@ export default function event(state = initialState, action) {
       return { ...state, kind: action.kind };
     case UPDATE_MEASURE:
       return { ...state, measure: action.measure };
-    case UPDATE_CONTEXT:
-      return { ...state, context: [...action.context] };
+    case UPDATE_CONTEXTS:
+      return { ...state, contexts: [...action.contexts] };
     case UPDATE_COMMENT:
       return { ...state, comment: action.comment };
     case RESET_EVENT:
