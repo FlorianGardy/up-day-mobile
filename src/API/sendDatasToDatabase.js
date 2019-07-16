@@ -16,7 +16,7 @@ export function sendDatasToDatabase(
     volume: measure
   };
   if (context.length !== 0) {
-    body.context = context.join("|");
+    body.context = context;
   }
   if (comment) {
     body.comment = comment;
