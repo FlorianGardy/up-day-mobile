@@ -1,10 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
 import { volumes, drinks } from "../data";
 import Navbar from "../components/Navbar";
-import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
 import {
   updateDate,
@@ -16,23 +17,20 @@ import {
 
 import "./layout.scss";
 import {
-  getEventDate,
-  getEventMeasure,
-  getEventContext,
-  getEventKind,
-  getEventComment
+  getEventDateSelector,
+  getEventMeasureSelector,
+  getEventKindSelector,
+  getEventCommentSelector
 } from "../pills/event/event.selector";
 
 const Drink = ({
   updateDate,
   updateKind,
-  getContext,
   updateVolume,
   updateComment,
   date,
   kind,
   measure,
-  context,
   comment,
   history
 }) => {
@@ -93,11 +91,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => ({
-  date: getEventDate(state),
-  kind: getEventKind(state),
-  measure: getEventMeasure(state),
-  context: getEventContext(state),
-  comment: getEventComment(state)
+  date: getEventDateSelector(state),
+  kind: getEventKindSelector(state),
+  measure: getEventMeasureSelector(state),
+  comment: getEventCommentSelector(state)
 });
 
 export default connect(

@@ -1,39 +1,40 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import { volumes, urinations, contextUrination } from "../data";
+import { volumes, urinations, contextsUrination } from "../data";
 import Navbar from "../components/Navbar";
-import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
 import {
   updateDate,
   updateKind,
   updateMeasure,
   updateComment,
-  getContext,
+  getContexts,
   updateNature
 } from "../pills/event/event.action";
 import ContextSelector from "../components/ContextSelector";
 import "./layout.scss";
 import {
-  getEventDate,
-  getEventKind,
-  getEventMeasure,
-  getEventContext,
-  getEventComment
+  getEventDateSelector,
+  getEventKindSelector,
+  getEventMeasureSelector,
+  getEventContextsSelector,
+  getEventCommentSelector
 } from "../pills/event/event.selector";
 
 const Urination = ({
   updateDate,
   updateKind,
-  getContext,
+  getContexts,
   updateVolume,
   updateComment,
   date,
   kind,
   measure,
-  context,
+  contexts,
   comment,
   history
 }) => {
@@ -63,9 +64,9 @@ const Urination = ({
             />
             <ContextSelector
               title="Contexte"
-              options={contextUrination}
-              context={context}
-              onChange={getContext}
+              options={contextsUrination}
+              contexts={contexts}
+              onChange={getContexts}
             />
             <OptionSelector
               title="Volume"
@@ -94,18 +95,18 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateKind(kind));
       dispatch(updateNature("Miction"));
     },
-    getContext: (context, check) => dispatch(getContext(context, check)),
+    getContexts: (contexts, check) => dispatch(getContexts(contexts, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };
 };
 
 const mapStateToProps = state => ({
-  date: getEventDate(state),
-  kind: getEventKind(state),
-  measure: getEventMeasure(state),
-  context: getEventContext(state),
-  comment: getEventComment(state)
+  date: getEventDateSelector(state),
+  kind: getEventKindSelector(state),
+  measure: getEventMeasureSelector(state),
+  contexts: getEventContextsSelector(state),
+  comment: getEventCommentSelector(state)
 });
 
 export default connect(
