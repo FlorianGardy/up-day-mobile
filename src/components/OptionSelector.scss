@@ -12,17 +12,19 @@
   h2 {
     font-size: 1.2rem;
     text-align: left;
+    color: $orange;
     padding-bottom: 1vh;
   }
   .btnGroup {
     width: inherit;
     .btn {
       color: $text-color-light;
-      min-height: 30px;
+      min-height: 35px;
       width: (90vw - 1) / 3;
       background-color: $primary-dark;
       font-size: 1rem;
       border-style: none;
+      line-height: 35px;
 
       &.volume {
         font-weight: bolder;

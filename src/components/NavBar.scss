@@ -28,7 +28,7 @@ $modalEventsBtn: (
     }
     z-index: 2;
     .activeLink {
-      color: $primary-light;
+      color: $primary-dark;
     }
 
     .history {
@@ -78,7 +78,7 @@ $modalEventsBtn: (
     grid-template-areas: "Poo Pee" "Activity Drink";
 
     position: absolute;
-    bottom: $navHeight;
+    top: 0;
     height: 100 - $navHeight;
     width: 100vw;
     overflow: hidden;
@@ -87,18 +87,16 @@ $modalEventsBtn: (
 
     %btn {
       display: flex;
-      @include box(35vmin);
-
+      @include box(30vmin);
       border-radius: 50%;
       justify-self: center;
       align-self: center;
 
+      font-family: "Assistant", sans-serif;
       color: $text-color-dark;
       text-decoration: none;
-      font-weight: 800;
-      font-size: 4vmin;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 4.8vmin;
       justify-content: center;
       align-items: center;
     }
@@ -107,7 +105,7 @@ $modalEventsBtn: (
     @each $event, $bgColor in $modalEventsBtn {
       .btn-#{$event} {
         @extend %btn;
-        border: 8px solid $bgColor;
+        border: 5px solid $bgColor;
         @include button-bg($almost-white);
         grid-area: $event;
       }

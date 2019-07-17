@@ -19,6 +19,7 @@ const EventsView = ({ events, getEvents }) => {
       ) : (
         events.map(event => (
           <Swipeout
+            style={{ marginTop: "5px" }}
             key={event.id}
             autoClose
             right={[

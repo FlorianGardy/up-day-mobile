@@ -18,6 +18,11 @@
       font-size: 0.9rem;
       cursor: pointer;
     }
+    p {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+    }
   }
   .historyContainer {
     grid-row: 2;
@@ -42,16 +47,16 @@
       grid-template-rows: 50% 50%;
       grid-template-columns: 25% 50% 25%;
       grid-template-areas: "time nature volume" "details details details";
-      background-color: $almost-white;
+      background-color: $primary-light;
       border-bottom: 2px solid $primary-light;
-
       height: 11vh;
       & > * {
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 1vw;
-        font-size: 1.2rem;
+        font-size: 1rem;
+        font-weight: bold;
         color: $primary-dark;
       }
       .eventTime {
@@ -66,7 +71,7 @@
       .rowDetails {
         grid-area: details;
         background-color: #fff;
-        color: $btn-grey;
+        color: $dark-grey;
       }
       .eventType {
         font-size: 0.9rem;
