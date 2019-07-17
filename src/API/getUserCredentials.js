@@ -3,6 +3,8 @@ import axios from "axios";
 import { getAPIconfig } from "./axiosConfig";
 import { manageError } from "./manageErrors";
 
+const dataSelection = response => response.data;
+
 export function getUserCredentials(name, password) {
   const { baseURL, headers } = getAPIconfig();
 
@@ -24,5 +26,3 @@ export function getUserCredentials(name, password) {
       return manageError(error);
     });
 }
-
-const dataSelection = response => response.data;

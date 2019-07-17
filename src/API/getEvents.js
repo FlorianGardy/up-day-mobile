@@ -3,27 +3,6 @@ import axios from "axios";
 import { getAPIconfig } from "./axiosConfig";
 import { manageError } from "./manageErrors";
 
-export function getEvents(userUuid) {
-  const { baseURL, headers } = getAPIconfig();
-
-  const config = {
-    method: "get",
-    baseURL,
-    url: `events`,
-    headers
-  };
-
-  return axios
-    .request(config)
-    .then(response => {
-      return dataSelection(response);
-    })
-    .then(events => dataNormalization(events))
-    .catch(error => {
-      return manageError(error);
-    });
-}
-
 const dataSelection = response => response.data;
 
 const dataNormalization = events => {
@@ -48,3 +27,24 @@ const dataNormalization = events => {
   });
   return normalizedData;
 };
+
+export function getEvents(userUuid) {
+  const { baseURL, headers } = getAPIconfig();
+
+  const config = {
+    method: "get",
+    baseURL,
+    url: `events`,
+    headers
+  };
+
+  return axios
+    .request(config)
+    .then(response => {
+      return dataSelection(response);
+    })
+    .then(events => dataNormalization(events))
+    .catch(error => {
+      return manageError(error);
+    });
+}
