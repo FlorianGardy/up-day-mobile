@@ -8,5 +8,5 @@ export const defecations = ["Précaution", "Volontaire"];
 
 export const activities = ["1h", "2h", "4h"];
 
-export const contextUrination = ["Fuite", "Difficulté", "Urgence"];
-export const contextDefecation = ["Fuite", "Difficulté", "Urgence"];
+export const contextsUrination = ["Fuite", "Difficulté", "Urgence"];
+export const contextsDefecation = ["Fuite", "Difficulté", "Urgence"];

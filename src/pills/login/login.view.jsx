@@ -1,20 +1,24 @@
 import React from "react";
 import "./login.scss";
 
-const loginView = ({ onSubmit, logo, statusCode }) => {
-  let styled = { fontSize: "12px", color: "red" };
-  styled.opacity = statusCode !== 200 ? 1 : 0;
-  let errorMessage;
+let errorMessageStyle = { fontSize: "12px", color: "red", border: "none" };
+
+const LOGIN_PLACEHOLDER = "Identifiant";
+const PASSWORD_PLACEHOLDER = "Mot de passe";
+
+const switchErrorMessage = statusCode => {
   switch (statusCode) {
     case 400:
-      errorMessage = "Identifiant ou mot de passe incorrect";
-      break;
+      return "Identifiant ou mot de passe incorrect";
     case 403:
-      errorMessage = "l'utilisateur n'est pas admin";
-      break;
+      return "l'utilisateur n'est pas admin";
     default:
-      errorMessage = "";
+      return "";
   }
+};
+
+const loginView = ({ onSubmit, logo, statusCode }) => {
+  let errorMessage = switchErrorMessage(statusCode);
   return (
     <div className="loginPage">
       <section className="logo">
@@ -23,10 +27,14 @@ const loginView = ({ onSubmit, logo, statusCode }) => {
         <h2>Calendrier Mictionnel</h2>
       </section>
       <form onSubmit={e => onSubmit(e)}>
-        <input name="username" type="text" placeholder="Identifiant" />
-        <input name="password" type="password" placeholder="Mot de passe" />
+        <input name="username" type="text" placeholder={LOGIN_PLACEHOLDER} />
+        <input
+          name="password"
+          type="password"
+          placeholder={PASSWORD_PLACEHOLDER}
+        />
         <input type="submit" value="Se connecter" />
-        <div style={styled}>
+        <div style={errorMessageStyle}>
           <p>{errorMessage}</p>
         </div>
       </form>

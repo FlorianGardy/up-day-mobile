@@ -12,16 +12,13 @@ const TopBar = ({ title, leftButtonInfo, rightButtonInfo }) => {
   return (
     <div className="topBar">
       {leftButtonInfo.isVisible && (
-        <div className="btn left" onClick={() => leftButtonInfo.onClick()}>
+        <div className="btn left" onClick={leftButtonInfo.onClick}>
           <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" />
         </div>
       )}
       <h1 className="title">{title}</h1>
       {rightButtonInfo.isVisible && rightButtonInfo.isActive ? (
-        <div
-          className="btn right isActive"
-          onClick={() => rightButtonInfo.onClick()}
-        >
+        <div className="btn right isActive" onClick={rightButtonInfo.onClick}>
           <FontAwesomeIcon icon={faCheckCircle} size="2x" />
         </div>
       ) : rightButtonInfo.isVisible ? (

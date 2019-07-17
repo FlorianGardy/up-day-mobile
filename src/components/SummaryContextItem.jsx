@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import "./Summary.scss";
 
-const SummaryContextItem = ({ label, value }) => {
+const SummaryContextItem = ({ label, values }) => {
   return (
     <div className="summaryItems">
       <h2>{label}</h2>
       <ul>
-        {value.length !== 0
-          ? value.map((v, i) => (
+        {values.length !== 0
+          ? values.map((value, i) => (
               <li key={i}>
-                {v}
+                {value}
                 <br />
               </li>
             ))
@@ -22,7 +23,7 @@ const SummaryContextItem = ({ label, value }) => {
 
 SummaryContextItem.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.array.isRequired
+  values: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default SummaryContextItem;

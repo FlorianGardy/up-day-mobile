@@ -3,12 +3,14 @@ import PropTypes from "prop-types";
 
 import "./Comment.scss";
 
+const PLACEHOLDER = "Commentaires...";
+
 const Comment = ({ onChange, commentText, title }) => {
   return (
     <div className="comment">
       <textarea
         className="text"
-        placeholder="Commentaires..."
+        placeholder={PLACEHOLDER}
         onChange={onChange}
         value={commentText}
         cols="25"

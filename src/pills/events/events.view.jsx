@@ -2,29 +2,33 @@ import React from "react";
 import EventRow from "../../components/EventRow";
 import moment from "moment";
 import "moment/locale/fr";
-import HistoryFirstCo from "../../components/HistoryFirstCo";
 import Swipeout from "rc-swipeout";
 import "rc-swipeout/assets/index.css";
-import { deleteEventInDatabase } from "../../API/deleteEventInDatabase";
 
-const HistoryView = ({ history, getHistoryDispatch }) => {
+import HistoryFirstCo from "../../components/HistoryFirstCo";
+import { deleteEvent } from "../../API/deleteEvent";
+
+const DELETE = "Supprimer";
+const swipeoutStyle = { margin: "2px", backgroundColor: "red", color: "white" };
+
+const EventsView = ({ events, getEvents }) => {
   return (
     <>
-      {history.length === 0 ? (
+      {events.length === 0 ? (
         <HistoryFirstCo />
       ) : (
-        history.reverse().map(event => (
+        events.map(event => (
           <Swipeout
             key={event.id}
             autoClose
             right={[
               {
-                text: "Supprimer",
+                text: DELETE,
                 onPress: async () => {
-                  await deleteEventInDatabase(event.id);
-                  await getHistoryDispatch();
+                  await deleteEvent(event.id);
+                  await getEvents();
                 },
-                style: { margin: "2px", backgroundColor: "red", color: "white" }
+                style: swipeoutStyle
               }
             ]}
           >
@@ -33,7 +37,7 @@ const HistoryView = ({ history, getHistoryDispatch }) => {
               type={event.type}
               nature={event.nature}
               volume={event.volume}
-              context={event.context}
+              contexts={event.contexts}
               comment={event.comment}
             />
           </Swipeout>
@@ -43,4 +47,4 @@ const HistoryView = ({ history, getHistoryDispatch }) => {
   );
 };
 
-export default HistoryView;
+export default EventsView;

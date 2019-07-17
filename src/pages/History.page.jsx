@@ -1,8 +1,9 @@
 import React from "react";
+
 import Navbar from "../components/Navbar";
-import HistoryDateSelector from "../components/HistoryDateSelector";
+import EventsDateSelector from "../components/EventsDateSelector";
 import TopBar from "../components/TopBar";
-import HistoryContainer from "../pills/history/history.container";
+import EventsContainer from "../pills/events/events.container";
 
 import "./layout.scss";
 import "./History.page.scss";
@@ -17,8 +18,8 @@ const History = () => {
           rightButtonInfo={{ isVisible: false }}
         />
         <section className="pageBodyHistory">
-          <HistoryDateSelector />
-          <HistoryContainer />
+          <EventsDateSelector />
+          <EventsContainer />
         </section>
       </div>
       <Navbar />
