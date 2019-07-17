@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getAPIconfig } from "./axiosConfig";
+import { manageError } from "./manageErrors";
 
 export function sendDatasToDatabase(
   date,
@@ -7,18 +8,16 @@ export function sendDatasToDatabase(
   kind,
   measure,
   context,
-  comment,
-  uuid
+  comment
 ) {
   const body = {
     date,
     nature,
     type: kind,
-    volume: measure,
-    uuid
+    volume: measure
   };
   if (context.length !== 0) {
-    body.context = context.join("|");
+    body.context = context;
   }
   if (comment) {
     body.comment = comment;
@@ -34,8 +33,7 @@ export function sendDatasToDatabase(
     data: body
   };
 
-  return axios.request(config).catch(err => {
-    localStorage.clear();
-    return (window.location.href = "/login");
+  return axios.request(config).catch(error => {
+    return manageError(error);
   });
 }

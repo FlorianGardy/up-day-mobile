@@ -20,7 +20,7 @@
     h1 {
       font-size: 3rem;
       font-weight: bold;
-      color: $primary-color;
+      color: $primary-dark;
       letter-spacing: 4px;
     }
     h2 {
@@ -59,7 +59,7 @@
     }
     input[type="submit"] {
       grid-row: 3;
-      background-color: $primary-color;
+      background-color: $primary-dark;
       font-weight: bold;
       color: $almost-white;
       border: none;

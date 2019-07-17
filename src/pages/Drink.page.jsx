@@ -65,6 +65,7 @@ const Drink = ({
               options={volumes}
               activeOption={measure}
               onClick={updateVolume}
+              bold
             />
             <Comment
               title="Commentaire"
