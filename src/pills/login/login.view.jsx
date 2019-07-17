@@ -1,20 +1,21 @@
 import React from "react";
 import "./login.scss";
 
-const loginView = ({ onSubmit, logo, statusCode }) => {
-  let styled = { fontSize: "12px", color: "red" };
-  styled.opacity = statusCode !== 200 ? 1 : 0;
-  let errorMessage;
+let errorMessageStyle = { fontSize: "12px", color: "red", border: "none" };
+
+const switchErrorMessage = statusCode => {
   switch (statusCode) {
     case 400:
-      errorMessage = "Identifiant ou mot de passe incorrect";
-      break;
+      return "Identifiant ou mot de passe incorrect";
     case 403:
-      errorMessage = "l'utilisateur n'est pas admin";
-      break;
+      return "l'utilisateur n'est pas admin";
     default:
-      errorMessage = "";
+      return "";
   }
+};
+
+const loginView = ({ onSubmit, logo, statusCode }) => {
+  let errorMessage = switchErrorMessage(statusCode);
   return (
     <div className="loginPage">
       <section className="logo">
@@ -26,7 +27,7 @@ const loginView = ({ onSubmit, logo, statusCode }) => {
         <input name="username" type="text" placeholder="Identifiant" />
         <input name="password" type="password" placeholder="Mot de passe" />
         <input type="submit" value="Se connecter" />
-        <div style={styled}>
+        <div style={errorMessageStyle}>
           <p>{errorMessage}</p>
         </div>
       </form>

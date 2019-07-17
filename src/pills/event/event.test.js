@@ -7,8 +7,8 @@ import {
   updateKind,
   UPDATE_MEASURE,
   updateMeasure,
-  UPDATE_CONTEXT,
-  updateContext,
+  UPDATE_CONTEXTS,
+  updateContexts,
   UPDATE_COMMENT,
   updateComment,
   RESET_EVENT,
@@ -16,11 +16,11 @@ import {
 } from "./event.action";
 import event from "./event.reducer";
 import {
-  getEventDate,
-  getEventNature,
-  getEventKind,
-  getEventMeasure,
-  getEventContext
+  getEventDateSelector,
+  getEventNatureSelector,
+  getEventKindSelector,
+  getEventMeasureSelector,
+  getEventContextsSelector
 } from "./event.selector";
 
 describe("# event", () => {
@@ -58,12 +58,12 @@ describe("# event", () => {
       expect(updateMeasure(measure)).toEqual(expectedAction);
     });
     it("should create an action to update context", () => {
-      const context = ["fuite"];
+      const contexts = ["fuite"];
       const expectedAction = {
-        type: UPDATE_CONTEXT,
-        context
+        type: UPDATE_CONTEXTS,
+        contexts
       };
-      expect(updateContext(context)).toEqual(expectedAction);
+      expect(updateContexts(contexts)).toEqual(expectedAction);
     });
     it("should create an action to update comment", () => {
       const comment = "Allez !";
@@ -153,13 +153,13 @@ describe("# event", () => {
     it("should handle UPDATE_CONTEXT", () => {
       expect(
         event(
-          { context: [] },
+          { contexts: [] },
           {
-            type: UPDATE_CONTEXT,
-            context: ["fuite"]
+            type: UPDATE_CONTEXTS,
+            contexts: ["fuite"]
           }
         )
-      ).toEqual({ context: ["fuite"] });
+      ).toEqual({ contexts: ["fuite"] });
     });
 
     it("should handle UPDATE_COMMENT", () => {
@@ -180,7 +180,7 @@ describe("# event", () => {
         kind: "",
         nature: "",
         measure: "",
-        context: [],
+        contexts: [],
         comment: ""
       };
       expect(
@@ -190,7 +190,7 @@ describe("# event", () => {
             kind: "normale",
             nature: "miction",
             measure: "+++",
-            context: [],
+            contexts: [],
             comment: "...."
           },
           {
@@ -204,47 +204,47 @@ describe("# event", () => {
   describe("## selectors", () => {
     it("should return 2019-07-01T13:42:22.928Z for date", () => {
       const store = {
-        EventReducer: {
+        Event: {
           date: "2019-07-01T13:42:22.928Z"
         }
       };
-      expect(getEventDate(store)).toEqual("2019-07-01T13:42:22.928Z");
+      expect(getEventDateSelector(store)).toEqual("2019-07-01T13:42:22.928Z");
     });
 
     it("should return miction for nature", () => {
       const store = {
-        EventReducer: {
+        Event: {
           nature: "miction"
         }
       };
-      expect(getEventNature(store)).toEqual("miction");
+      expect(getEventNatureSelector(store)).toEqual("miction");
     });
 
     it("should return normale for kind", () => {
       const store = {
-        EventReducer: {
+        Event: {
           kind: "normale"
         }
       };
-      expect(getEventKind(store)).toEqual("normale");
+      expect(getEventKindSelector(store)).toEqual("normale");
     });
 
     it("should return +++ for measure", () => {
       const store = {
-        EventReducer: {
+        Event: {
           measure: "+++"
         }
       };
-      expect(getEventMeasure(store)).toEqual("+++");
+      expect(getEventMeasureSelector(store)).toEqual("+++");
     });
 
     it("should return ['fuite'] for context", () => {
       const store = {
-        EventReducer: {
-          context: ["fuite"]
+        Event: {
+          contexts: ["fuite"]
         }
       };
-      expect(getEventContext(store)).toEqual(["fuite"]);
+      expect(getEventContextsSelector(store)).toEqual(["fuite"]);
     });
   });
 });

@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { resetEvent } from "../pills/event/event.action";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 
+import { resetEvent } from "../pills/event/event.action";
 import "./NavBar.scss";
 
-const Navbar = ({ dispatch }) => {
+const LEFT_BUTTON_NAVBAR_LABEL = "Calendrier";
+const MIDDLE_BUTTON_NAVBAR_LABEL = "Nouveau";
+const RIGHT_BUTTON_NAVBAR_LABEL = "Infos";
+const UP_LEFT_BUTTON_MODAL_LABEL = "Défécation";
+const UP_RIGHT_BUTTON_MODAL_LABEL = "Miction";
+const DOWN_LEFT_BUTTON_MODAL_LABEL = "Sport";
+const DOWN_RIGHT_BUTTON_MODAL_LABEL = "Boisson";
+
+const Navbar = ({ resetEvent }) => {
   const [shouldDrop, setShouldDrop] = useState(false);
 
   const handleClick = () => {
@@ -22,36 +31,36 @@ const Navbar = ({ dispatch }) => {
       <div className="bottomNavBar">
         <NavLink to="/history" activeClassName="activeLink" className="history">
           <FontAwesomeIcon icon={faCalendarAlt} size="1x" />
-          <h3 className="calendar">Calendrier</h3>
+          <h3 className="calendar">{LEFT_BUTTON_NAVBAR_LABEL}</h3>
         </NavLink>
         <div onClick={handleClick} className="events">
           <FontAwesomeIcon icon={faPlus} size="1x" />
-          <h3 className="new">Nouveau</h3>
+          <h3 className="new">{MIDDLE_BUTTON_NAVBAR_LABEL}</h3>
         </div>
         <NavLink to="/about" activeClassName="activeLink" className="about">
           <FontAwesomeIcon icon={faQuestion} size="1x" />
-          <h3 className="infos">Infos</h3>
+          <h3 className="infos">{RIGHT_BUTTON_NAVBAR_LABEL}</h3>
         </NavLink>
       </div>
       <div
         className={`${eventBtnGroup}`}
         onClick={() => {
-          dispatch(resetEvent());
+          resetEvent();
           setShouldDrop(false);
         }}
       >
         <div className="modal">
           <NavLink className="btn-Poo" to="/events/defecation">
-            Défécation
+            {UP_LEFT_BUTTON_MODAL_LABEL}
           </NavLink>
           <NavLink className="btn-Pee" to="/events/urination">
-            Miction
+            {UP_RIGHT_BUTTON_MODAL_LABEL}
           </NavLink>
           <NavLink className="btn-Activity" to="/events/activity">
-            Sport
+            {DOWN_LEFT_BUTTON_MODAL_LABEL}
           </NavLink>
           <NavLink className="btn-Drink" to="/events/drink">
-            Boisson
+            {DOWN_RIGHT_BUTTON_MODAL_LABEL}
           </NavLink>
         </div>
       </div>
@@ -59,4 +68,15 @@ const Navbar = ({ dispatch }) => {
   );
 };
 
-export default connect()(Navbar);
+const mapDisptachToProps = dispatch => ({
+  resetEvent: () => dispatch(resetEvent())
+});
+
+Navbar.propTypes = {
+  resetEvent: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  mapDisptachToProps
+)(Navbar);

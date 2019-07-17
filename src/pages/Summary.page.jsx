@@ -1,23 +1,22 @@
 import React from "react";
-import SummaryItem from "../components/SummaryItem";
-import SummaryContextItem from "../components/SummaryContextItem";
-import Navbar from "../components/Navbar";
 import { connect } from "react-redux";
 import moment from "moment";
-import TopBar from "../components/TopBar";
-import { sendDatasToDatabase } from "../API/sendDatasToDatabase";
 
+import SummaryItem from "../components/SummaryItem";
+import Navbar from "../components/Navbar";
+import SummaryContextItem from "../components/SummaryContextItem";
+import TopBar from "../components/TopBar";
+import { createEvent } from "../API/createEvent";
 import "./Summary.page.scss";
 import "./layout.scss";
 import {
-  getEventNature,
-  getEventKind,
-  getEventDate,
-  getEventMeasure,
-  getEventContext,
-  getEventComment
+  getEventNatureSelector,
+  getEventKindSelector,
+  getEventDateSelector,
+  getEventMeasureSelector,
+  getEventContextsSelector,
+  getEventCommentSelector
 } from "../pills/event/event.selector";
-import { getUuid } from "../pills/login/login.selectors";
 
 const Drink = ({
   dispatch,
@@ -25,10 +24,9 @@ const Drink = ({
   nature,
   kind,
   measure,
-  context,
+  contexts,
   comment,
-  history,
-  userUuid
+  history
 }) => {
   return (
     <div className="page">
@@ -43,16 +41,8 @@ const Drink = ({
         }}
         rightButtonInfo={{
           onClick: async () => {
-            await sendDatasToDatabase(
-              date,
-              nature,
-              kind,
-              measure,
-              context,
-              comment,
-              userUuid
-            );
-            history.push("/history");
+            await createEvent(date, nature, kind, measure, contexts, comment);
+            window.location.href = "/history"; //instead of history.push -> fix an infinite loop
           },
           isVisible: true,
           isActive: true
@@ -64,7 +54,7 @@ const Drink = ({
           value={moment(date).format("dddd DD MMMM à HH:mm")}
         />
         <SummaryItem label="Type" value={kind} />
-        <SummaryContextItem label="Contexte" value={context} />
+        <SummaryContextItem label="Contexte" values={contexts} />
         <SummaryItem label="Volume" value={measure} bold />
         <SummaryItem label="Commentaire" value={comment} />
       </section>
@@ -74,13 +64,12 @@ const Drink = ({
 };
 
 const mapStateToProps = state => ({
-  date: getEventDate(state),
-  kind: getEventKind(state),
-  nature: getEventNature(state),
-  measure: getEventMeasure(state),
-  context: getEventContext(state),
-  comment: getEventComment(state),
-  userUuid: getUuid(state)
+  date: getEventDateSelector(state),
+  kind: getEventKindSelector(state),
+  nature: getEventNatureSelector(state),
+  measure: getEventMeasureSelector(state),
+  contexts: getEventContextsSelector(state),
+  comment: getEventCommentSelector(state)
 });
 
 export default connect(mapStateToProps)(Drink);
