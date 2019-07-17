@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import "./ContextSelector.scss";
 
-const ContextSelector = ({ options, onChange, context, title }) => {
+const ContextSelector = ({ options, onChange, contexts, title }) => {
   return (
     <div className="context">
       <h2>{title}</h2>
@@ -12,7 +13,7 @@ const ContextSelector = ({ options, onChange, context, title }) => {
             <label className="switch">
               <input
                 type="checkbox"
-                checked={context.includes(option)}
+                checked={contexts.includes(option)}
                 onChange={e => onChange(option, e.target.checked)}
               />
               <span className="slider round" />
@@ -28,7 +29,7 @@ const ContextSelector = ({ options, onChange, context, title }) => {
 ContextSelector.propTypes = {
   title: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
-  context: PropTypes.array.isRequired,
+  contexts: PropTypes.arrayOf(PropTypes.string).isRequired,
   onChange: PropTypes.func.isRequired
 };
 

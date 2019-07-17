@@ -1,10 +1,13 @@
 import React, { useEffect } from "react";
 import LoginView from "./login.view.jsx";
-import { getUserCredentials, updateUser } from "./login.actions.js";
+import { checkUserCredentials, updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import logoKineOrange from "./logoKineOrange.png";
-import { getUuid, getStatusCode } from "../login/login.selectors";
+import {
+  getStatusCodeSelector,
+  getUuidSelector
+} from "../login/login.selectors";
 
 const Login = ({ dispatch, userUuid, statusCode }) => {
   useEffect(() => {
@@ -21,11 +24,11 @@ const Login = ({ dispatch, userUuid, statusCode }) => {
     let username = e.target.username.value;
     let password = e.target.password.value;
 
-    dispatch(getUserCredentials(username, password));
+    dispatch(checkUserCredentials(username, password));
   };
 
   if (userUuid && localStorage.getItem("user")) {
-    return <Redirect to="/" />;
+    return <Redirect to="/history" />;
   }
 
   return (
@@ -38,8 +41,8 @@ const Login = ({ dispatch, userUuid, statusCode }) => {
 };
 
 const mapStateToProps = state => ({
-  userUuid: getUuid(state),
-  statusCode: getStatusCode(state)
+  userUuid: getUuidSelector(state),
+  statusCode: getStatusCodeSelector(state)
 });
 
 export default connect(mapStateToProps)(Login);

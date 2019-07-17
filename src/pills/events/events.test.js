@@ -1,16 +1,16 @@
 import {
-  REFRESH_HISTORY,
-  refreshHistory,
+  REFRESH_EVENTS,
+  refreshEvents,
   UPDATE_SELECTED_DATE,
   updateSelectedDate
-} from "./history.action";
-import history from "./history.reducer";
-import { getSelectedHistoryDate, getHistoryList } from "./history.selector";
+} from "./events.action";
+import history from "./events.reducer";
+import { getSelectedDateSelector, getEventsSelector } from "./events.selector";
 
 describe("# history", () => {
   describe("## actions", () => {
     it("should create an action to refresh history", () => {
-      const history = [
+      const events = [
         {
           id: 1,
           date: "2019-07-01T13:42:13.063Z",
@@ -26,10 +26,10 @@ describe("# history", () => {
         }
       ];
       const expectedAction = {
-        type: REFRESH_HISTORY,
-        history
+        type: REFRESH_EVENTS,
+        events
       };
-      expect(refreshHistory(history)).toEqual(expectedAction);
+      expect(refreshEvents(events)).toEqual(expectedAction);
     });
     it("should create an action to update selected date", () => {
       const date = "2019-07-01T13:42:22.928Z";
@@ -46,24 +46,24 @@ describe("# history", () => {
       expect(
         history(
           {
-            history: [],
-            selectedHistoryDate: "2019-07-01T13:42:22.928Z"
+            events: [],
+            selectedDate: "2019-07-01T13:42:22.928Z"
           },
           {}
         )
       ).toEqual({
-        history: [],
-        selectedHistoryDate: "2019-07-01T13:42:22.928Z"
+        events: [],
+        selectedDate: "2019-07-01T13:42:22.928Z"
       });
     });
 
-    it("should handle REFRESH_HISTORY", () => {
+    it("should handle REFRESH_EVENTS", () => {
       expect(
         history(
-          { history: [] },
+          { events: [] },
           {
-            type: REFRESH_HISTORY,
-            history: [
+            type: REFRESH_EVENTS,
+            events: [
               {
                 id: 1,
                 date: "2019-07-01T13:42:13.063Z",
@@ -81,7 +81,7 @@ describe("# history", () => {
           }
         )
       ).toEqual({
-        history: [
+        events: [
           {
             id: 1,
             date: "2019-07-01T13:42:13.063Z",
@@ -101,11 +101,11 @@ describe("# history", () => {
       expect(
         history(
           {
-            history: []
+            events: []
           },
           {
-            type: REFRESH_HISTORY,
-            history: [
+            type: REFRESH_EVENTS,
+            events: [
               {
                 id: 1,
                 date: "2019-07-01T13:42:13.063Z",
@@ -123,7 +123,7 @@ describe("# history", () => {
           }
         )
       ).toEqual({
-        history: [
+        events: [
           {
             id: 1,
             date: "2019-07-01T13:42:13.063Z",
@@ -144,15 +144,15 @@ describe("# history", () => {
     it("should handle UPDATE_SELECTED_DATE", () => {
       expect(
         history(
-          { history: [], selectedHistoryDate: new Date() },
+          { events: [], selectedDate: new Date() },
           {
             type: UPDATE_SELECTED_DATE,
             date: "2019-07-01T13:42:22.928Z"
           }
         )
       ).toEqual({
-        history: [],
-        selectedHistoryDate: "2019-07-01T13:42:22.928Z"
+        events: [],
+        selectedDate: "2019-07-01T13:42:22.928Z"
       });
     });
   });
@@ -160,22 +160,24 @@ describe("# history", () => {
   describe("## selectors", () => {
     it("should return [] for history", () => {
       const store = {
-        HistoryReducer: {
-          history: [],
-          selectedHistoryDate: "2019-07-01T13:42:22.928Z"
+        Events: {
+          events: [],
+          selectedDate: "2019-07-01T13:42:22.928Z"
         }
       };
-      expect(getHistoryList(store)).toEqual([]);
+      expect(getEventsSelector(store)).toEqual([]);
     });
 
     it("should return the date for selectHistoryDate", () => {
       const store = {
-        HistoryReducer: {
-          history: [],
-          selectedHistoryDate: "2019-07-01T13:42:22.928Z"
+        Events: {
+          events: [],
+          selectedDate: "2019-07-01T13:42:22.928Z"
         }
       };
-      expect(getSelectedHistoryDate(store)).toEqual("2019-07-01T13:42:22.928Z");
+      expect(getSelectedDateSelector(store)).toEqual(
+        "2019-07-01T13:42:22.928Z"
+      );
     });
   });
 });

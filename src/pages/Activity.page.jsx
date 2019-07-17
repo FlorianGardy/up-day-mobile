@@ -1,38 +1,35 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import { volumes, activities } from "../data";
 import DateAndTime from "../components/DateAndTime";
 import OptionSelector from "../components/OptionSelector";
 import Comment from "../components/Comment";
-import { volumes, activities } from "../data";
 import Navbar from "../components/Navbar";
-import { connect } from "react-redux";
 import TopBar from "../components/TopBar";
 import {
   updateDate,
   updateKind,
   updateMeasure,
   updateComment,
-  getContext,
   updateNature
 } from "../pills/event/event.action";
-import "./layout.scss";
 import {
-  getEventDate,
-  getEventKind,
-  getEventMeasure,
-  getEventContext,
-  getEventComment
+  getEventDateSelector,
+  getEventKindSelector,
+  getEventMeasureSelector,
+  getEventCommentSelector
 } from "../pills/event/event.selector";
+import "./layout.scss";
 
 const Activity = ({
   updateDate,
   updateKind,
-  getContext,
   updateVolume,
   updateComment,
   date,
   kind,
   measure,
-  context,
   comment,
   history
 }) => {
@@ -87,18 +84,16 @@ const mapDispatchToProps = dispatch => {
       dispatch(updateKind(kind));
       dispatch(updateNature("Activité"));
     },
-    getContext: (context, check) => dispatch(getContext(context, check)),
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
   };
 };
 
 const mapStateToProps = state => ({
-  date: getEventDate(state),
-  kind: getEventKind(state),
-  measure: getEventMeasure(state),
-  context: getEventContext(state),
-  comment: getEventComment(state)
+  date: getEventDateSelector(state),
+  kind: getEventKindSelector(state),
+  measure: getEventMeasureSelector(state),
+  comment: getEventCommentSelector(state)
 });
 
 export default connect(

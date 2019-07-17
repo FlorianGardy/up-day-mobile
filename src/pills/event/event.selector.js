@@ -1,6 +1,6 @@
-export const getEventDate = store => store.EventReducer.date;
-export const getEventNature = store => store.EventReducer.nature;
-export const getEventKind = store => store.EventReducer.kind;
-export const getEventMeasure = store => store.EventReducer.measure;
-export const getEventContext = store => store.EventReducer.context;
-export const getEventComment = store => store.EventReducer.comment;
+export const getEventDateSelector = store => store.Event.date;
+export const getEventNatureSelector = store => store.Event.nature;
+export const getEventKindSelector = store => store.Event.kind;
+export const getEventMeasureSelector = store => store.Event.measure;
+export const getEventContextsSelector = store => store.Event.contexts;
+export const getEventCommentSelector = store => store.Event.comment;

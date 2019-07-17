@@ -10,6 +10,7 @@ const PrivateRoute = ({ component: Component, dispatch, ...rest }) => {
     );
     dispatch(updateUser(uuid, name, email, token));
   } else {
+    // HACK
     dispatch(updateUser("", "", "", ""));
   }
   return (

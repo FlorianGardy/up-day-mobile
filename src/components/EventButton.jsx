@@ -16,7 +16,7 @@ const EventButton = ({ text, onClick, backgroundColor }) => {
 
   // Render
   return (
-    <button style={style.button} onClick={() => onClick()}>
+    <button style={style.button} onClick={onClick}>
       {text}
     </button>
   );
