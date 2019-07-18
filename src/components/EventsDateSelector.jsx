@@ -32,7 +32,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 HistoryDateSelector.propTypes = {
-  selectedDate: PropTypes.string.isRequired,
   shiftDate: PropTypes.func.isRequired
 };
 
