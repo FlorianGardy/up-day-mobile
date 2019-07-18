@@ -1,7 +1,6 @@
 //TODO : to test
 export function manageError(error) {
-  if (error === "Network Error") {
-    return [];
+  if (error.response !== undefined) {
+    return error.response.data.statusCode;
   }
-  return error.response.data.statusCode;
 }
