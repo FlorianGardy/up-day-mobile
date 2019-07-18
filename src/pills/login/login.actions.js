@@ -19,8 +19,6 @@ export const checkUserCredentials = (userName, UserPass) => {
     } else {
       const { uuid, name, email, token } = res;
       if (token) {
-        let storedUser = JSON.stringify({ uuid, name, email, token });
-        localStorage.setItem("user", storedUser);
         dispatch(updateUser(uuid, name, email, token));
       }
     }
