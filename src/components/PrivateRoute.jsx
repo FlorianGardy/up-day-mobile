@@ -1,18 +1,7 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { connect } from "react-redux";
-import { updateUser } from "../pills/login/login.actions";
 
-const PrivateRoute = ({ component: Component, dispatch, ...rest }) => {
-  if (localStorage.getItem("user")) {
-    const { uuid, name, email, token } = JSON.parse(
-      localStorage.getItem("user")
-    );
-    dispatch(updateUser(uuid, name, email, token));
-  } else {
-    // HACK
-    dispatch(updateUser("", "", "", ""));
-  }
+const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -27,4 +16,4 @@ const PrivateRoute = ({ component: Component, dispatch, ...rest }) => {
   );
 };
 
-export default connect()(PrivateRoute);
+export default PrivateRoute;
