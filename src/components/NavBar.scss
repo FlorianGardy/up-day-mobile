@@ -74,15 +74,16 @@ $modalEventsBtn: (
   .modal {
     display: grid;
     grid-template-columns: 10% 1fr 1fr 1fr 10%;
-    grid-template-rows: 45% 1fr 1fr 1fr 15%;
+    grid-template-rows: 15% 1fr 1fr 1fr 15%;
     grid-template-areas: ". . . . ." ". . Pee . ." ". Activity . Drink ." ". . Poo . ." ". . . . .";
 
     position: absolute;
     top: 0;
-    height: 100 - $navHeight;
+    min-height: 100 - $navHeight;
+    max-height: 90vh;
     width: 100vw;
     overflow: hidden;
-    background-color: transparentize($color: rgb(199, 168, 168), $amount: 0.5);
+    background-color: transparentize($color: rgb(255, 255, 255), $amount: 0.02);
     will-change: transform, opacity;
     a {
       text-decoration: none;
@@ -121,7 +122,7 @@ $modalEventsBtn: (
         @extend %btn;
         grid-area: $event;
         .circle {
-          border: 3px solid $dark-grey;
+          border: 2px solid $orange;
           background: radial-gradient(
             circle at 6vmin 6vmin,
             white,
