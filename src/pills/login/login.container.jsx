@@ -3,7 +3,7 @@ import LoginView from "./login.view.jsx";
 import { checkUserCredentials, updateUser } from "./login.actions.js";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import logoKineOrange from "./logoKineOrange.png";
+import logoKineOrange from "../../assets/logoKineOrange.png";
 import {
   getStatusCodeSelector,
   getUuidSelector

@@ -9,7 +9,11 @@ import HistoryFirstCo from "../../components/HistoryFirstCo";
 import { deleteEvent } from "../../API/deleteEvent";
 
 const DELETE = "Supprimer";
-const swipeoutStyle = { margin: "2px", backgroundColor: "red", color: "white" };
+const swipeoutStyle = {
+  margin: "2px",
+  backgroundColor: "#da4e0e",
+  color: "white"
+};
 
 const EventsView = ({ events, getEvents }) => {
   return (

@@ -3,10 +3,10 @@
 $btnAddEventDiameter: 50px;
 $navHeight: 10vh;
 $modalEventsBtn: (
-  "Poo": $poo,
-  "Pee": $pee,
-  "Activity": $activity,
-  "Drink": $drink
+  Poo: $poo,
+  Pee: $pee,
+  Activity: $activity,
+  Drink: $drink
 );
 
 .navBar {
@@ -73,41 +73,61 @@ $modalEventsBtn: (
   //Style and Show (or not) the event menu
   .modal {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "Poo Pee" "Activity Drink";
+    grid-template-columns: 10% 1fr 1fr 1fr 10%;
+    grid-template-rows: 45% 1fr 1fr 1fr 15%;
+    grid-template-areas: ". . . . ." ". . Pee . ." ". Activity . Drink ." ". . Poo . ." ". . . . .";
 
     position: absolute;
     top: 0;
     height: 100 - $navHeight;
     width: 100vw;
     overflow: hidden;
-    background-color: $primary-dark;
+    background-color: transparentize($color: white, $amount: 0.02);
     will-change: transform, opacity;
-
-    %btn {
-      display: flex;
-      @include box(30vmin);
-      border-radius: 50%;
-      justify-self: center;
-      align-self: center;
-
-      font-family: "Assistant", sans-serif;
-      color: $text-color-dark;
+    a {
       text-decoration: none;
-      font-weight: bold;
-      font-size: 4.8vmin;
-      justify-content: center;
-      align-items: center;
+    }
+    .btn {
+      display: grid;
+      grid-template-rows: 70% 30%;
+      width: 100%;
+      height: 100%;
+
+      justify-items: center;
+      align-items: flex-end;
+      h3 {
+        grid-row: 2;
+
+        font-family: "Assistant", sans-serif;
+        color: $text-color-dark;
+        font-weight: bold;
+        font-size: 4vmin;
+      }
+      .circle {
+        grid-row: 1;
+        display: flex;
+        @include box(20vmin);
+        border-radius: 50%;
+        .icon {
+          width: 50%;
+          margin: auto;
+        }
+      }
     }
 
     // It's like a map... we don't have to write the same code for our 4 buttons
     @each $event, $bgColor in $modalEventsBtn {
       .btn-#{$event} {
         @extend %btn;
-        border: 5px solid $bgColor;
-        @include button-bg($almost-white);
         grid-area: $event;
+        .circle {
+          border: 3px solid $dark-grey;
+          background: radial-gradient(
+            circle at 6vmin 6vmin,
+            white,
+            rgb(206, 206, 206)
+          );
+        }
       }
     }
   }
