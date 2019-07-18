@@ -9,10 +9,13 @@ import HistoryFirstCo from "../../components/HistoryFirstCo";
 import { deleteEvent } from "../../API/deleteEvent";
 
 const DELETE = "Supprimer";
-const swipeoutStyle = {
+const btnSwipeoutStyle = {
   margin: "2px",
   backgroundColor: "#da4e0e",
   color: "white"
+};
+const rowSwipeoutStyle = {
+  marginTop: "5px"
 };
 
 const EventsView = ({ events, getEvents }) => {
@@ -23,7 +26,7 @@ const EventsView = ({ events, getEvents }) => {
       ) : (
         events.map(event => (
           <Swipeout
-            style={{ marginTop: "5px" }}
+            style={rowSwipeoutStyle}
             key={event.id}
             autoClose
             right={[
@@ -33,7 +36,7 @@ const EventsView = ({ events, getEvents }) => {
                   await deleteEvent(event.id);
                   await getEvents();
                 },
-                style: swipeoutStyle
+                style: btnSwipeoutStyle
               }
             ]}
           >

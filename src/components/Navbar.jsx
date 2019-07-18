@@ -56,25 +56,25 @@ const Navbar = ({ resetEvent }) => {
         <div className="modal">
           <NavLink className="btn btn-Poo" to="/events/defecation">
             <figure className="circle">
-              <img className="icon" src={toilet} />
+              <img className="icon" src={toilet} alt="papier toilette" />
             </figure>
             <h3>{UP_LEFT_BUTTON_MODAL_LABEL}</h3>
           </NavLink>
           <NavLink className="btn btn-Pee" to="/events/urination">
             <figure className="circle">
-              <img className="icon" src={drop} />
+              <img className="icon" src={drop} alt="goute d'eau" />
             </figure>
             <h3>{UP_RIGHT_BUTTON_MODAL_LABEL}</h3>
           </NavLink>
           <NavLink className="btn btn-Activity" to="/events/activity">
             <figure className="circle">
-              <img className="icon" src={gym} />
+              <img className="icon" src={gym} alt="altères" />
             </figure>
             <h3>{DOWN_LEFT_BUTTON_MODAL_LABEL}</h3>
           </NavLink>
           <NavLink className="btn btn-Drink" to="/events/drink">
             <figure className="circle">
-              <img className="icon" src={coffee} />
+              <img className="icon" src={coffee} alt="tasse de café" />
             </figure>
             <h3>{DOWN_RIGHT_BUTTON_MODAL_LABEL}</h3>
           </NavLink>

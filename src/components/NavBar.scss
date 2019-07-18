@@ -82,7 +82,7 @@ $modalEventsBtn: (
     height: 100 - $navHeight;
     width: 100vw;
     overflow: hidden;
-    background-color: transparentize($color: white, $amount: 0.02);
+    background-color: transparentize($color: rgb(199, 168, 168), $amount: 0.5);
     will-change: transform, opacity;
     a {
       text-decoration: none;
@@ -125,7 +125,7 @@ $modalEventsBtn: (
           background: radial-gradient(
             circle at 6vmin 6vmin,
             white,
-            rgb(206, 206, 206)
+            rgb(230, 230, 230)
           );
         }
       }
