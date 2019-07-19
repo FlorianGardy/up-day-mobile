@@ -26,7 +26,7 @@ $modalEventsBtn: (
       color: $almost-white;
       text-decoration: none;
     }
-    z-index: 2;
+    z-index: 1000;
     .activeLink {
       color: $primary-dark;
     }
@@ -73,9 +73,9 @@ $modalEventsBtn: (
   //Style and Show (or not) the event menu
   .modal {
     display: grid;
-    grid-template-columns: auto repeat(3, minmax(100px, 20vw)) auto;
-    grid-template-rows: 1fr repeat(3, minmax(100px, 20vh)) 10vh;
-    grid-template-areas: ". . . . ." ". . Pee . ." ". Activity . Drink ." ". . Poo . ." ". . . . .";
+    grid-template-columns: auto repeat(3, minmax(80px, 15vw)) auto;
+    grid-template-rows: 4fr repeat(3, minmax(80px, 10vh)) 1fr;
+    grid-template-areas: ". . . . ." ". . Activity . ." ". Poo . Pee ." ". . Drink . ." ". . . . .";
 
     position: absolute;
     top: 0;
@@ -94,7 +94,8 @@ $modalEventsBtn: (
 
       justify-items: center;
       align-items: center;
-      margin: auto;
+      align-self: flex-end;
+      // margin: auto;
       h3 {
         grid-row: 2;
 
@@ -102,12 +103,12 @@ $modalEventsBtn: (
         color: $text-color-dark;
         font-weight: bold;
         font-size: 3vmax;
-        padding: 10px 0;
+        padding: 5px 0;
       }
       .circle {
         grid-row: 1;
         display: flex;
-        @include box(50px);
+        @include box(60px);
         border-radius: 50%;
         .icon {
           width: 50%;
@@ -122,7 +123,7 @@ $modalEventsBtn: (
         @extend %btn;
         grid-area: $event;
         .circle {
-          border: 2px solid $orange;
+          border: 1px solid $orange;
           background: radial-gradient(
             circle at 6vmin 6vmin,
             white,
@@ -135,11 +136,11 @@ $modalEventsBtn: (
   .modalHidden {
     .modal {
       opacity: 0;
-      transition: opacity 0.5s ease 0.5s;
+      transition: opacity 0.4s ease 0.4s;
       pointer-events: none;
 
       %btn {
-        animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+        animation: slide-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
           both;
       }
     }
@@ -148,32 +149,50 @@ $modalEventsBtn: (
     .modal {
       opacity: 1;
       pointer-events: auto;
+      transition: opacity 0.1s ease 0.1s;
+
       %btn {
-        animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
           both;
       }
     }
   }
 }
-// animation scale-in-center
-@include keyframes(scale-in-center) {
+
+/**
+ * ----------------------------------------
+ * animation slide-out-bottom
+ * ----------------------------------------
+ */
+
+@include keyframes(slide-out-bottom) {
   0% {
-    transform: scale(0);
-    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
   }
   100% {
-    transform: scale(1);
-    opacity: 1;
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
   }
 }
-// animation scale-out-center
-@include keyframes(scale-out-center) {
+
+/**
+ * ----------------------------------------
+ * animation slide-in-bottom
+ * ----------------------------------------
+ */
+
+@include keyframes(slide-in-bottom) {
   0% {
-    transform: scale(1);
-    opacity: 1;
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
   }
   100% {
-    transform: scale(0);
-    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
   }
 }
