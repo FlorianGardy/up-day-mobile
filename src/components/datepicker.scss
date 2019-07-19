@@ -3,11 +3,13 @@
 .center-text-datepicker {
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
   width: 100vw;
   height: 8vh;
   border: none;
   background-color: $primary-light;
+  color: primary-dark;
 }
 
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle,

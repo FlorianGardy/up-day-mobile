@@ -3,10 +3,10 @@
 $btnAddEventDiameter: 50px;
 $navHeight: 10vh;
 $modalEventsBtn: (
-  "Poo": $poo,
-  "Pee": $pee,
-  "Activity": $activity,
-  "Drink": $drink
+  Poo: $poo,
+  Pee: $pee,
+  Activity: $activity,
+  Drink: $drink
 );
 
 .navBar {
@@ -26,9 +26,9 @@ $modalEventsBtn: (
       color: $almost-white;
       text-decoration: none;
     }
-    z-index: 2;
+    z-index: 1000;
     .activeLink {
-      color: $primary-light;
+      color: $primary-dark;
     }
 
     .history {
@@ -73,54 +73,74 @@ $modalEventsBtn: (
   //Style and Show (or not) the event menu
   .modal {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "Poo Pee" "Activity Drink";
+    grid-template-columns: auto repeat(3, minmax(80px, 15vw)) auto;
+    grid-template-rows: 4fr repeat(3, minmax(80px, 10vh)) 1fr;
+    grid-template-areas: ". . . . ." ". . Activity . ." ". Poo . Pee ." ". . Drink . ." ". . . . .";
 
     position: absolute;
-    bottom: $navHeight;
-    height: 100 - $navHeight;
+    top: 0;
+    min-height: 100 - $navHeight;
+    max-height: 100 - $navHeight;
     width: 100vw;
     overflow: hidden;
-    background-color: $primary-dark;
+    background-color: transparentize($color: rgb(255, 255, 255), $amount: 0.02);
     will-change: transform, opacity;
-
-    %btn {
-      display: flex;
-      @include box(35vmin);
-
-      border-radius: 50%;
-      justify-self: center;
-      align-self: center;
-
-      color: $text-color-dark;
+    a {
       text-decoration: none;
-      font-weight: 800;
-      font-size: 4vmin;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      justify-content: center;
+    }
+    .btn {
+      display: flex;
+      flex-direction: column;
+
+      justify-items: center;
       align-items: center;
+      align-self: flex-end;
+      // margin: auto;
+      h3 {
+        grid-row: 2;
+
+        font-family: "Assistant", sans-serif;
+        color: $text-color-dark;
+        font-weight: bold;
+        font-size: 3vmax;
+        padding: 5px 0;
+      }
+      .circle {
+        grid-row: 1;
+        display: flex;
+        @include box(60px);
+        border-radius: 50%;
+        .icon {
+          width: 50%;
+          margin: auto;
+        }
+      }
     }
 
     // It's like a map... we don't have to write the same code for our 4 buttons
     @each $event, $bgColor in $modalEventsBtn {
       .btn-#{$event} {
         @extend %btn;
-        border: 8px solid $bgColor;
-        @include button-bg($almost-white);
         grid-area: $event;
+        .circle {
+          border: 1px solid $orange;
+          background: radial-gradient(
+            circle at 6vmin 6vmin,
+            white,
+            rgb(230, 230, 230)
+          );
+        }
       }
     }
   }
   .modalHidden {
     .modal {
       opacity: 0;
-      transition: opacity 0.5s ease 0.5s;
+      transition: opacity 0.4s ease 0.4s;
       pointer-events: none;
 
       %btn {
-        animation: scale-out-center 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+        animation: slide-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
           both;
       }
     }
@@ -129,32 +149,50 @@ $modalEventsBtn: (
     .modal {
       opacity: 1;
       pointer-events: auto;
+      transition: opacity 0.1s ease 0.1s;
+
       %btn {
-        animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
           both;
       }
     }
   }
 }
-// animation scale-in-center
-@include keyframes(scale-in-center) {
+
+/**
+ * ----------------------------------------
+ * animation slide-out-bottom
+ * ----------------------------------------
+ */
+
+@include keyframes(slide-out-bottom) {
   0% {
-    transform: scale(0);
-    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
   }
   100% {
-    transform: scale(1);
-    opacity: 1;
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
   }
 }
-// animation scale-out-center
-@include keyframes(scale-out-center) {
+
+/**
+ * ----------------------------------------
+ * animation slide-in-bottom
+ * ----------------------------------------
+ */
+
+@include keyframes(slide-in-bottom) {
   0% {
-    transform: scale(1);
-    opacity: 1;
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
   }
   100% {
-    transform: scale(0);
-    opacity: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
   }
 }

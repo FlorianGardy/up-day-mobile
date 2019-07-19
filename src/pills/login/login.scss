@@ -7,7 +7,6 @@
   grid-template-rows: 10vh 30% 1fr 10vh;
   justify-items: center;
   align-items: center;
-  background-color: $almost-white;
   color: $primary-dark;
   .logo {
     grid-row: 2;
@@ -41,16 +40,16 @@
     & > * {
       border-radius: 50px;
       box-sizing: border-box;
-      padding: rem(10) rem(20);
+      padding: 10px 20px;
       letter-spacing: 1px;
       font-size: 1.2rem;
-      border: 1px solid $btn-grey;
+      border: 1px solid $dark-grey;
     }
     //this code is to change the autofill color, comment this section to see the diference.
-    input:-webkit-autofill {
-      box-shadow: 0 0 0px 1000px white inset;
-      background-color: transparent;
-    }
+    // input:-webkit-autofill {
+    //   box-shadow: 0 0 0px 1000px white inset;
+    //   background-color: transparent;
+    // }
     input[type="text"] {
       grid-row: 1;
     }
@@ -59,10 +58,15 @@
     }
     input[type="submit"] {
       grid-row: 3;
-      background-color: $primary-dark;
-      font-weight: bold;
-      color: $almost-white;
+
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: $orange;
+      color: white;
       border: none;
+      padding: 10px 20px !important;
+      line-height: 100%;
       @include shadowEffect;
     }
   }

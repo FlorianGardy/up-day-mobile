@@ -1,5 +1,7 @@
 @import "../sass/main.scss";
 
+$btnSize: 0.8rem;
+
 .topBar {
   display: inline-grid;
   grid-template-columns: repeat(3, 1fr);
@@ -17,8 +19,8 @@
     display: flex;
     align-items: center;
 
-    font-size: 1rem;
-    @include button-text-color($btn-grey);
+    font-size: $btnSize;
+    @include button-text-color($dark-grey);
     cursor: pointer;
     padding: 0 5vw;
 
@@ -31,7 +33,7 @@
       justify-self: end;
     }
     &.isActive {
-      @include button-text-color($btn-orange);
+      @include button-text-color($orange);
       animation-name: btnGrow;
       animation-duration: 1s;
     }
@@ -43,7 +45,7 @@
     justify-self: center;
     grid-area: title;
 
-    color: $btn-orange;
+    color: $orange;
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -52,13 +54,13 @@
 
 @keyframes btnGrow {
   0% {
-    font-size: 1rem;
+    font-size: $btnSize;
   }
 
   50% {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   100% {
-    font-size: 1rem;
+    font-size: $btnSize;
   }
 }

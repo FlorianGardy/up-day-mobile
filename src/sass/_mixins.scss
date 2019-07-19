@@ -56,10 +56,8 @@
 
 // Shadows for the modalEventBtn
 @mixin shadowEffect {
-  -webkit-box-shadow: 2px 3px 14px 0px $btn-grey,
-    inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 2px 3px 14px 0px $btn-grey,
-    inset -2px 3px 9px 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 10px 13px -7px $dark-grey;
+  box-shadow: 0px 10px 13px -7px $dark-grey;
 }
 
 // Gradient effect

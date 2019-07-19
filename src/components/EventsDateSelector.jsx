@@ -15,7 +15,7 @@ const HistoryDateSelector = ({ shiftDate, selectedDate }) => {
       <div type="button" onClick={() => shiftDate("left")} className="btn">
         <FontAwesomeIcon icon={faCaretLeft} size="2x" />
       </div>
-      {moment(selectedDate).format("dddd DD MMMM")}
+      <p>{moment(selectedDate).format("dddd DD MMMM")}</p>
       <div type="button" onClick={() => shiftDate("right")} className="btn">
         <FontAwesomeIcon icon={faCaretRight} size="2x" />
       </div>

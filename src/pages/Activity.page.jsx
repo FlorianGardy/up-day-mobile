@@ -82,7 +82,7 @@ const mapDispatchToProps = dispatch => {
     updateDate: date => dispatch(updateDate(date)),
     updateKind: kind => {
       dispatch(updateKind(kind));
-      dispatch(updateNature("Activité"));
+      dispatch(updateNature("Sport"));
     },
     updateVolume: volume => dispatch(updateMeasure(volume)),
     updateComment: e => dispatch(updateComment(e.target.value))
