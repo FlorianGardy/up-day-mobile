@@ -3,7 +3,7 @@
 .summaryItems {
   display: grid;
   grid-template-rows: 7vh auto auto;
-  grid-gap: 10px;
+  grid-gap: 5px;
 
   height: minmax(min-content auto);
   border-radius: 3vw;
@@ -17,12 +17,21 @@
     text-transform: uppercase;
   }
   p,
-  ul {
+  ul,
+  h3 {
     grid-row: 2;
     font-size: 1rem;
     align-self: center;
     li {
       padding: 5px 0;
+    }
+  }
+  &--type {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2;
+    h3 {
+      padding: 5px;
     }
   }
   .stylePlus {
