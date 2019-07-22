@@ -45,8 +45,8 @@
     .eventRow {
       display: grid;
       grid-template-rows: 50% 50%;
-      grid-template-columns: 25% 50% 25%;
-      grid-template-areas: "time nature volume" "details details details";
+      grid-template-columns: 35% 10% 30% 25%;
+      grid-template-areas: "time icon nature volume" "details details details details";
       background-color: $primary-light;
       border-bottom: 2px solid $primary-light;
       height: 11vh;
@@ -62,7 +62,11 @@
       .eventTime {
         grid-area: time;
       }
+      .natureIcon {
+        grid-area: icon;
+      }
       .eventNature {
+        justify-content: left;
         grid-area: nature;
       }
       .eventVolume {
