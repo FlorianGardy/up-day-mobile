@@ -21,14 +21,14 @@ $modalEventsBtn: (
     bottom: 0;
     height: $navHeight;
     width: 100vw;
-    background-color: $primary-color;
+    background-color: $primary-dark;
     a {
       color: $almost-white;
       text-decoration: none;
     }
     z-index: 1000;
     .activeLink {
-      color: $primary-dark;
+      color: $primary-color;
     }
 
     .history {
