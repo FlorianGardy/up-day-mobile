@@ -43,6 +43,9 @@ input,
 select,
 textarea {
   margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 html {
   box-sizing: border-box;

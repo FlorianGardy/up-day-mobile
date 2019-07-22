@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import moment from "moment";
 
 import SummaryItem from "../components/SummaryItem";
+import SummaryDateItem from "../components/SummaryDateItem";
 import SummaryTypeItem from "../components/SummaryTypeItem";
 import SummaryContextItem from "../components/SummaryContextItem";
 import Navbar from "../components/Navbar";
@@ -50,14 +51,15 @@ const Drink = ({
         }}
       />
       <section className="pageBodySummary">
-        <SummaryItem
+        <SummaryDateItem
           label="Date"
-          value={moment(date).format("dddd DD MMMM à HH:mm")}
+          date={moment(date).format("dddd DD MMMM")}
+          time={moment(date).format("HH:mm")}
         />
         <SummaryTypeItem label="Type" nature={nature} value={kind} />
         <SummaryContextItem label="Contexte" values={contexts} />
         <SummaryItem label="Volume" value={measure} bold />
-        <SummaryItem label="Commentaire" value={comment} />
+        <SummaryItem label="Commentaires" value={comment} />
       </section>
       <Navbar />
     </div>

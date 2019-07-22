@@ -33,7 +33,7 @@ const SummaryTypeItem = ({ label, nature, value }) => {
     <div className="summaryItems">
       <h2>{label}</h2>
       <div className="summaryItems--type">
-        <h3>{switchNatureIcon(nature)}</h3>
+        <p>{switchNatureIcon(nature)}</p>
         <p>{value}</p>
       </div>
     </div>
@@ -42,6 +42,7 @@ const SummaryTypeItem = ({ label, nature, value }) => {
 
 SummaryTypeItem.propTypes = {
   label: PropTypes.string.isRequired,
+  nature: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
 };
 

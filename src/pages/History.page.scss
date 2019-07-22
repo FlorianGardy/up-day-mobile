@@ -9,8 +9,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: $primary-light;
-    color: $primary-dark;
+    background-color: $primary-dark;
+    color: $text-color-light;
     .btn {
       color: $orange;
       margin: 0 2rem;
@@ -46,7 +46,7 @@
       grid-template-rows: 50% 50%;
       grid-template-columns: 35% 10% 30% 25%;
       grid-template-areas: "time icon nature volume" "details details details details";
-      background-color: $primary-light;
+      background-color: transparentize($color: $primary-light, $amount: 0.4);
       border-bottom: 2px solid $primary-light;
       height: 11vh;
       & > * {

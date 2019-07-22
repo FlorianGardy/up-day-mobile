@@ -9,7 +9,10 @@
   align-content: space-around;
   grid-gap: 15px;
   padding: 15px;
-  background-color: $primary-dark;
+  background-color: transparentize($color: $primary-light, $amount: 0.5);
+  & > * {
+    border: 1px solid $orange;
+  }
 
   & > :first-child {
     grid-area: date;
