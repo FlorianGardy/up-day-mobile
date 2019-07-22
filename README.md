@@ -4,11 +4,14 @@ UP Day is an application dedicated to physiotherapist re-education of the perine
 There is 3 parts on this project :
 
 - [Doctors](https://github.com/WildCodeSchool/biarritz_0319_kine_admin)
-  -- Track events from patients
+
+  - Track events from patients
 - [Patients](https://github.com/WildCodeSchool/biarritz_0319_kine_front) <- You are here
-  -- Add and track their own events
+
+  - Add and track their own events
 - [Server](https://github.com/WildCodeSchool/biarritz_0319_kine_back)
-  -- Link between front and database
+
+  - Link between front and database
 
 ## Stack
 
@@ -28,10 +31,15 @@ App
 ```
 
 `API` Folder to stock api call functions
+
 `components` Folder to stock simple components
+
 `assets` Folder to stock assets for the app
+
 `pages` Folder to stock api components called only in router
+
 `pills` Folder to stock complex connected components
+
 
 `How work pills folder` :
 
