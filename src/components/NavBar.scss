@@ -1,0 +1,198 @@
+@import "../sass/main.scss";
+
+$btnAddEventDiameter: 50px;
+$navHeight: 10vh;
+$modalEventsBtn: (
+  Poo: $poo,
+  Pee: $pee,
+  Activity: $activity,
+  Drink: $drink
+);
+
+.navBar {
+  //Style the Menu of the Navbar
+  .bottomNavBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "history events info" "history events info";
+
+    font-size: 35 / 100 * $navHeight;
+    bottom: 0;
+    height: $navHeight;
+    width: 100vw;
+    background-color: $primary-dark;
+    a {
+      color: $almost-white;
+      text-decoration: none;
+    }
+    z-index: 1000;
+    .activeLink {
+      color: $primary-color;
+    }
+
+    .history {
+      grid-area: history;
+      align-self: center;
+      justify-self: start;
+      width: 100%;
+
+      .calendar {
+        padding-top: 1vh;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+    .about {
+      grid-area: info;
+      justify-self: end;
+      align-self: center;
+      width: 100%;
+      .infos {
+        padding-top: 1vh;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+    .events {
+      grid-area: events;
+      justify-self: center;
+      align-self: center;
+      text-decoration: none;
+      color: $almost-white;
+      cursor: pointer;
+      width: 100%;
+      .new {
+        padding-top: 1vh;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  //Style and Show (or not) the event menu
+  .modal {
+    display: grid;
+    grid-template-columns: auto repeat(3, minmax(80px, 15vw)) auto;
+    grid-template-rows: 4fr repeat(3, minmax(80px, 10vh)) 1fr;
+    grid-template-areas: ". . . . ." ". . Activity . ." ". Poo . Pee ." ". . Drink . ." ". . . . .";
+
+    position: absolute;
+    top: 0;
+    min-height: 100 - $navHeight;
+    max-height: 100 - $navHeight;
+    width: 100vw;
+    overflow: hidden;
+    background-color: transparentize($color: rgb(255, 255, 255), $amount: 0.02);
+    will-change: transform, opacity;
+    a {
+      text-decoration: none;
+    }
+    .btn {
+      display: flex;
+      flex-direction: column;
+
+      justify-items: center;
+      align-items: center;
+      align-self: flex-end;
+      // margin: auto;
+      h3 {
+        grid-row: 2;
+
+        font-family: "Assistant", sans-serif;
+        color: $text-color-dark;
+        font-weight: bold;
+        font-size: 3vmax;
+        padding: 5px 0;
+      }
+      .circle {
+        grid-row: 1;
+        display: flex;
+        @include box(60px);
+        border-radius: 50%;
+        .icon {
+          width: 50%;
+          margin: auto;
+        }
+      }
+    }
+
+    // It's like a map... we don't have to write the same code for our 4 buttons
+    @each $event, $bgColor in $modalEventsBtn {
+      .btn-#{$event} {
+        @extend %btn;
+        grid-area: $event;
+        .circle {
+          border: 1px solid $orange;
+          background: radial-gradient(
+            circle at 6vmin 6vmin,
+            white,
+            rgb(230, 230, 230)
+          );
+        }
+      }
+    }
+  }
+  .modalHidden {
+    .modal {
+      opacity: 0;
+      transition: opacity 0.4s ease 0.4s;
+      pointer-events: none;
+
+      %btn {
+        animation: slide-out-bottom 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+          both;
+      }
+    }
+  }
+  .modalVisible {
+    .modal {
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 0.1s ease 0.1s;
+
+      %btn {
+        animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          both;
+      }
+    }
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-out-bottom
+ * ----------------------------------------
+ */
+
+@include keyframes(slide-out-bottom) {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-in-bottom
+ * ----------------------------------------
+ */
+
+@include keyframes(slide-in-bottom) {
+  0% {
+    -webkit-transform: translateY(1000px);
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
